@@ -1,0 +1,8 @@
+{
+    "editor.fontSize": 18,
+    "editor.accessibilityPageSize": 900,
+    "editor.autoIndentOnPaste": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 10,
+    "editor.formatOnSave": true
+}
