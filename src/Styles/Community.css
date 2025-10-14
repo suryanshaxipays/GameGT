@@ -1,0 +1,236 @@
+.community-section {
+    background-color: #0a0f21;
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.5rem;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 768px) {
+    .community-section {
+      padding: 5rem 4rem;
+    }
+  }
+  
+  /* ---------- Header ---------- */
+  .community-header {
+    text-align: center;
+    max-width: 48rem;
+    margin-bottom: 3rem;
+  }
+  
+  .community-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #8ab4ff, #b19cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (min-width: 768px) {
+    .community-title {
+      font-size: 3rem;
+    }
+  }
+  
+  .community-description {
+    color: #d1d5db;
+    line-height: 1.7;
+  }
+  
+  /* ---------- Ring Container ---------- */
+  .community-ring-container {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .community-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ring {
+    position: absolute;
+    border: 1px solid #374151;
+    border-radius: 50%;
+  }
+  
+  .ring-1 {
+    width: 90%;
+    height: 90%;
+  }
+  
+  .ring-2 {
+    width: 70%;
+    height: 70%;
+  }
+  
+  .ring-3 {
+    width: 50%;
+    height: 50%;
+  }
+  
+  /* ---------- Center Button ---------- */
+  .community-center-btn {
+    position: relative;
+    z-index: 10;
+    background-color: black;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: 1px solid #4b5563;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .community-center-btn:hover {
+    background-color: #111827;
+  }
+  
+  /* ---------- Avatars ---------- */
+  .avatar {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .avatar1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid #fff;
+  }
+  
+  .avatar2 {
+    top: 33%;
+    left: 0;
+    transform: translateY(-50%);
+    border: 4px solid #5a1cff;
+  }
+  
+  .avatar3 {
+    top: 33%;
+    right: 0;
+    transform: translateY(-50%);
+    border: 4px solid #ff1c1c;
+  }
+  
+  .avatar4 {
+    bottom: 0;
+    left: 33%;
+    border: 4px solid #9c1cff;
+  }
+  
+  .avatar5 {
+    bottom: 0;
+    right: 20%;
+    border: 4px solid #00aeef;
+  }
+  
+  .avatar6 {
+    top: 60%;
+    left: 10%;
+    border: 4px solid #ff0000;
+  }
+  
+  /* ---------- Floating Icons ---------- */
+  .icon {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid #4b5563;
+    background-color: black;
+    border-radius: 50%;
+    padding: 0.5rem;
+  }
+  
+  .icon-lock {
+    top: 15%;
+    left: 25%;
+  }
+  
+  .icon-arrow {
+    bottom: 25%;
+    right: 28%;
+  }
+  
+  .icon-like {
+    bottom: 25%;
+    left: 28%;
+  }
+  
+  /* ---------- CTA Section ---------- */
+  .community-cta {
+    margin-top: 5rem;
+    width: 100%;
+    max-width: 80rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(to right, #3c00ff, #00c2ff);
+    padding: 2px;
+  }
+  
+  .community-cta-inner {
+    background-color: #0a0f21;
+    border-radius: 1.5rem;
+    text-align: center;
+    padding: 3.5rem 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .community-cta-inner {
+      padding: 3.5rem 4rem;
+    }
+  }
+  
+  .community-cta-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(to right, #8ab4ff, #b19cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (min-width: 768px) {
+    .community-cta-title {
+      font-size: 1.875rem;
+    }
+  }
+  
+  .community-cta-text {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+  }
+  
+  .community-cta-btn {
+    background: linear-gradient(to right, #5a1cff, #00c2ff);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border: none;
+  }
+  
+  .community-cta-btn:hover {
+    opacity: 0.9;
+  }
+  

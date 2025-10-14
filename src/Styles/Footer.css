@@ -1,0 +1,132 @@
+/* -------------------- Footer Wrapper -------------------- */
+.footer-wrapper {
+  position: relative;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* -------------------- Footer Main -------------------- */
+.footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* -------------------- Container -------------------- */
+.footer-container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem;
+}
+
+/* -------------------- Grid Layout -------------------- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* -------------------- Left Section -------------------- */
+.footer-left {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
+/* -------------------- Social Icons -------------------- */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.footer-social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* -------------------- Spacer -------------------- */
+.footer-spacer {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .footer-spacer {
+    display: block;
+    grid-column: span 2;
+  }
+}
+
+/* -------------------- Right Section - Links -------------------- */
+.footer-links {
+  grid-column: span 5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-link {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+/* -------------------- Bottom Copyright -------------------- */
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
