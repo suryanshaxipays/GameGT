@@ -35,8 +35,8 @@ const About = () => {
           {/* Left Text Section */}
           <div className="image-side left">
             <p className="image-side-text">
-              Exclusive gifts. <br />
-              Insider access. <br />
+              Exclusive Games. <br />
+              Escort mission. <br />
               Special events.
             </p>
             <div className="image-divider"></div>
@@ -56,8 +56,8 @@ const About = () => {
           <div className="image-side right">
             <img src={pubg} alt="PubG" className="image-box" />
             <p className="image-side-text">
-              Beauty <br />
-              Fashion <br />
+              Rage <br />
+              Aggression <br />
               Culture
             </p>
             <div className="image-divider"></div>

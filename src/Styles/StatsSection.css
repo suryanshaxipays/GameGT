@@ -1,0 +1,83 @@
+/* Ensure section covers full screen height */
+.stats-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Stats box styling */
+.stats-box {
+  position: relative;
+  z-index: 10;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem; /* p-6 */
+  width: 90%;
+  max-width: 72rem; /* max-w-6xl */
+}
+
+@media (min-width: 768px) {
+  .stats-box {
+    padding: 2rem; /* md:p-8 */
+  }
+}
+
+/* Grid layout */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; /* gap-6 */
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    text-align: left; /* md:text-left */
+  }
+}
+
+/* Individual stat items */
+.stat-item h4 {
+  font-weight: 700;
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.stat-item p {
+  font-size: 0.875rem; /* text-sm */
+  color: #374151; /* text-gray-700 */
+  line-height: 1.5;
+}
+
+.stat-item p span {
+  font-weight: 600; /* font-semibold */
+}
+
+/* Image styling */
+.vr-image {
+  margin-top: -5rem; /* -mt-20 */
+  z-index: 0;
+  border-radius: 0.75rem; /* rounded-xl */
+  width: 100%;
+  max-width: 72rem; /* max-w-6xl */
+  height: 16rem; /* h-64 */
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .vr-image {
+    height: 24rem; /* md:h-96 */
+  }
+  .stats-box{
+    width: 60%;
+  }
+}

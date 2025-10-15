@@ -8,22 +8,39 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className={`hamburger ${isOpen ? "active" : ""}`} onClick={toggleMenu}>
+        <div
+          className={`hamburger ${isOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
           <span></span>
           <span></span>
           <span></span>
         </div>
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-          <li><a href="#home" onClick={() => setIsOpen(false)}>HOME</a></li>
-          <li><a href="#features" onClick={() => setIsOpen(false)}>FEATURES</a></li>
-          <li><a href="#about" onClick={() => setIsOpen(false)}>ABOUT</a></li>
-          <li><a href="#games" onClick={() => setIsOpen(false)}>GAMES CATEGORY</a></li>
-          <li><a href="#faq" onClick={() => setIsOpen(false)}>F&Q</a></li>
+          <li><a href="#home" onClick={(e) => handleNavClick(e, "home")}>HOME</a></li>
+          <li><a href="#features" onClick={(e) => handleNavClick(e, "features")}>FEATURES</a></li>
+          <li><a href="#about" onClick={(e) => handleNavClick(e, "about")}>ABOUT</a></li>
+          <li><a href="#games" onClick={(e) => handleNavClick(e, "games")}>GAMES CATEGORY</a></li>
+          <li><a href="#faq" onClick={(e) => handleNavClick(e, "faq")}>F&Q</a></li>
           <li>
-            <button className="login-btn" onClick={() => setIsOpen(false)}>LOGIN</button>
+            <button className="login-btn" onClick={() => setIsOpen(false)}>
+              LOGIN
+            </button>
           </li>
         </ul>
       </div>

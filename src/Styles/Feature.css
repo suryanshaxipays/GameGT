@@ -6,13 +6,14 @@
 
 .featured-game-container {
   background: #0a0f21;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding: 4vh 5vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-top: 100px;
 }
 
 .featured-header {
@@ -69,7 +70,7 @@
 
 /* Common card style */
 .game-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -80,10 +81,7 @@
   height: 65vh; /* default card height */
 }
 
-.game-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+
 
 /* Middle card (featured) slightly taller */
 .game-card-featured {
