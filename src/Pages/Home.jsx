@@ -7,7 +7,7 @@ import Community from '../Components/Community'
 import SecurePlatform from '../Components/SecurePlatform'
 import Footer from '../Components/Footer'
 import StatsSection from '../Components/StatsSection'
-
+import FAQSection from '../Components/FAQSection'
 
 const Home = () => {
   return (
@@ -28,15 +28,12 @@ const Home = () => {
 
       <section id="games">
         <Categories />
-        <StatsSection/>
       </section>
+      <StatsSection/>
+      <Community />
 
       <section id="faq">
-        <Community />
-      </section>
-
-      <section id="secure">
-        <SecurePlatform />
+        <FAQSection />
       </section>
 
       <Footer />

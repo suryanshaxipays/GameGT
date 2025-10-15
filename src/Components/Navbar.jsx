@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../Styles/Navbar.css";
+import logo from "../Assets/logo.ico"; // Make sure the path is correct
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
+        {/* Logo */}
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+
+        {/* Hamburger */}
         <div
           className={`hamburger ${isOpen ? "active" : ""}`}
           onClick={toggleMenu}
@@ -31,12 +38,34 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </div>
+
+        {/* Nav links */}
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-          <li><a href="#home" onClick={(e) => handleNavClick(e, "home")}>HOME</a></li>
-          <li><a href="#features" onClick={(e) => handleNavClick(e, "features")}>FEATURES</a></li>
-          <li><a href="#about" onClick={(e) => handleNavClick(e, "about")}>ABOUT</a></li>
-          <li><a href="#games" onClick={(e) => handleNavClick(e, "games")}>GAMES CATEGORY</a></li>
-          <li><a href="#faq" onClick={(e) => handleNavClick(e, "faq")}>F&Q</a></li>
+          <li>
+            <a href="#home" onClick={(e) => handleNavClick(e, "home")}>
+              HOME
+            </a>
+          </li>
+          <li>
+            <a href="#features" onClick={(e) => handleNavClick(e, "features")}>
+              FEATURES
+            </a>
+          </li>
+          <li>
+            <a href="#about" onClick={(e) => handleNavClick(e, "about")}>
+              ABOUT
+            </a>
+          </li>
+          <li>
+            <a href="#games" onClick={(e) => handleNavClick(e, "games")}>
+              GAMES CATEGORY
+            </a>
+          </li>
+          <li>
+            <a href="#faq" onClick={(e) => handleNavClick(e, "faq")}>
+              F&Q
+            </a>
+          </li>
           <li>
             <button className="login-btn" onClick={() => setIsOpen(false)}>
               LOGIN

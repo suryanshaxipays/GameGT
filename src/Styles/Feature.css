@@ -26,12 +26,23 @@
 }
 
 .featured-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: 4rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.1;
   letter-spacing: -2px;
   margin: 0;
+}
+
+@media (max-width: 768px){
+  .featured-title{
+    font-size: 2rem;
+    margin: auto;
+  }
+
+  .featured-header{
+    display: grid;
+  }
 }
 
 .icon-wrapper {
@@ -53,12 +64,24 @@
 }
 
 .featured-description {
-  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-size: 1rem;
   line-height: 1.6;
   color: #a0aec0;
   max-width: 420px;
-  margin-top:8px;
+  margin-top: 8px;
+  text-align: left; /* default left alignment */
 }
+
+/* Center text on mobile */
+@media (max-width: 768px) {
+  .featured-description {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 
 .games-grid {
   display: flex;
@@ -153,11 +176,13 @@
     flex-direction: column;
     align-items: center;
     height: auto;
+    gap: 15vw;
+
   }
 
   .game-card {
-    width: 90%;
-    height: 50vh;
+    width: 70%;
+    height: 40vh;
   }
 
   .game-card-featured {

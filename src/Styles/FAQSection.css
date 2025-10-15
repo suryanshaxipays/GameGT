@@ -1,0 +1,113 @@
+/* ===== FAQ Section Styling ===== */
+.faq-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+  width: 90%;
+  margin: 6rem auto 0 auto;
+  padding-bottom: 4rem;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .faq-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 8rem;
+    margin-left: 5rem;
+  }
+}
+
+/* ===== Left Section ===== */
+.faq-left {
+  padding-right: 2rem;
+}
+
+.faq-left h2 {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffffff; /* White text */
+}
+
+.faq-left p {
+  color: #a9a9a9;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Transparent Button */
+.faq-btn {
+  background: transparent;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: 2px solid #ffffff;
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+/* ===== Right Section (Accordions) ===== */
+.faq-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.accordion-item {
+  background: #0a0f21; /* dark shade */
+  color: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.accordion-item.active {
+  background: #101633;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.accordion-question {
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.accordion-answer {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-answer p {
+  padding: 0 1.5rem 1.25rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* + / - Icons */
+.accordion-item.active .accordion-question::after {
+  content: "−";
+  position: absolute;
+  right: 1.5rem;
+  font-weight: bold;
+}
+
+.accordion-item .accordion-question::after {
+  content: "+";
+  position: absolute;
+  right: 1.5rem;
+  font-weight: bold;
+}

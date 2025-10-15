@@ -2,12 +2,14 @@ import "../Styles/Footer.css";
 
 // --- Images ---
 import twitterIcon from "../Assets/twitter.png";
+import Facebook from "../Assets/Facebook.png";
 import instagramIcon from "../Assets/instagram.png";
 import githubIcon from "../Assets/github.png";
 
 const Footer = () => {
   const socialLinks = [
     { src: twitterIcon, alt: "Twitter", href: "#" },
+    { src: Facebook, alt: "Facebook", href: "#" },
     { src: instagramIcon, alt: "Instagram", href: "#" },
     { src: githubIcon, alt: "Github", href: "#" },
   ];
