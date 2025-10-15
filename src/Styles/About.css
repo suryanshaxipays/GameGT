@@ -28,7 +28,7 @@
   }
   
   .image-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
     margin-bottom: 1rem;
   }
@@ -36,6 +36,7 @@
   .image-description {
     color: #d1d5db;
     line-height: 1.7;
+    font-size: 1rem;
   }
   
   .image-button {
@@ -69,6 +70,11 @@
     .image-mobile {
       display: none;
     }
+    .image-title {
+      font-size: 3.5rem;
+
+    }
+    
   }
   
   /* Desktop Layout */
@@ -151,6 +157,7 @@
   }
   
   @media (min-width: 768px) {
+    
     .image-box {
       height: 14rem;
     }

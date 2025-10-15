@@ -12,7 +12,7 @@ const Feature = () => {
           Featured Game
         </h1>
         <p className="featured-description">
-          Dive into our featured game of the week, packed with challenges, rewards, and exclusive events you won't find anywhere else.
+          Dive into our featured game of the week, packed with challenges, rewards, and exclusive events .
         </p>
       </div>
 
