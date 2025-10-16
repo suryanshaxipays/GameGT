@@ -1,13 +1,15 @@
-import "../Styles/About.css";
+import "../../Styles/About.css";
 
-import hedgies from "../Assets/About/hedgies.png";
-import porsche from "../Assets/About/porsche.png";
-import mario from "../Assets/About/mario.png";
-import subway from "../Assets/About/subway.png";
-import pubg from "../Assets/About/pubg.png";
-import shooter from "../Assets/About/shooter.png";
-import war from "../Assets/About/war.png";
-import mbg from "../Assets/About/mbg.png";  
+import hedgies from "../../Assets/About/hedgies.png";
+import porsche from "../../Assets/About/porsche.png";
+import mario from "../../Assets/About/mario.png";
+import subway from "../../Assets/About/subway.png";
+import pubg from "../../Assets/About/pubg.png";
+import shooter from "../../Assets/About/shooter.png";
+import war from "../../Assets/About/war.png";
+import mbg from "../../Assets/About/mbg.png";
+
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -21,7 +23,9 @@ const About = () => {
             passion, competition, and fun come together. Our goal is to connect
             gamers o.
           </p>
-          <button className="image-button">Explore</button>
+          <Link to="/gameview">
+            <button className="image-button">Explore</button>
+          </Link>
         </div>
 
         {/* Mobile Background */}

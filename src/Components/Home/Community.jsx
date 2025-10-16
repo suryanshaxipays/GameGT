@@ -1,14 +1,16 @@
-import "../Styles/Community.css";
+import "../../Styles/Community.css";
 
-import avatar1 from "../Assets/About/avatar1.png";
-import avatar2 from "../Assets/About/avatar2.png";
-import avatar3 from "../Assets/About/avatar3.png";
-import avatar4 from "../Assets/About/avatar4.png";
-import avatar5 from "../Assets/About/avatar5.png";
-import avatar6 from "../Assets/About/avatar6.png";
-import Lock from "../Assets/About/Lock.png";
-import Arrow from "../Assets/About/Arrow.png";
-import Like from "../Assets/About/Like.png";
+import avatar1 from "../../Assets/About/avatar1.png";
+import avatar2 from "../../Assets/About/avatar2.png";
+import avatar3 from "../../Assets/About/avatar3.png";
+import avatar4 from "../../Assets/About/avatar4.png";
+import avatar5 from "../../Assets/About/avatar5.png";
+import avatar6 from "../../Assets/About/avatar6.png";
+import Lock from "../../Assets/About/Lock.png";
+import Arrow from "../../Assets/About/Arrow.png";
+import Like from "../../Assets/About/Like.png";
+
+import { Link } from "react-router-dom";
 
 const Community = () => {
   return (
@@ -32,7 +34,9 @@ const Community = () => {
           <div className="ring ring-3"></div>
         </div>
 
-        <button className="community-center-btn">Get started for free</button>
+        <Link to="/gameview">
+          <button className="community-center-btn">Get started for free</button>
+        </Link>
 
         {/* Avatars */}
         <img src={avatar1} alt="Avatar 1" className="avatar avatar1" />
@@ -55,7 +59,10 @@ const Community = () => {
             Play. Connect. Conquer. Together.
           </h3>
           <p className="community-cta-text">Your next adventure starts here.</p>
-          <button className="community-cta-btn">Start Playing Now</button>
+          <Link to="/gameview">
+  <button className="community-cta-btn">Start Playing Now</button>
+</Link>
+
         </div>
       </div>
     </section>

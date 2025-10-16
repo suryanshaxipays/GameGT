@@ -1,10 +1,10 @@
-import "../Styles/Categories.css";
-import Bc1 from "../Assets/Categories/Bc1.png";
-import Bc2 from "../Assets/Categories/Bc2.png";
-import Sc1 from "../Assets/Categories/Sc1.png";
-import Sc2 from "../Assets/Categories/Sc2.png";
-import Sc3 from "../Assets/Categories/Sc3.png";
-import Sc4 from "../Assets/Categories/Sc4.png";
+import "../../Styles/Categories.css";
+import Bc1 from "../../Assets/Categories/Bc1.png";
+import Bc2 from "../../Assets/Categories/Bc2.png";
+import Sc1 from "../../Assets/Categories/Sc1.png";
+import Sc2 from "../../Assets/Categories/Sc2.png";
+import Sc3 from "../../Assets/Categories/Sc3.png";
+import Sc4 from "../../Assets/Categories/Sc4.png";
 
 const Categories = () => {
   const selectedGames = [

@@ -1,5 +1,5 @@
-import "../Styles/Hero.css";
-import HeroImage from "../Assets/bboy.png"; // your single clubbed image
+import "../../Styles/Hero.css";
+import HeroImage from "../../Assets/bboy.png"; // your single clubbed image
 
 const Hero = () => {
   return (

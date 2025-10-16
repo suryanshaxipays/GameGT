@@ -1,0 +1,105 @@
+body {
+  background-color: #0a0f21;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+.main-layout {
+  display: flex;
+}
+
+.main2-content {
+  flex: 1;
+  background: #0a0f21;
+  padding-bottom: 50px;
+}
+
+/* ===== HERO ===== */
+.hero2-banner {
+  position: relative;
+  margin: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hero2-bg {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.hero2-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+.hero2-overlay h1 {
+  font-size: 2rem;
+  color: white;
+}
+.hero2-overlay p {
+  color: #ffdd00;
+  margin-top: 8px;
+}
+.hero2-overlay button {
+  margin-top: 15px;
+  background: #ffd84f;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.hero2-overlay button:hover {
+  background: #ffcc2f;
+}
+
+/* ===== GAME SECTIONS ===== */
+.game2-section {
+  padding: 20px 30px;
+}
+.section2-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.section2-header h2 {
+  border-bottom: 2px solid #6919c8;
+  padding-bottom: 4px;
+}
+.section2-header a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.section2-header a:hover {
+  color: white;
+}
+.game2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+.game2-card {
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.game2-card:hover {
+  transform: translateY(-5px);
+}
+.game2-card img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.game2-card h3 {
+  font-size: 0.95rem;
+  margin-top: 6px;
+}

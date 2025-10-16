@@ -1,7 +1,7 @@
-import '../Styles/Feature.css';
-import A from "../Assets/A.png"; // your single clubbed image
-import B from "../Assets/B.png"; // your single clubbed image
-import C from "../Assets/C.png"; // your single clubbed image
+import '../../Styles/Feature.css';
+import A from "../../Assets/A.png"; // your single clubbed image
+import B from "../../Assets/B.png"; // your single clubbed image
+import C from "../../Assets/C.png"; // your single clubbed image
 
 
 const Feature = () => {

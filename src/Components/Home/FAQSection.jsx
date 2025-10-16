@@ -1,5 +1,7 @@
 import { useState } from "react";
-import "../Styles/FAQSection.css";
+import "../../Styles/FAQSection.css";
+import { Link } from "react-router-dom";
+
 
 
 const faqData = [
@@ -41,7 +43,10 @@ const FAQSection = () => {
     <section className="faq-section">
       <div className="faq-left">
         <h2>Frequently Asked Questions</h2>
-        <button className="faq-btn">Play Now</button>
+        <Link to="/gameview">
+  <button className="faq-btn">Play Now</button>
+</Link>
+
         <p>
           Have questions about gaming, accounts, or features? We’ve got you
           covered. Explore our FAQs to get quick answers and jump back into the

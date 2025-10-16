@@ -1,6 +1,5 @@
-import React from "react";
-import "../Styles/StatsSection.css";
-import vrPlayer from "../Assets/vrPlayer.png"; // change path if needed
+import "../../Styles/StatsSection.css";
+import vrPlayer from "../../Assets/vrPlayer.png"; // change path if needed
 
 const StatsSection = () => {
   return (
