@@ -59,7 +59,6 @@ const Sidebar = ({ isOpen }) => {
             </ul>
           )}
         </li>
-        <SidebarItem icon={FeaturesIcon} text="Features" to="/features" />
       </ul>
     </aside>
   );

@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import Navbar2 from "../Components/Navbar2";
 import Sidebar from "../Components/Sidebar";
 import { games } from "../data/games";
 import "../Styles/Gameplay.css";
 
 const Gameplay = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { id } = useParams();
   const game = games.find((g) => g.id === parseInt(id));
 
@@ -12,9 +14,9 @@ const Gameplay = () => {
 
   return (
     <div className="gameplay-container">
-      <Navbar2 />
-      <div className="gameplay-content">
-        <Sidebar />
+      <Navbar2 onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className="main-layout"> {/* match Gameview structure */}
+        <Sidebar isOpen={isSidebarOpen} />
         <main className="gameplay-main">
           <h1 className="gameplay-title">{game.title}</h1>
           <div className="gameplay-frame">

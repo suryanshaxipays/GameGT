@@ -1,14 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
 import Navbar2 from "../Components/Navbar2";
 import Sidebar from "../Components/Sidebar";
 import { games } from "../data/games";
 import "../Styles/Gamecategory.css";
-import { useMemo, useState } from "react";
 
 const Gamecategory = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [hoveredGame, setHoveredGame] = useState(null);
   const { categoryName } = useParams();
   const navigate = useNavigate();
-  const [hoveredGame, setHoveredGame] = useState(null);
 
   const categoryGames = useMemo(
     () => games.filter((g) => g.genre === categoryName),
@@ -17,9 +18,9 @@ const Gamecategory = () => {
 
   return (
     <div className="gamecategory-container">
-      <Navbar2 />
-      <div className="gamecategory-content">
-        <Sidebar />
+      <Navbar2 onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className="main-layout"> {/* consistent layout */}
+        <Sidebar isOpen={isSidebarOpen} />
         <main className="gamecategory-main">
           <h1 className="gamecategory-title">{categoryName} Games</h1>
           <div className="game-grid">
@@ -33,7 +34,6 @@ const Gamecategory = () => {
               >
                 <img className="gc" src={game.thumbnail} alt={game.title} />
                 <h3>{game.title}</h3>
-
                 {hoveredGame === game.id && game.youtubePreview && (
                   <div className="game-preview">
                     <iframe
