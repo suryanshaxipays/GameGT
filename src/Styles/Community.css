@@ -2,13 +2,14 @@
     background-color: #0a0f21;
     color: white;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0rem 1.5rem;
     overflow: hidden;
+    margin-top: -65px;
 
   }
   
@@ -26,23 +27,24 @@
   }
   
   .community-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #8ab4ff, #b19cff);
+    background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   @media (min-width: 768px) {
     .community-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
   }
   
   .community-description {
     color: #d1d5db;
     line-height: 1.7;
+    font-size: 1rem;
   }
   
   /* ---------- Ring Container ---------- */
@@ -201,7 +203,7 @@
   }
   
   .community-cta-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
     background: linear-gradient(to right, #8ab4ff, #b19cff);
@@ -211,7 +213,7 @@
   
   @media (min-width: 768px) {
     .community-cta-title {
-      font-size: 1.875rem;
+      font-size: 1.87rem;
     }
   }
   

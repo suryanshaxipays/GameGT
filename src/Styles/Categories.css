@@ -7,12 +7,16 @@
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     box-sizing: border-box;
+    margin-top: 80px;
   }
   
   @media (min-width: 640px) {
     .categories-container {
       padding: 2.5rem 2.5rem;
+      margin-top: 0px;
+
     }
+
   }
   
   @media (min-width: 1024px) {
