@@ -2,6 +2,8 @@ import { useState } from "react";
 import "../Styles/Navbar2.css";
 import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
+import { useNavigate } from 'react-router-dom';
+
 
 const Navbar2 = ({ onToggleSidebar = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +12,10 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
     setIsOpen(!isOpen);
     onToggleSidebar();
   };
+
+  const navigate = useNavigate();
+
+
 
   return (
     <nav className="navbar2">
@@ -24,7 +30,14 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
             <span></span>
             <span></span>
           </div>
-          <img src={logo} alt="Logo" className="nav-logo" />
+          <img
+      onClick={() => navigate('/')}
+      src={logo}
+      alt="Logo"
+      className="nav-logo"
+      style={{ cursor: 'pointer' }} // Optional: makes it look clickable
+    />
+
         </div>
 
         {/* Center: Search (hidden on mobile) */}

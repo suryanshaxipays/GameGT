@@ -27,7 +27,7 @@ const Gamecategory = () => {
             {categoryGames.map((game) => (
               <div
                 key={game.id}
-                className="game-card"
+                className="game-card2"
                 onClick={() => navigate(`/gameplay/${game.id}`)}
                 onMouseEnter={() => setHoveredGame(game.id)}
                 onMouseLeave={() => setHoveredGame(null)}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../Styles/Footer.css";
 
 // --- Images ---
@@ -8,16 +9,43 @@ import githubIcon from "../Assets/github.png";
 
 const Footer = () => {
   const socialLinks = [
-    { src: twitterIcon, alt: "Twitter", href: "#" },
-    { src: Facebook, alt: "Facebook", href: "#" },
-    { src: instagramIcon, alt: "Instagram", href: "#" },
-    { src: githubIcon, alt: "Github", href: "#" },
+    { src: twitterIcon, alt: "Twitter", href: "https://twitter.com", external: true },
+    { src: Facebook, alt: "Facebook", href: "https://facebook.com", external: true },
+    { src: instagramIcon, alt: "Instagram", href: "https://instagram.com", external: true },
+    { src: githubIcon, alt: "Github", href: "https://github.com", external: true },
   ];
 
+  // Links that will map to actual routes or sections
   const footerLinks = {
-    Company: ["Products", "Apps & Games", "Features"],
-    Help: ["Support", "About", "Contact Us"],
-    Resources: ["Youtube Playlist", "How To - Blog", "Terms & Conditions"],
+    Company: [
+      { name: "About", type: "section", target: "about" },
+      { name: "Apps & Games", type: "route", target: "/gameview" },
+      { name: "Features", type: "section", target: "features" },
+      { name: "F&Q", type: "section", target: "faq" },
+    ],
+    Categories: [
+      { name: "Action", type: "route", target: "/category/Action" },
+      { name: "Classic Games", type: "route", target: "/category/Classic Games" },
+      { name: "Hidden Objects", type: "route", target: "/category/Hidden Objects" },
+      { name: "Mahjong", type: "route", target: "/category/Mahjong" },
+      { name: "Match 3", type: "route", target: "/category/Match 3" },
+      { name: "Mind", type: "route", target: "/category/Mind" },
+      { name: "Solitaire", type: "route", target: "/category/Solitaire" },
+    ],
+    Social: [
+      { name: "Twitter", type: "external", target: "https://twitter.com" },
+      { name: "Facebook", type: "external", target: "https://facebook.com" },
+      { name: "Instagram", type: "external", target: "https://instagram.com" },
+      { name: "Github", type: "external", target: "https://github.com" },
+    ],
+  };
+
+  // Scroll handler for sections on Home page
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -27,12 +55,13 @@ const Footer = () => {
           <div className="footer-grid">
             {/* Left Section */}
             <div className="footer-left">
-              {/* Social Links */}
               <div className="footer-social">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="footer-social-link"
                   >
                     <img
@@ -55,10 +84,32 @@ const Footer = () => {
                   <h3 className="footer-heading">{title}</h3>
                   <ul className="footer-list">
                     {links.map((link) => (
-                      <li key={link}>
-                        <a href="#" className="footer-link">
-                          {link}
-                        </a>
+                      <li key={link.name}>
+                        {link.type === "route" ? (
+                          <Link to={link.target} className="footer-link">
+                            {link.name}
+                          </Link>
+                        ) : link.type === "section" ? (
+                          <a
+                            href={`#${link.target}`}
+                            className="footer-link"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToSection(link.target);
+                            }}
+                          >
+                            {link.name}
+                          </a>
+                        ) : (
+                          <a
+                            href={link.target}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="footer-link"
+                          >
+                            {link.name}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -78,3 +129,4 @@ const Footer = () => {
 };
 
 export default Footer;
+ 

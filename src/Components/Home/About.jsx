@@ -21,7 +21,7 @@ const About = () => {
           <p className="image-description">
             We’re more than just a gaming platform — we’re a global hub where
             passion, competition, and fun come together. Our goal is to connect
-            gamers o.
+            gamers.
           </p>
           <Link to="/gameview">
             <button className="image-button">Explore</button>

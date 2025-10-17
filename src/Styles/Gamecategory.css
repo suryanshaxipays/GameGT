@@ -42,7 +42,7 @@
 }
 
 /* Game Card */
-.game-card {
+.game-card2 {
   background: #1a2035;
   border-radius: 14px;
   overflow: hidden;
@@ -54,7 +54,7 @@
   height: 100%;
 }
 
-.game-card:hover {
+.game-card2:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 25px rgba(163, 25, 216, 0.35);
   width: 100%;
@@ -69,13 +69,13 @@
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.game-card:hover .gc {
+.game-card2:hover .gc {
   transform: scale(1.1);
   filter: brightness(1.15);
 }
 
 /* Game Info */
-.game-card h3 {
+.game-card2 h3 {
   padding: 14px 10px;
   text-align: center;
   font-size: 1.05rem;
@@ -87,7 +87,7 @@
 }
 
 /* Preview overlay on hover */
-.game-card::before {
+.game-card2::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -97,12 +97,12 @@
   border-radius: 14px;
 }
 
-.game-card:hover::before {
+.game-card2:hover::before {
   opacity: 1;
 }
 
 /* Optional: floating play icon on hover */
-.game-card::after {
+.game-card2::after {
   content: '▶';
   position: absolute;
   top: 50%;
@@ -115,7 +115,7 @@
   pointer-events: none;
 }
 
-.game-card:hover::after {
+.game-card2:hover::after {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }

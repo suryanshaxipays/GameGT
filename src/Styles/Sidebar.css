@@ -1,23 +1,24 @@
 .sidebar2 {
-  background: #1f2437; /* keep your existing background */
+  background: #1f2437;
   width: 240px;
   padding: 24px 18px;
-  min-height: 100vh;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.25);
   border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.sidebar2 ul {
+/* --- Top Section --- */
+.sidebar2-top ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .sidebar2-item {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .sidebar2-item a {
@@ -25,15 +26,17 @@
   align-items: center;
   color: #c9cbd3;
   text-decoration: none;
-  padding: 10px 12px;
-  border-radius: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
   transition: all 0.3s ease;
   font-weight: 500;
   letter-spacing: 0.2px;
+  background: rgba(255, 255, 255, 0.04);
+  height: 46px; /* Equal height for Home and Category */
 }
 
 .sidebar2-item a:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
   transform: translateX(3px);
 }
@@ -46,8 +49,8 @@
 
 .sidebar2-item img {
   width: 20px;
-  margin-right: 10px;
-  filter: brightness(0.85);
+  margin-right: 12px;
+  filter: brightness(0.9);
   transition: filter 0.3s;
 }
 
@@ -56,37 +59,36 @@
   filter: brightness(1.2);
 }
 
-
-
-/* Category Toggle Button */
+/* --- Category Toggle --- */
 .category-toggle2 {
   width: 100%;
-  background: linear-gradient(90deg, #6919c8, #a319d8);
+  background: rgba(255, 255, 255, 0.04);
   color: #fff;
   border: none;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 10px;
+  padding: 12px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 0.3px;
-  box-shadow: 0 2px 10px rgba(105, 25, 200, 0.3);
+  height: 46px; /* Same height as home */
   transition: all 0.3s ease;
 }
 
 .category-toggle2:hover {
-  filter: brightness(1.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
 
-/* Sub-category list */
+/* --- Dropdown Category List --- */
 .category-list2 {
   margin-top: 12px;
-  margin-left: 15px;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
-  padding-left: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px;
 }
 
 .category-btn2 {
@@ -95,10 +97,10 @@
   color: #b8b8c7;
   cursor: pointer;
   font-size: 0.95rem;
-  padding: 8px 4px;
+  padding: 8px 8px;
   text-align: left;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.25s ease;
 }
 
@@ -108,17 +110,67 @@
   transform: translateX(3px);
 }
 
-/* Chevron icon */
 .chevron2 {
   width: 14px;
   transition: transform 0.3s;
 }
-
 .chevron2.rotate {
   transform: rotate(180deg);
 }
 
-/* Mobile view */
+/* --- Footer Section --- */
+.sidebar2-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-btn2 {
+  width: 100%;
+  background: linear-gradient(90deg, #6919c8, #a319d8);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.contact-btn2:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.sidebar2-socials {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.sidebar2-socials img {
+  width: 22px;
+  filter: brightness(0.85);
+  transition: all 0.3s;
+}
+
+.sidebar2-socials img:hover {
+  filter: brightness(1.2);
+  transform: scale(1.1);
+}
+
+.sidebar2-copy {
+  font-size: 0.75rem;
+  color: #8f94a3;
+  text-align: center;
+}
+
+/* --- Mobile --- */
 @media (max-width: 900px) {
   .sidebar2 {
     position: fixed;
@@ -127,7 +179,6 @@
     transform: translateX(-100%);
     height: calc(100vh - 70px);
     z-index: 999;
-    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.35);
   }
   .sidebar2.open {
     transform: translateX(0);

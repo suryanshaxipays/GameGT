@@ -5,6 +5,7 @@ body {
   margin: 0;
 }
 
+/* Layout */
 .main-layout {
   display: flex;
 }
@@ -13,93 +14,165 @@ body {
   flex: 1;
   background: #0a0f21;
   padding-bottom: 50px;
+  transition: all 0.3s ease;
 }
 
 /* ===== HERO ===== */
 .hero2-banner {
   position: relative;
   margin: 20px;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
+
 .hero2-bg {
   width: 100%;
-  height: 300px;
+  height: 320px;
   object-fit: cover;
+  filter: brightness(0.75);
 }
+
 .hero2-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 45px 60px;
+  border-radius: 16px;
   text-align: center;
+  transition: background 0.3s ease;
 }
+
+.hero2-overlay:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .hero2-overlay h1 {
-  font-size: 2rem;
-  color: white;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 10px;
 }
+
 .hero2-overlay p {
   color: #ffdd00;
-  margin-top: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
 }
+
 .hero2-overlay button {
-  margin-top: 15px;
+  margin-top: 5px;
   background: #ffd84f;
   border: none;
-  padding: 10px 25px;
+  padding: 12px 28px;
   border-radius: 8px;
   font-weight: 700;
+  font-size: 1rem;
+  color: #0a0f21;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
+
 .hero2-overlay button:hover {
   background: #ffcc2f;
+  transform: scale(1.05);
 }
 
 /* ===== GAME SECTIONS ===== */
 .game2-section {
-  padding: 20px 30px;
+  padding: 30px 40px;
 }
+
 .section2-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
+
 .section2-header h2 {
-  border-bottom: 2px solid #6919c8;
-  padding-bottom: 4px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-left: 4px solid #6919c8;
+  padding-left: 10px;
 }
-.section2-header a {
-  color: #bbb;
-  text-decoration: none;
+
+.view-all {
   font-size: 0.9rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
 }
-.section2-header a:hover {
-  color: white;
+
+.view-all:hover {
+  color: #fff;
 }
+
 .game2-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
 }
+
+/* ===== GAME CARD ===== */
 .game2-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
   text-align: center;
-  transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+
 .game2-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
+
 .game2-card img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Smooth preview handling */
+.game-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.game-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
   border-radius: 10px;
   object-fit: cover;
 }
+
+/* Hide the image when preview is active */
+.game2-card:hover img {
+  opacity: 0;
+}
+
 .game2-card h3 {
-  font-size: 0.95rem;
-  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 10px 0 8px;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+
+.game2-card:hover h3 {
+  color: #ffd84f;
 }
