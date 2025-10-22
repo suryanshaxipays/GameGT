@@ -47,23 +47,7 @@
   }
 }
 
-.icon-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(40px, 4vw, 72px);
-  height: clamp(40px, 4vw, 72px);
-  background: #3b82f6;
-  border-radius: 12px;
-  margin: 0 -8px;
-  position: relative;
-  top: -4px;
-}
 
-.icon {
-  font-size: clamp(20px, 2.5vw, 40px);
-  color: #ffffff;
-}
 
 .featured-description {
   font-size: 1rem;
@@ -111,6 +95,10 @@
 /* Middle card (featured) slightly taller */
 .game-card-featured {
   height: 80vh;
+  border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+
 }
 
 /* Image + overlay */
@@ -141,36 +129,23 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
 }
 
-.game-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
+
 
 /* Info section */
 .game-info {
-  padding: 16px 20px;
+  padding: 20px 20px;
   background: rgba(255, 255, 255, 0.03);
-  height: 25%;
+  height: 15%;
 }
 
 .game-name {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 4px;
 }
 
-.game-address {
-  font-size: 0.9rem;
-  color: #a0aec0;
-}
 
-.game-city {
-  font-size: 0.85rem;
-  color: #718096;
-}
 
 /* Responsive */
 @media (max-width: 992px) {

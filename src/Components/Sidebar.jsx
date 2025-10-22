@@ -46,7 +46,7 @@ const Sidebar = ({ isOpen }) => {
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
               className="category-toggle2"
             >
-              <div className="flex-row">
+              <div className="categorybtn">
                 <img src={CategoryIcon} alt="Category" />
                 <span>Categories</span>
               </div>

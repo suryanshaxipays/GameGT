@@ -82,6 +82,14 @@
   transform: translateY(-1px);
 }
 
+.categorybtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9px;
+
+}
+
 /* --- Dropdown Category List --- */
 .category-list2 {
   margin-top: 12px;

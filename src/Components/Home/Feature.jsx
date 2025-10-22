@@ -1,10 +1,13 @@
 import '../../Styles/Feature.css';
-import A from "../../Assets/A.png"; // your single clubbed image
+import A from "../../Assets/A.jpg"; // your single clubbed image
 import B from "../../Assets/B.png"; // your single clubbed image
 import C from "../../Assets/C.png"; // your single clubbed image
+import { useNavigate } from "react-router-dom";
 
 
 const Feature = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="featured-game-container">
       <div className="featured-header">
@@ -18,23 +21,25 @@ const Feature = () => {
 
       <div className="games-grid">
         <div className="game-card">
-          <div className="game-image-wrapper">
+          <div className="game-image-wrapper"
+          onClick={() => navigate(`/gameplay/3`)}
+>
             <img 
             src={C}
               className="game-image"
             />
             <div className="game-overlay">
-              <h3 className="game-title">Phoenix Contract</h3>
             </div>
           </div>
           <div className="game-info">
-            <h3 className="game-name">Phoenix Contract</h3>
-            <p className="game-address">3891 ranchew Dr</p>
-            <p className="game-city">Richardson, california</p>
+            <h3 className="game-name">Mahjongg Pyramids</h3>
+
           </div>
         </div>
 
-        <div className="game-card game-card-featured">
+        <div className="game-card game-card-featured"
+                  onClick={() => navigate(`/gameplay/36`)}
+>
           <div className="game-image-wrapper">
             <img 
               src={B}
@@ -42,17 +47,17 @@ const Feature = () => {
               className="game-image"
             />
             <div className="game-overlay">
-              <h3 className="game-title">Vampire Master</h3>
             </div>
           </div>
           <div className="game-info">
-            <h3 className="game-name">Vampire Master</h3>
-            <p className="game-address">4516 w. Gray,Utica</p>
-            <p className="game-city">Pennsylvania</p>
+            <h3 className="game-name">Desert Oasis</h3>
+
           </div>
         </div>
 
-        <div className="game-card">
+        <div className="game-card"
+                  onClick={() => navigate(`/gameplay/37`)}
+>
           <div className="game-image-wrapper">
             <img 
               src={A} 
@@ -60,13 +65,11 @@ const Feature = () => {
               className="game-image"
             />
             <div className="game-overlay">
-              <h3 className="game-title">Immortals Revenge</h3>
             </div>
           </div>
           <div className="game-info">
-            <h3 className="game-name">Immortals Revenge</h3>
-            <p className="game-address">3891 ranchew Dr</p>
-            <p className="game-city">Richardson, california</p>
+            <h3 className="game-name">Wild West Mysteries</h3>
+
           </div>
         </div>
       </div>
