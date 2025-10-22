@@ -50,7 +50,7 @@
 }
 
 .nav-links li a:hover {
-  color: #ffdd00;
+  color: #00c2ff;
 }
 
 .login-btn {
@@ -61,11 +61,11 @@
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition:  0.3s, color 0.3s;
 }
 
 .login-btn:hover {
-  background-color: #ffdd00;
+  background-color: #00c2ff;
   color: white;
 }
 

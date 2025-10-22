@@ -1,5 +1,4 @@
 import "../../Styles/About.css";
-
 import hedgies from "../../Assets/About/hedgies.png";
 import porsche from "../../Assets/About/porsche.png";
 import mario from "../../Assets/About/mario.png";

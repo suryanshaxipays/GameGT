@@ -98,7 +98,7 @@
 }
 
 .login2-btn:hover {
-  background: #ffdd00;
+  background: linear-gradient(to right, #3c00ff, #00c2ff);
   color: white;
 }
 

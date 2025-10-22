@@ -36,24 +36,27 @@ const Gameplay = () => {
 
           {/* Game Frame */}
           <div className={`gameplay-frame ${isFullScreen ? "fullscreen" : ""}`}>
-            <iframe
-              src={game.embedLink}
-              title={game.title}
-              frameBorder="0"
-              allow="autoplay; fullscreen; encrypted-media"
-              allowFullScreen
-            ></iframe>
+  <iframe
+    src={game.embedLink}
+    title={game.title}
+    frameBorder="0"
+    allow="autoplay; fullscreen; encrypted-media"
+    allowFullScreen
+  ></iframe>
 
-            {/* Exit Fullscreen button */}
-            {isFullScreen && (
-              <img
-                src={ExitFullscreenIcon}
-                alt="Exit Fullscreen"
-                className="exit-fullscreen-btn"
-                onClick={() => setIsFullScreen(false)}
-              />
-            )}
-          </div>
+  {/* Exit Fullscreen button */}
+  {isFullScreen && (
+    <div className="exit-fullscreen-wrapper">
+      <img
+        src={ExitFullscreenIcon}
+        alt="Exit Fullscreen"
+        className="exit-fullscreen-btn"
+        onClick={() => setIsFullScreen(false)}
+      />
+    </div>
+  )}
+</div>
+
 
           {/* Fullscreen button below window */}
           {!isFullScreen && (

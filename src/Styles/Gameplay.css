@@ -33,15 +33,6 @@
   border-radius: 14px;
 }
 
-.fullscreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  border-radius: 0;
-}
 
 /* Fullscreen button below window */
 .fullscreen-container {
@@ -136,7 +127,7 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 10000;
+  z-index: 10;
   transition: transform 0.2s ease;
 }
 
@@ -147,12 +138,14 @@
 /* Fullscreen mode already has black bg */
 
 /* Adjust gameplay-frame in fullscreen */
+
+
 .fullscreen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: 100;
   border-radius: 0;
 }

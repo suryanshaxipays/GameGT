@@ -63,7 +63,7 @@ const Navbar = () => {
           </li>
           <li>
             <a href="#faq" onClick={(e) => handleNavClick(e, "faq")}>
-              F&Q
+              FAQ
             </a>
           </li>
           <li>

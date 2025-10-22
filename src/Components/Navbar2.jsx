@@ -3,7 +3,7 @@ import "../Styles/Navbar2.css";
 import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
 import { useNavigate } from "react-router-dom";
-import { games } from "../data/games"; // Make sure path is correct
+import { games } from "../data/games"; 
 
 const Navbar2 = ({ onToggleSidebar = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);

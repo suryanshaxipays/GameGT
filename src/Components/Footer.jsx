@@ -21,7 +21,7 @@ const Footer = () => {
       { name: "About", type: "section", target: "about" },
       { name: "Apps & Games", type: "route", target: "/gameview" },
       { name: "Features", type: "section", target: "features" },
-      { name: "F&Q", type: "section", target: "faq" },
+      { name: "FAQ", type: "section", target: "faq" },
     ],
     Categories: [
       { name: "Action", type: "route", target: "/category/Action" },
@@ -31,12 +31,6 @@ const Footer = () => {
       { name: "Match 3", type: "route", target: "/category/Match 3" },
       { name: "Mind", type: "route", target: "/category/Mind" },
       { name: "Solitaire", type: "route", target: "/category/Solitaire" },
-    ],
-    Social: [
-      { name: "Twitter", type: "external", target: "https://twitter.com" },
-      { name: "Facebook", type: "external", target: "https://facebook.com" },
-      { name: "Instagram", type: "external", target: "https://instagram.com" },
-      { name: "Github", type: "external", target: "https://github.com" },
     ],
   };
 
@@ -121,7 +115,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="footer-bottom">
-          <p>&copy; Copyright 2023. All Rights Reserved by board</p>
+          <p>&copy; Copyright 2025. All Rights Reserved by board</p>
         </div>
       </footer>
     </div>
