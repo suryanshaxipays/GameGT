@@ -1,21 +1,41 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import "../Styles/Navbar2.css";
 import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import { games } from "../data/games"; // Make sure path is correct
 
 const Navbar2 = ({ onToggleSidebar = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
     onToggleSidebar();
   };
 
-  const navigate = useNavigate();
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
 
+    if (query.trim() === "") {
+      setSearchResults([]);
+      return;
+    }
 
+    const results = games.filter((game) =>
+      game.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
+  const handleResultClick = (id) => {
+    setSearchQuery("");
+    setSearchResults([]);
+    navigate(`/gameplay/${id}`);
+  };
 
   return (
     <nav className="navbar2">
@@ -31,19 +51,36 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
             <span></span>
           </div>
           <img
-      onClick={() => navigate('/')}
-      src={logo}
-      alt="Logo"
-      className="nav-logo"
-      style={{ cursor: 'pointer' }} // Optional: makes it look clickable
-    />
-
+            onClick={() => navigate('/')}
+            src={logo}
+            alt="Logo"
+            className="nav-logo"
+            style={{ cursor: 'pointer' }}
+          />
         </div>
 
-        {/* Center: Search (hidden on mobile) */}
+        {/* Center: Search */}
         <div className="nav-search">
           <img src={SearchIcon} alt="Search" />
-          <input type="text" placeholder="Search games..." />
+          <input
+            type="text"
+            placeholder="Search games..."
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+          {searchResults.length > 0 && (
+            <div className="search-dropdown">
+              {searchResults.map((game) => (
+                <div
+                  key={game.id}
+                  className="search-result-item"
+                  onClick={() => handleResultClick(game.id)}
+                >
+                  {game.title}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right: Login Button */}

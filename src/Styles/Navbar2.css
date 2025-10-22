@@ -116,3 +116,33 @@
     padding: 6px 12px;
   }
 }
+
+/* Dropdown for search results */
+.search-dropdown {
+  position: absolute;
+  top: 40px; /* Adjust based on input height */
+  background: #1f2437;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 1001;
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: #2c3150;
+}
+
+/* Ensure search container is relative for dropdown positioning */
+.nav-search {
+  position: relative;
+}
+

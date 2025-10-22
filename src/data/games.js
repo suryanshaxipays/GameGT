@@ -1,4 +1,4 @@
-// src/data.js
+// src/data/data.js
 
 // This array holds all the game data for your website.
 // Keeping it in a separate file helps keep your page components clean.
