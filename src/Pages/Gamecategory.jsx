@@ -1,28 +1,51 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useMemo, useState } from "react";
 import Navbar2 from "../Components/Navbar2";
 import Sidebar from "../Components/Sidebar";
 import GameCard from "../Components/GameCard"; 
 import { games } from "../data/games";
-import Bg from "../Assets/category_banner.png"; // reuse existing background
+
+import Action from "../Assets/Action.jpg";
+import Match from "../Assets/Match.jpg";
+import Mahjong from "../Assets/Mahjong.jpg";
+import Mind from "../Assets/Mind.png";
+import Classic from "../Assets/Classic.jpg";
+import Solitaire from "../Assets/Solitaire.jpg";
+import Hidden from "../Assets/Hidden.jpg";
+
 import "../Styles/Gamecategory.css";
 
-const CategoryBanner = ({ categoryName }) => (
-  <div className="category-banner">
-    <img src={Bg} alt={categoryName} className="category-bg" />
-    <div className="category-overlay">
-      <h1>{categoryName}</h1>
+// Mapping genre to banner images
+const categoryImages = {
+  mahjong: Mahjong,
+  solitaire: Solitaire,
+  action: Action,
+  "match 3": Match,
+  mind: Mind,
+  "classic games": Classic,
+  "hidden objects": Hidden,
+};
+
+const CategoryBanner = ({ categoryName }) => {
+  const imageSrc = categoryImages[categoryName.toLowerCase()];
+  return (
+    <div className="category-banner">
+      {imageSrc && <img src={imageSrc} alt={categoryName} className="category-bg" />}
+      <div className="category-overlay">
+        <div className="glass-overlay">
+          <h1>{categoryName}</h1>
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Gamecategory = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { categoryName } = useParams();
-  const navigate = useNavigate();
 
   const categoryGames = useMemo(
-    () => games.filter((g) => g.genre.toLowerCase() === categoryName.toLowerCase()),
+    () => games.filter(g => g.genre.toLowerCase() === categoryName.toLowerCase()),
     [categoryName]
   );
 
@@ -38,10 +61,7 @@ const Gamecategory = () => {
           <div className="game-grid">
             {categoryGames.length > 0 ? (
               categoryGames.map((game) => (
-                <div
-                  key={game.id}
-                  className="category-card-wrapper"
-                >
+                <div key={game.id} className="category-card-wrapper">
                   <GameCard game={game} />
                 </div>
               ))

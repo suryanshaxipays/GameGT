@@ -11,9 +11,9 @@ const Categories = () => {
   const navigate = useNavigate();
 
   const selectedGames = [
-    { id: 1, genre: "Mahjong" },
-    { id: 11, genre: "Action" },
-    { id: 16, genre: "Match 3" },
+    { id: 99, genre: "Action" },
+    { id: 11, genre: "Match 3" },
+    { id: 16, genre: "Mahjong" },
     { id: 21, genre: "Mind" },
     { id: 26, genre: "Classic Games" },
     { id: 6, genre: "Solitaire" },

@@ -1,9 +1,9 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import "../Styles/Navbar2.css";
 import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
 import { useNavigate } from "react-router-dom";
-import { games } from "../data/games"; 
+import { games } from "../data/games";
 
 const Navbar2 = ({ onToggleSidebar = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,10 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
     navigate(`/gameplay/${id}`);
   };
 
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar2">
       <div className="nav2-container">
@@ -51,11 +55,11 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
             <span></span>
           </div>
           <img
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             src={logo}
             alt="Logo"
             className="nav-logo"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           />
         </div>
 
@@ -84,7 +88,9 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
         </div>
 
         {/* Right: Login Button */}
-        <button className="login2-btn">LOGIN</button>
+        <button className="login2-btn" onClick={handleLoginClick}>
+          LOGIN
+        </button>
       </div>
     </nav>
   );

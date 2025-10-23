@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Navbar.css";
 import logo from "../Assets/logo.ico"; // Make sure the path is correct
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,6 +21,11 @@ const Navbar = () => {
       });
     }
     setIsOpen(false);
+  };
+
+  const handleLoginClick = () => {
+    setIsOpen(false);
+    navigate("/login");
   };
 
   return (
@@ -67,7 +74,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <button className="login-btn" onClick={() => setIsOpen(false)}>
+            <button className="login-btn" onClick={handleLoginClick}>
               LOGIN
             </button>
           </li>

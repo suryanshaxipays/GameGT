@@ -43,11 +43,30 @@
   gap: 1.5rem;
 }
 
+/* -------------------- Company Info -------------------- */
+.footer-company {
+  max-width: 28rem;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.company-description {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
 /* -------------------- Social Icons -------------------- */
 .footer-social {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .footer-social-link {
@@ -129,4 +148,21 @@
   font-size: 0.875rem;
   color: #9ca3af;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .company-description {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
 }

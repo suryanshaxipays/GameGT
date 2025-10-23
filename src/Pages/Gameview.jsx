@@ -10,11 +10,10 @@ const HeroBanner = () => (
   <div className="hero2-banner">
     <img src={Bg} alt="Game Banner" className="hero2-bg" />
     <div className="hero2-overlay">
-      <h1>Wolf Hunting!</h1>
+      <h1>Game Tourer!</h1>
       <p>
         Play & Earn <span>1500</span> points ✨
       </p>
-      <button>Play Now</button>
     </div>
   </div>
 );
@@ -23,7 +22,7 @@ const HeroBanner = () => (
 const GameSection = ({ title, games }) => {
   const [viewAll, setViewAll] = useState(false);
 
-  const visibleGames = viewAll ? games : games.slice(0, 5);
+  const visibleGames = viewAll ? games : games.slice(0, 4);
 
   return (
     <section className="game2-section">
@@ -64,7 +63,7 @@ export default function Gameview() {
           <GameSection title="Recently Played" games={filteredGames.slice(22, 28)} />
           <GameSection title="Featured Games" games={filteredGames.slice(0, 6)} />
           <GameSection title="Action Games" games={filteredGames.slice(6, 12)} />
-          <GameSection title="Trending" games={filteredGames.slice(12, 18)} />
+          <GameSection title="Trending" games={filteredGames.slice(12, 19)} />
         </main>
       </div>
     </div>

@@ -31,6 +31,7 @@
     font-weight: 700;
     margin-bottom: 1.5rem;
     padding-left: 0.5rem;
+    
   }
   
   @media (min-width: 640px) {
@@ -87,6 +88,7 @@
     position: relative;
     border-radius: 0.75rem;
     overflow: hidden;
+
   }
   
   .categories-card img {
@@ -132,7 +134,17 @@
     left: 0.75rem;
     font-weight: 600;
     font-size: 1rem;
-  }
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.3); /* semi-transparent dark background */
+    backdrop-filter: blur(3px); /* adds blur effect behind text */
+    color: #fff;
+    z-index: 2;
+    max-width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
   
   .categories-card {
     cursor: pointer;

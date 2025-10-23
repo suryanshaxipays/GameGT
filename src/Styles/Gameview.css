@@ -62,23 +62,6 @@ body {
   margin-bottom: 15px;
 }
 
-.hero2-overlay button {
-  margin-top: 5px;
-  background: #ffd84f;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #0a0f21;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.hero2-overlay button:hover {
-  background: #ffcc2f;
-  transform: scale(1.05);
-}
 
 /* ===== GAME SECTIONS ===== */
 .game2-section {
@@ -112,6 +95,6 @@ body {
 
 .game2-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 18px;
 }

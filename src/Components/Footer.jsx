@@ -15,7 +15,6 @@ const Footer = () => {
     { src: githubIcon, alt: "Github", href: "https://github.com", external: true },
   ];
 
-  // Links that will map to actual routes or sections
   const footerLinks = {
     Company: [
       { name: "About", type: "section", target: "about" },
@@ -34,12 +33,9 @@ const Footer = () => {
     ],
   };
 
-  // Scroll handler for sections on Home page
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -47,8 +43,19 @@ const Footer = () => {
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-grid">
+            
             {/* Left Section */}
             <div className="footer-left">
+              {/* --- Company Info --- */}
+              <div className="footer-company">
+                <h2 className="company-name">Game Tourer</h2>
+                <p className="company-description">
+                  Game Tourer is your go-to hub for exciting online games — from action to
+                  puzzle, classic to mind-bending challenges. Play instantly, no downloads required!
+                </p>
+              </div>
+
+              {/* --- Social Icons --- */}
               <div className="footer-social">
                 {socialLinks.map((social, index) => (
                   <a
@@ -115,7 +122,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="footer-bottom">
-          <p>&copy; Copyright 2025. All Rights Reserved by board</p>
+          <p>&copy; Copyright 2025. All Rights Reserved by GameGT</p>
         </div>
       </footer>
     </div>
@@ -123,4 +130,3 @@ const Footer = () => {
 };
 
 export default Footer;
- 

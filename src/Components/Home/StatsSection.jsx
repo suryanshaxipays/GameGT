@@ -1,11 +1,16 @@
 import "../../Styles/StatsSection.css";
-import vrPlayer from "../../Assets/vrPlayer.png"; // change path if needed
+import vrPlayer from "../../Assets/vrPlayer.png"; // adjust path if needed
 
 const StatsSection = () => {
   return (
     <section className="stats-section">
       {/* Stats Box */}
       <div className="stats-box">
+        <h2 className="stats-title">Level Up Your Gaming Experience 🎮</h2>
+        <p className="stats-subtitle">
+          Explore our global gaming hub filled with millions of players, thousands of games, and nonstop competition.
+        </p>
+
         <div className="stats-grid">
           <div className="stat-item">
             <h4>Players</h4>
@@ -42,11 +47,7 @@ const StatsSection = () => {
       </div>
 
       {/* Bottom Image */}
-      <img
-        src={vrPlayer}
-        alt="VR Player"
-        className="vr-image"
-      />
+      <img src={vrPlayer} alt="VR Player" className="vr-image" />
     </section>
   );
 };
