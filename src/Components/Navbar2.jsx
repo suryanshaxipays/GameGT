@@ -55,7 +55,7 @@ const Navbar2 = ({ onToggleSidebar = () => {} }) => {
             <span></span>
           </div>
           <img
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/gameview")}
             src={logo}
             alt="Logo"
             className="nav-logo"

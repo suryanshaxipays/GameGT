@@ -1,44 +1,83 @@
+.gameplay-container {
+  background-color: #0a0f21;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-
-/* Gameplay main */
-.gameplay-main {
+.main2-content {
   flex: 1;
-  max-width: 1300px;
-  padding: 20px 30px;
+  background: #0a0f21;
+  padding: 20px 40px 50px;
 }
 
+/* ===== GAME TITLE ===== */
 .gameplay-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 20px;
   text-align: center;
-  color: #ffd84f;
+  margin: 20px 0 25px;
+  letter-spacing: 1px;
 }
 
-/* Game iframe container */
+.gradient-text {
+  background: linear-gradient(90deg, #6919c8, #00c2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== GAME FRAME ===== */
 .gameplay-frame {
   position: relative;
   width: 100%;
-  height: 500px;
-  border-radius: 14px;
+  height: 550px;
+  border-radius: 18px;
   overflow: hidden;
-  margin-bottom: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s ease;
 }
 
 .gameplay-frame iframe {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 
+/* Fullscreen Mode */
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  border-radius: 0;
+  background: #000;
+}
 
-/* Fullscreen button below window */
+.exit-fullscreen-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+
+.exit-fullscreen-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ===== FULLSCREEN BUTTON ===== */
 .fullscreen-container {
   display: flex;
-  justify-content: end;
-  margin: 10px 0 30px 0;
+  justify-content: flex-end;
+  margin-bottom: 40px;
 }
 
 .fullscreen-btn {
@@ -52,11 +91,15 @@
   transform: scale(1.1);
 }
 
-/* Game Description */
-.game-description {
+/* ===== GAME DESCRIPTION ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px 30px;
+  backdrop-filter: blur(8px);
   margin-bottom: 40px;
   line-height: 1.6;
-  color: #e0e0e0;
 }
 
 .game-description h2 {
@@ -68,26 +111,36 @@
 .game-description p {
   margin: 6px 0;
   font-size: 1rem;
+  color: #e0e0e0;
 }
 
-/* Related games sections */
+/* ===== RELATED SECTIONS ===== */
 .related-section {
   margin-bottom: 40px;
 }
 
-.related-section h2 {
-  font-size: 1.4rem;
-  color: #fff;
+.section2-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 18px;
 }
 
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+.section2-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-left: 4px solid #6919c8;
+  padding-left: 10px;
+  text-transform: capitalize;
 }
 
-/* Wrapper for GameCard */
+/* ===== GAME GRID ===== */
+.game2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+}
+
 .category-card-wrapper {
   cursor: pointer;
   width: 100%;
@@ -99,9 +152,9 @@
   transform: translateY(-5px);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .gameplay-main {
+  .main2-content {
     padding: 15px 20px;
   }
 
@@ -113,39 +166,7 @@
     height: 300px;
   }
 
-  .game-grid {
-    gap: 16px;
+  .glass-card {
+    padding: 20px;
   }
-}
-
-
-/* Exit fullscreen button */
-.exit-fullscreen-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.2s ease;
-}
-
-.exit-fullscreen-btn:hover {
-  transform: scale(1.1);
-}
-
-/* Fullscreen mode already has black bg */
-
-/* Adjust gameplay-frame in fullscreen */
-
-
-.fullscreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  border-radius: 0;
 }

@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
 import Navbar2 from "../Components/Navbar2";
-import Sidebar from "../Components/Sidebar";
-import GameCard from "../Components/GameCard"; 
+import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 
 import Action from "../Assets/Action.jpg";
@@ -15,7 +14,6 @@ import Hidden from "../Assets/Hidden.jpg";
 
 import "../Styles/Gamecategory.css";
 
-// Mapping genre to banner images
 const categoryImages = {
   mahjong: Mahjong,
   solitaire: Solitaire,
@@ -29,48 +27,80 @@ const categoryImages = {
 const CategoryBanner = ({ categoryName }) => {
   const imageSrc = categoryImages[categoryName.toLowerCase()];
   return (
-    <div className="category-banner">
-      {imageSrc && <img src={imageSrc} alt={categoryName} className="category-bg" />}
-      <div className="category-overlay">
-        <div className="glass-overlay">
-          <h1>{categoryName}</h1>
-        </div>
+    <div className="hero2-banner">
+      {imageSrc && <img src={imageSrc} alt={categoryName} className="hero2-bg" />}
+      <div className="hero2-overlay">
+        <h1>{categoryName}</h1>
+        <p>Enjoy the best {categoryName} games 🎮</p>
       </div>
     </div>
   );
 };
 
 const Gamecategory = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { categoryName } = useParams();
+  const navigate = useNavigate();
+
+  const [isViewAll, setIsViewAll] = useState(true);
 
   const categoryGames = useMemo(
-    () => games.filter(g => g.genre.toLowerCase() === categoryName.toLowerCase()),
+    () => games.filter((g) => g.genre.toLowerCase() === categoryName.toLowerCase()),
     [categoryName]
   );
 
-  return (
-    <div className="gamecategory-container">
-      <Navbar2 onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-      <div className="main-layout">
-        <Sidebar isOpen={isSidebarOpen} />
-        <main className="gamecategory-main">
-          {/* Category Banner */}
-          <CategoryBanner categoryName={categoryName} />
+  const categories = useMemo(() => {
+    const uniqueGenres = [...new Set(games.map((g) => g.genre))];
+    return uniqueGenres.sort();
+  }, []);
 
-          <div className="game-grid">
-            {categoryGames.length > 0 ? (
-              categoryGames.map((game) => (
-                <div key={game.id} className="category-card-wrapper">
-                  <GameCard game={game} />
-                </div>
-              ))
-            ) : (
+  return (
+    <div className="gameview-container fullwidth">
+      <Navbar2 />
+
+      <main className="main2-content">
+        {/* Category Heading + Inline Category List */}
+        <div className="category-scroll-row">
+          <h2 className="category-scroll-heading">Game Categories:</h2>
+          <div className="category-scroll-inline">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`category-scroll-btn ${
+                  cat.toLowerCase() === categoryName.toLowerCase() ? "active" : ""
+                }`}
+                onClick={() => navigate(`/category/${cat}`)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Category Banner */}
+        <CategoryBanner categoryName={categoryName} />
+
+        {/* Game Grid Section */}
+        <section className="game2-section">
+          <div className="section2-header">
+            <h2>{categoryName} Games</h2>
+            {categoryGames.length > 5 && (
+              <span className="view-all" onClick={() => setIsViewAll(!isViewAll)}>
+                {isViewAll ? "Show Less" : "View All"}
+              </span>
+            )}
+          </div>
+
+          <div className="game2-grid">
+            {(isViewAll ? categoryGames : categoryGames.slice(0, 6)).map((game) => (
+              <GameCard key={game.id} game={game} />
+            ))}
+
+            {categoryGames.length === 0 && (
               <p className="no-games">No games found in this category.</p>
             )}
           </div>
-        </main>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };
