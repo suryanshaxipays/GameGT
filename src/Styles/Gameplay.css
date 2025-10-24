@@ -11,21 +11,28 @@
   flex: 1;
   background: #0a0f21;
   padding: 20px 40px 50px;
+   text-transform: uppercase;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* ===== GAME TITLE ===== */
 .gameplay-title {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.6rem;
+  font-weight: 800;
   text-align: center;
-  margin: 20px 0 25px;
-  letter-spacing: 1px;
+  margin: 25px 0 35px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .gradient-text {
   background: linear-gradient(90deg, #6919c8, #00c2ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.gradient-text2 {
+  color: #00c2ff;
 }
 
 /* ===== GAME FRAME ===== */
@@ -102,21 +109,76 @@
   line-height: 1.6;
 }
 
-.game-description h2 {
-  font-size: 1.6rem;
-  color: #ffd84f;
-  margin-bottom: 12px;
+/* Genre Badge */
+.genre-badge {
+  display: inline-block;
+  padding: 12px 22px;
+  margin: 15px 0;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #00c2ff;
+  text-align: center;
 }
 
-.game-description p {
-  margin: 6px 0;
+/* Game Details */
+.game-details p {
+  margin: 8px 0;
   font-size: 1rem;
   color: #e0e0e0;
 }
 
+/* Description */
+.game-description-text {
+  margin: 15px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d0d0d0;
+}
+
+/* Mock Section */
+.mock-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.mock-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 15px 20px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mock-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #00c2ff;
+  font-weight: 700;
+}
+
+.mock-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.mock-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 194, 255, 0.35);
+}
+
+
 /* ===== RELATED SECTIONS ===== */
 .related-section {
   margin-bottom: 40px;
+  
 }
 
 .section2-header {
@@ -139,9 +201,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 20px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
 
 .category-card-wrapper {
+  
   cursor: pointer;
   width: 100%;
   max-width: 300px;

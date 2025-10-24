@@ -1,19 +1,21 @@
 .categories-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     color: white;
     padding: 2.5rem 1.5rem;
-    padding-top: 2.5rem;
+    padding-top: 2rem;
     padding-bottom: 2.5rem;
     box-sizing: border-box;
-    margin-top: 80px;
+      margin-top: 80px;
+  margin-bottom: 0;
   }
   
   @media (min-width: 640px) {
     .categories-container {
       padding: 2.5rem 2.5rem;
-      margin-top: 0px;
+            margin-top: 0px;
+  margin-bottom: 0;
 
     }
 
@@ -21,7 +23,7 @@
   
   @media (min-width: 1024px) {
     .categories-container {
-      padding: 4rem 5rem;
+      padding: 2rem 5rem;
     }
   }
   

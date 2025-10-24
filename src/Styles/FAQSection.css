@@ -8,6 +8,8 @@
   margin: 6rem auto 0 auto;
   padding-bottom: 4rem;
   color: #ffffff;
+    margin-top: 110px;
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -46,7 +48,6 @@
 
 /* Transparent Button */
 .faq-btn {
-  margin-top: 100px;
   margin-bottom: 1.5rem;
   padding: 0.5rem 1.5rem;
   background-color: white;

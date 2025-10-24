@@ -7,8 +7,8 @@ import Bg from "../Assets/Gameview/bg.png";
 import "../Styles/Gameview.css";
 
 const HeroBanner = () => (
-  <div className="hero2-banner">
-    <img src={Bg} alt="Game Banner" className="hero2-bg" />
+  <div className="hero2-banner2">
+    <img src={Bg} alt="Game Banner" className="hero2-bg2" />
     <div className="hero2-overlay">
       <h1>Game Tourer!</h1>
       <p>
@@ -24,7 +24,7 @@ const GameSection = ({ title, games }) => {
 
   return (
     <section className="game2-section">
-      <div className="section2-header">
+      <div className="section2-header2">
         <h2>{title}</h2>
         <span className="view-all" onClick={() => setViewAll(!viewAll)}>
           {viewAll ? "Show Less" : "View All"}

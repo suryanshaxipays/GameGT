@@ -27,8 +27,8 @@ const categoryImages = {
 const CategoryBanner = ({ categoryName }) => {
   const imageSrc = categoryImages[categoryName.toLowerCase()];
   return (
-    <div className="hero2-banner">
-      {imageSrc && <img src={imageSrc} alt={categoryName} className="hero2-bg" />}
+    <div className="hero2-banner3">
+      {imageSrc && <img src={imageSrc} alt={categoryName} className="hero2-bg3" />}
       <div className="hero2-overlay">
         <h1>{categoryName}</h1>
         <p>Enjoy the best {categoryName} games 🎮</p>

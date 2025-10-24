@@ -15,7 +15,10 @@ const Gameplay = () => {
   const game = games.find((g) => g.id === parseInt(id));
 
   const genreGames = useMemo(
-    () => (game ? games.filter((g) => g.genre === game.genre && g.id !== game.id) : []),
+    () =>
+      game
+        ? games.filter((g) => g.genre === game.genre && g.id !== game.id)
+        : [],
     [game]
   );
 
@@ -24,7 +27,9 @@ const Gameplay = () => {
   if (!game) return <p className="no-games">Game not found</p>;
 
   return (
-    <div className={`gameplay-container ${isFullScreen ? "fullscreen-mode" : ""}`}>
+    <div
+      className={`gameplay-container ${isFullScreen ? "fullscreen-mode" : ""}`}
+    >
       {!isFullScreen && <Navbar2 />}
 
       <main className="main2-content">
@@ -65,20 +70,69 @@ const Gameplay = () => {
           </div>
         )}
 
-        {/* GAME INFO */}
+        {/* GAME INFO / ABOUT SECTION */}
         {!isFullScreen && (
           <section className="game-description glass-card">
-            <h2>About {game.title}</h2>
-            <p><strong>Genre:</strong> {game.genre}</p>
-            <p><strong>Publisher:</strong> {game.publisher}</p>
-            <p><strong>Platform:</strong> {game.platform}</p>
-            <p><strong>Players:</strong> {game.players}</p>
-            <p><strong>Online:</strong> {game.isOnline ? "Yes" : "No"}</p>
-            <p>
-              {game.title} offers an immersive experience in the {game.genre} category.
-              Whether you’re playing solo or online, its design and gameplay provide
-              hours of fun and challenges.
+            <h2 className="gradient-text2">About {game.title}</h2>
+
+            {/* Genre Badge */}
+            <div className="genre-badge">
+              <span>{game.genre}</span>
+            </div>
+
+            {/* Game Details */}
+            <div className="game-details">
+              <p>
+                <strong>Publisher :</strong> {game.publisher}
+              </p>
+              <p>
+                <strong>Platform :</strong> {game.platform}
+              </p>
+              <p>
+                <strong>Players :</strong> {game.players}
+              </p>
+              <p>
+                <strong>Online :</strong> {game.isOnline ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>rating :</strong> {game.rating}
+              </p>
+
+              <p>
+                <strong>Year :</strong> {game.year}
+              </p>
+            </div>
+
+            {/* Description */}
+            <p className="game-description-text">
+              {game.title}, published by {game.publisher} in {game.year}, offers
+              an engaging experience in the {game.genre} genre. Available on{" "}
+              {game.platform}, it supports {game.players} players and can be
+              enjoyed {game.isOnline ? "online" : "offline"}. With a rating of{" "}
+              {game.rating}, this game delivers thrilling gameplay, immersive
+              design, and countless hours of entertainment for both casual and
+              dedicated gamers alike.
             </p>
+
+            {/* Mock Detailed Section */}
+            <div className="mock-section">
+              <div className="mock-card">
+                <h4>Trending Game</h4>
+                <p>{game.title} is trending worldwide!</p>
+              </div>
+              <div className="mock-card">
+                <h4>Top Player Count</h4>
+                <p>{game.id * 101} active players daily</p>
+              </div>
+              <div className="mock-card">
+                <h4>Difficulty</h4>
+                <p>{game.genre === "Action" ? "Hard" : "Medium"}</p>
+              </div>
+              <div className="mock-card">
+                <h4>Recommended For</h4>
+                <p>{game.platform} enthusiasts & online players</p>
+              </div>
+            </div>
           </section>
         )}
 
@@ -92,7 +146,7 @@ const Gameplay = () => {
               {genreGames.map((g) => (
                 <div
                   key={g.id}
-                  className="category-card-wrapper"
+                  className="category-card-wrapper neon-hover"
                   onClick={() => navigate(`/gameplay/${g.id}`)}
                 >
                   <GameCard game={g} />
@@ -112,7 +166,7 @@ const Gameplay = () => {
               {featuredGames.map((g) => (
                 <div
                   key={g.id}
-                  className="category-card-wrapper"
+                  className="category-card-wrapper neon-hover"
                   onClick={() => navigate(`/gameplay/${g.id}`)}
                 >
                   <GameCard game={g} />

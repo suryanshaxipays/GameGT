@@ -13,27 +13,35 @@ const Home = () => {
     <div>
       <Navbar />
 
-      <section id="home">
-        <Hero />
-      </section>
+      <div className="homepage-container">
+        <section id="home">
+          <Hero />
+        </section>
 
-      <section id="features">
-        <Feature />
-      </section>
+        <section id="features">
+          <Feature />
+        </section>
 
-      <section id="about">
-        <About />
-      </section>
+        <section id="about">
+          <About />
+        </section>
 
-      <section id="games">
-        <Categories />
-      </section>
-      <StatsSection/>
-      <Community />
+        <section id="games">
+          <Categories />
+        </section>
 
-      <section id="faq">
-        <FAQSection />
-      </section>
+        <section id="stats">
+          <StatsSection />
+        </section>
+
+        <section id="community">
+          <Community />
+        </section>
+
+        <section id="faq">
+          <FAQSection />
+        </section>
+      </div>
 
       <Footer />
     </div>
