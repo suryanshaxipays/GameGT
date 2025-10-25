@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
-import Navbar2 from "../Components/Navbar2";
+import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 
@@ -55,7 +55,7 @@ const Gamecategory = () => {
 
   return (
     <div className="gameview-container fullwidth">
-      <Navbar2 />
+      <Navbar />
 
       <main className="main2-content">
         {/* Category Heading + Inline Category List */}

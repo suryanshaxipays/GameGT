@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar2 from "../Components/Navbar2";
+import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 import Bg from "../Assets/Gameview/bg.png";
@@ -55,7 +55,7 @@ export default function Gameview() {
 
   return (
     <div className="gameview-container fullwidth">
-      <Navbar2 />
+      <Navbar />
       <main className="main2-content">
         {/* Category Heading + Horizontal List (same row) */}
         <div className="category-scroll-row">

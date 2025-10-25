@@ -93,7 +93,7 @@ export const games = [
     genres: "Mahjong",
     platform: "PC",
     publisher: "HTML Games Studio",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -116,7 +116,7 @@ export const games = [
     genres: "Mahjong",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
 
@@ -210,7 +210,7 @@ export const games = [
     genres: "Solitaire",
     platform: "Web Browser",
     publisher: "Playverse",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -233,7 +233,7 @@ export const games = [
     genres: "Solitaire",
     platform: "PC",
     publisher: "Playverse",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
 
@@ -326,7 +326,7 @@ export const games = [
     genres: "Action",
     platform: "Web Browser",
     publisher: "Skyplay",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -420,7 +420,7 @@ export const games = [
     genres: "Match 3",
     platform: "PC",
     publisher: "HTML Games Studio",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -514,7 +514,7 @@ export const games = [
     genres: "Mind",
     platform: "PC",
     publisher: "Skyplay",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -537,7 +537,7 @@ export const games = [
     genres: "Mind",
     platform: "PC",
     publisher: "FunArcade",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -630,7 +630,7 @@ export const games = [
     genres: "Classic Games",
     platform: "Web Browser",
     publisher: "Skyplay",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -675,7 +675,7 @@ export const games = [
     genres: "Classic Games",
     platform: "PC",
     publisher: "Skyplay",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -723,7 +723,7 @@ export const games = [
     genres: "Hidden Objects",
     platform: "Web Browser",
     publisher: "FunArcade",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -815,7 +815,7 @@ export const games = [
     genres: "Hidden Objects",
     platform: "PC",
     publisher: "Playverse",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -839,7 +839,7 @@ export const games = [
     genres: "Action",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
   {
@@ -863,7 +863,7 @@ export const games = [
     genres: "Action",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
-    players: "Single/Multiplayer",
+    players: "Multiplayer",
     isOnline: true,
   },
 ];

@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
-import Navbar2 from "../Components/Navbar2";
+import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 import "../Styles/Gameplay.css";
@@ -30,7 +30,7 @@ const Gameplay = () => {
     <div
       className={`gameplay-container ${isFullScreen ? "fullscreen-mode" : ""}`}
     >
-      {!isFullScreen && <Navbar2 />}
+      {!isFullScreen && <Navbar />}
 
       <main className="main2-content">
         {/* GAME TITLE */}
@@ -71,70 +71,115 @@ const Gameplay = () => {
         )}
 
         {/* GAME INFO / ABOUT SECTION */}
-        {!isFullScreen && (
-          <section className="game-description glass-card">
-            <h2 className="gradient-text2">About {game.title}</h2>
+{!isFullScreen && (
+  <section className="game-description glass-card">
+    {/* Header with Genre Badge */}
+    <div className="game-info-header">
+      <h2 className="about-title">About {game.title}</h2>
+      <div className="genre-badge-modern">
+        <span>{game.genre}</span>
+      </div>
+    </div>
 
-            {/* Genre Badge */}
-            <div className="genre-badge">
-              <span>{game.genre}</span>
-            </div>
+    {/* Game Stats Grid */}
+    <div className="game-stats-grid">
+      <div className="stat-item">
+        <div className="stat-icon">🎮</div>
+        <div className="stat-content">
+          <span className="stat-label">Publisher</span>
+          <span className="stat-value">{game.publisher}</span>
+        </div>
+      </div>
+      
+      <div className="stat-item">
+        <div className="stat-icon">💻</div>
+        <div className="stat-content">
+          <span className="stat-label">Platform</span>
+          <span className="stat-value">{game.platform}</span>
+        </div>
+      </div>
+      
+      <div className="stat-item">
+        <div className="stat-icon">👥</div>
+        <div className="stat-content">
+          <span className="stat-label">Players</span>
+          <span className="stat-value">{game.players}</span>
+        </div>
+      </div>
+      
+      <div className="stat-item">
+        <div className="stat-icon">🌐</div>
+        <div className="stat-content">
+          <span className="stat-label">Online</span>
+          <span className="stat-value">{game.isOnline ? "Yes" : "No"}</span>
+        </div>
+      </div>
+      
+      <div className="stat-item">
+        <div className="stat-icon">⭐</div>
+        <div className="stat-content">
+          <span className="stat-label">Rating</span>
+          <span className="stat-value">{game.rating}</span>
+        </div>
+      </div>
+      
+      <div className="stat-item">
+        <div className="stat-icon">📅</div>
+        <div className="stat-content">
+          <span className="stat-label">Year</span>
+          <span className="stat-value">{game.year}</span>
+        </div>
+      </div>
+    </div>
 
-            {/* Game Details */}
-            <div className="game-details">
-              <p>
-                <strong>Publisher :</strong> {game.publisher}
-              </p>
-              <p>
-                <strong>Platform :</strong> {game.platform}
-              </p>
-              <p>
-                <strong>Players :</strong> {game.players}
-              </p>
-              <p>
-                <strong>Online :</strong> {game.isOnline ? "Yes" : "No"}
-              </p>
-              <p>
-                <strong>rating :</strong> {game.rating}
-              </p>
+    {/* Divider */}
+    <div className="section-divider"></div>
 
-              <p>
-                <strong>Year :</strong> {game.year}
-              </p>
-            </div>
+    {/* Description */}
+    <div className="description-container">
+      <h3 className="description-heading">Game Overview</h3>
+      <p className="game-description-text">
+        {game.title}, published by {game.publisher} in {game.year}, offers
+        an engaging experience in the {game.genre} genre. Available on{" "}
+        {game.platform}, it supports {game.players} players and can be
+        enjoyed {game.isOnline ? "online" : "offline"}. With a rating of{" "}
+        {game.rating}, this game delivers thrilling gameplay, immersive
+        design, and countless hours of entertainment for both casual and
+        dedicated gamers alike.
+      </p>
+    </div>
 
-            {/* Description */}
-            <p className="game-description-text">
-              {game.title}, published by {game.publisher} in {game.year}, offers
-              an engaging experience in the {game.genre} genre. Available on{" "}
-              {game.platform}, it supports {game.players} players and can be
-              enjoyed {game.isOnline ? "online" : "offline"}. With a rating of{" "}
-              {game.rating}, this game delivers thrilling gameplay, immersive
-              design, and countless hours of entertainment for both casual and
-              dedicated gamers alike.
-            </p>
+    {/* Divider */}
+    <div className="section-divider"></div>
 
-            {/* Mock Detailed Section */}
-            <div className="mock-section">
-              <div className="mock-card">
-                <h4>Trending Game</h4>
-                <p>{game.title} is trending worldwide!</p>
-              </div>
-              <div className="mock-card">
-                <h4>Top Player Count</h4>
-                <p>{game.id * 101} active players daily</p>
-              </div>
-              <div className="mock-card">
-                <h4>Difficulty</h4>
-                <p>{game.genre === "Action" ? "Hard" : "Medium"}</p>
-              </div>
-              <div className="mock-card">
-                <h4>Recommended For</h4>
-                <p>{game.platform} enthusiasts & online players</p>
-              </div>
-            </div>
-          </section>
-        )}
+    {/* Highlights Section */}
+    <div className="highlights-section">
+      <h3 className="highlights-heading">Game Highlights</h3>
+      <div className="mock-section">
+        <div className="mock-card">
+          <div className="mock-icon">🔥</div>
+          <h4>Trending Game</h4>
+          <p>{game.title} is trending worldwide!</p>
+        </div>
+        <div className="mock-card">
+          <div className="mock-icon">👤</div>
+          <h4>Top Player Count</h4>
+          <p>{game.id * 101} active players daily</p>
+        </div>
+        <div className="mock-card">
+          <div className="mock-icon">⚡</div>
+          <h4>Difficulty</h4>
+          <p>{game.genre === "Action" ? "Hard" : "Medium"}</p>
+        </div>
+        <div className="mock-card">
+          <div className="mock-icon">🎯</div>
+          <h4>Recommended For</h4>
+          <p>{game.platform} enthusiasts & online players</p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
 
         {/* RELATED GAMES */}
         {!isFullScreen && genreGames.length > 0 && (

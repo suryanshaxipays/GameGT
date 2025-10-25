@@ -19,8 +19,10 @@ const Footer = () => {
     Company: [
       { name: "About", type: "section", target: "about" },
       { name: "Apps & Games", type: "route", target: "/gameview" },
-      { name: "Features", type: "section", target: "features" },
+      { name: "Featured Games", type: "section", target: "features" },
       { name: "FAQ", type: "section", target: "faq" },
+            { name: "Home", type: "section", target: "home" },
+
     ],
     Categories: [
       { name: "Action", type: "route", target: "/category/Action" },

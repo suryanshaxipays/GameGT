@@ -1,16 +1,43 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../Styles/Auth.css";
 
-const Login = () => {
+const Login = ({ onClose, onSwitchToSignup }) => {
+  const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    // Prevent scrolling on mount
+    document.body.style.overflow = 'hidden';
+    
+    // Re-enable scrolling on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login submitted");
+    // Simulate successful login
+    setSuccessMessage("Login Successful! Redirecting...");
+    setTimeout(() => {
+      setSuccessMessage("");
+      onClose();
+    }, 2500);
+  };
+
+  const handleSwitchToSignup = (e) => {
+    e.preventDefault();
+    onClose();
+    onSwitchToSignup();
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container auth-overlay">
+      {successMessage && (
+        <div className="success-box">{successMessage}</div>
+      )}
+
       <div className="auth-card">
+        <button className="close-btn" onClick={onClose}>✕</button>
         <h2>Welcome Back 👋</h2>
         <p className="subtitle">Login to continue your gaming adventure!</p>
 
@@ -27,15 +54,8 @@ const Login = () => {
           <button type="submit" className="auth-btn">Login</button>
         </form>
 
-        <div className="auth-divider">or</div>
-
-        <button className="google-btn">
-          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
-          Continue with Google
-        </button>
-
         <p className="auth-switch">
-          New here? <Link to="/signup">Create an account</Link>
+          New here? <a href="#" onClick={handleSwitchToSignup}>Create an account</a>
         </p>
       </div>
     </div>
