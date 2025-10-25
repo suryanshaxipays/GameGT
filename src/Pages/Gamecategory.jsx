@@ -11,6 +11,13 @@ import Mind from "../Assets/Mind.png";
 import Classic from "../Assets/Classic.jpg";
 import Solitaire from "../Assets/Solitaire.jpg";
 import Hidden from "../Assets/Hidden.jpg";
+import Card from "../Assets/Card.jpg";
+// --- New Imports Added ---
+import Board from "../Assets/Board.jpg";
+import Racing from "../Assets/Racing.jpg";
+import Shooting from "../Assets/Shooting.jpg"; // Assuming this name for "Shooting & War"
+import Golf from "../Assets/Golf.jpg";
+// --- End New Imports ---
 
 import "../Styles/Gamecategory.css";
 
@@ -22,6 +29,16 @@ const categoryImages = {
   mind: Mind,
   "classic games": Classic,
   "hidden objects": Hidden,
+  "card games": Card, // <-- Corrected key to lowercase
+  // --- New Categories Added ---
+  retro: Classic,
+  board: Board,
+  racing: Racing,
+  "shooting & war": Shooting,
+  golf: Golf,
+  sports: Golf,
+  skill: Action,
+  // --- End New Categories ---
 };
 
 const CategoryBanner = ({ categoryName }) => {
