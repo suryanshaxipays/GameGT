@@ -82,12 +82,13 @@
 .category-scroll-inline {
   display: flex;
   gap: 12px;
-  overflow-x: visible;
+  overflow: auto;
   white-space: nowrap;
   scroll-behavior: smooth;
   scrollbar-width: none; /* Hide scrollbar in Firefox */
   flex: 1;
   cursor: grab;
+  padding-top: 0.5vh;
 }
 
 .category-scroll-inline::-webkit-scrollbar {
