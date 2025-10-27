@@ -68,7 +68,7 @@
 }
 
 /* -------------------- Stat Items -------------------- */
-.stat-item {
+.stat-item2 {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
   padding: 1.5rem;
@@ -77,14 +77,14 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.stat-item:hover {
+.stat-item2:hover {
   transform: translateY(-6px);
   background: rgba(100, 120, 255, 0.08);
   box-shadow: 0 4px 20px rgba(100, 120, 255, 0.3);
 }
 
 /* Headings */
-.stat-item h4 {
+.stat-item2 h4 {
   font-weight: 700;
   font-size: 1.25rem;
   color: #8ea2ff;
@@ -94,13 +94,13 @@
 }
 
 /* Paragraphs */
-.stat-item p {
+.stat-item2 p {
   font-size: 0.95rem;
   color: #ffffff;
   line-height: 1.6;
 }
 
-.stat-item p span {
+.stat-item2 p span {
   color: #6b7cff; /* bluish highlight */
   font-weight: 600;
 }
@@ -135,7 +135,7 @@
     font-size: 0.9rem;
   }
 
-  .stat-item h4 {
+  .stat-item2 h4 {
     font-size: 1.1rem;
   }
 

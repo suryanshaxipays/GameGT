@@ -12,23 +12,23 @@ const StatsSection = () => {
         </p>
 
         <div className="stats-grid">
-          <div className="stat-item">
+          <div className="stat-item2">
             <h4>Players</h4>
             <p>
-              Over <span>1.2M gamers online daily</span> — join the action and
+              Over <span>1.2k gamers online daily</span> — join the action and
               never play alone.
             </p>
           </div>
 
-          <div className="stat-item">
+          <div className="stat-item2">
             <h4>Games</h4>
             <p>
-              Discover <span>500+ titles</span> across every genre, from casual
+              Discover <span>150+ titles</span> across every genre, from casual
               fun to hardcore battles.
             </p>
           </div>
 
-          <div className="stat-item">
+          <div className="stat-item2">
             <h4>Matches</h4>
             <p>
               More than <span>100K matches</span> played monthly — nonstop
@@ -36,7 +36,7 @@ const StatsSection = () => {
             </p>
           </div>
 
-          <div className="stat-item">
+          <div className="stat-item2">
             <h4>Events</h4>
             <p>
               Exclusive <span>weekly tournaments</span> and rewards keep the

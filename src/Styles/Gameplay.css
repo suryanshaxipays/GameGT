@@ -62,7 +62,6 @@
   height: 100vh;
   z-index: 100;
   border-radius: 0;
-  background: #000;
 }
 
 .exit-fullscreen-btn {
@@ -155,7 +154,7 @@
 /* Game Stats Grid */
 .game-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
   gap: 18px;
   margin-bottom: 35px;
 }

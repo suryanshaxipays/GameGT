@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
@@ -12,12 +12,10 @@ import Classic from "../Assets/Classic.jpg";
 import Solitaire from "../Assets/Solitaire.jpg";
 import Hidden from "../Assets/Hidden.jpg";
 import Card from "../Assets/Card.jpg";
-// --- New Imports Added ---
 import Board from "../Assets/Board.jpg";
 import Racing from "../Assets/Racing.jpg";
-import Shooting from "../Assets/Shooting.jpg"; // Assuming this name for "Shooting & War"
+import Shooting from "../Assets/Shooting.jpg";
 import Golf from "../Assets/Golf.jpg";
-// --- End New Imports ---
 
 import "../Styles/Gamecategory.css";
 
@@ -29,8 +27,7 @@ const categoryImages = {
   mind: Mind,
   "classic games": Classic,
   "hidden objects": Hidden,
-  "card games": Card, // <-- Corrected key to lowercase
-  // --- New Categories Added ---
+  "card games": Card,
   retro: Classic,
   board: Board,
   racing: Racing,
@@ -38,7 +35,6 @@ const categoryImages = {
   golf: Golf,
   sports: Golf,
   skill: Action,
-  // --- End New Categories ---
 };
 
 const CategoryBanner = ({ categoryName }) => {
@@ -57,8 +53,9 @@ const CategoryBanner = ({ categoryName }) => {
 const Gamecategory = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
-
+  const scrollRef = useRef(null);
   const [isViewAll, setIsViewAll] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const categoryGames = useMemo(
     () => games.filter((g) => g.genre.toLowerCase() === categoryName.toLowerCase()),
@@ -70,15 +67,68 @@ const Gamecategory = () => {
     return uniqueGenres.sort();
   }, []);
 
+  // Detect mobile screen
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Scroll behavior
+  const scroll = (direction) => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 300;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Drag-scroll for desktop
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e) => {
+    if (isMobile) return; // skip on mobile
+    isDragging.current = true;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+  };
+  const onMouseLeave = () => (isDragging.current = false);
+  const onMouseUp = () => (isDragging.current = false);
+  const onMouseMove = (e) => {
+    if (!isDragging.current || isMobile) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
   return (
     <div className="gameview-container fullwidth">
       <Navbar />
 
       <main className="main2-content">
         {/* Category Heading + Inline Category List */}
-        <div className="category-scroll-row">
+        <div className={`category-scroll-container ${isMobile ? "mobile-view" : ""}`}>
           <h2 className="category-scroll-heading">Game Categories:</h2>
-          <div className="category-scroll-inline">
+
+          {!isMobile && (
+            <button className="arrow-btn left" onClick={() => scroll("left")}>
+              &#10094;
+            </button>
+          )}
+
+          <div
+            className="category-scroll-inline"
+            ref={scrollRef}
+            onMouseDown={onMouseDown}
+            onMouseLeave={onMouseLeave}
+            onMouseUp={onMouseUp}
+            onMouseMove={onMouseMove}
+          >
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -91,6 +141,12 @@ const Gamecategory = () => {
               </button>
             ))}
           </div>
+
+          {!isMobile && (
+            <button className="arrow-btn right" onClick={() => scroll("right")}>
+              &#10095;
+            </button>
+          )}
         </div>
 
         {/* Category Banner */}
@@ -111,7 +167,6 @@ const Gamecategory = () => {
             {(isViewAll ? categoryGames : categoryGames.slice(0, 6)).map((game) => (
               <GameCard key={game.id} game={game} />
             ))}
-
             {categoryGames.length === 0 && (
               <p className="no-games">No games found in this category.</p>
             )}

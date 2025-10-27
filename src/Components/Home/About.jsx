@@ -19,7 +19,7 @@ const About = () => {
           <h2 className="image-title">Who We Are</h2>
           <p className="image-description">
             We’re more than just a gaming platform — we’re a global hub where
-            passion, competition, and fun come together. Our goal is to connect
+            passion, competition, and fun come together. Our goal is to serve
             gamers.
           </p>
           <Link to="/gameview">
