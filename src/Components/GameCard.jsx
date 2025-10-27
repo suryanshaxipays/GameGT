@@ -36,3 +36,29 @@ const GameCard = ({ game }) => {
 };
 
 export default GameCard;
+
+/*Landing Page
+- Home Page
+- - Inc Contrast and Brightness
+- - Add Eclipse
+- - Add Tournament Card
+- - take Pink and Orange from old Website 
+- Category section - make it better
+- Change Contetnt
+
+Gameview Page
+- Card
+- - Add 3D effect on Hover 
+- - Increase the Brightness and Contrast
+- - Dont waste card space on heading andd black shadow at bottom and use that to show game name 
+- More Section
+- - Top 5 like Time Pass
+- - Potrait Long Cards
+- Section Heading  need to be changed 
+
+Category Page 
+- add a back dark div to tackle banner delay 
+
+Game play page
+- Checkout page 
+- Session Handling with test Id and Pass*/
