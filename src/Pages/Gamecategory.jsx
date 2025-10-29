@@ -38,10 +38,31 @@ const categoryImages = {
 };
 
 const CategoryBanner = ({ categoryName }) => {
-  const imageSrc = categoryImages[categoryName.toLowerCase()];
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageSrc = categoryImages[categoryName?.toLowerCase()];
+
+  useEffect(() => {
+    setImageLoaded(false);
+    if (imageSrc) {
+      const img = new Image();
+      img.src = imageSrc;
+      img.onload = () => setImageLoaded(true);
+    }
+  }, [imageSrc]);
+
   return (
     <div className="hero2-banner3">
-      {imageSrc && <img src={imageSrc} alt={categoryName} className="hero2-bg3" />}
+      {/* Default dark background visible while loading */}
+      <div className="hero2-bg-fallback" />
+
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt={categoryName}
+          className={`hero2-bg3 ${imageLoaded ? "visible" : "hidden"}`}
+        />
+      )}
+
       <div className="hero2-overlay">
         <h1>{categoryName}</h1>
         <p>Enjoy the best {categoryName} games 🎮</p>
@@ -54,7 +75,7 @@ const Gamecategory = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const [isViewAll, setIsViewAll] = useState(true);
+  const [isViewAll, setIsViewAll] = useState(true); // Default unclicked
   const [isMobile, setIsMobile] = useState(false);
 
   const categoryGames = useMemo(
@@ -91,7 +112,7 @@ const Gamecategory = () => {
   const scrollLeft = useRef(0);
 
   const onMouseDown = (e) => {
-    if (isMobile) return; // skip on mobile
+    if (isMobile) return;
     isDragging.current = true;
     startX.current = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft.current = scrollRef.current.scrollLeft;
@@ -164,7 +185,7 @@ const Gamecategory = () => {
           </div>
 
           <div className="game2-grid">
-            {(isViewAll ? categoryGames : categoryGames.slice(0, 6)).map((game) => (
+            {(isViewAll ? categoryGames : categoryGames.slice(0, 5)).map((game) => (
               <GameCard key={game.id} game={game} />
             ))}
             {categoryGames.length === 0 && (

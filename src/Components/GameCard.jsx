@@ -13,10 +13,15 @@ const GameCard = ({ game }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Thumbnail */}
-      <img src={game.thumbnail} alt={game.title} className="gamecard-img" />
+      {/* Image + Title inside same div */}
+      <div className="gamecard-image-wrapper">
+        <img src={game.thumbnail} alt={game.title} className="gamecard-img" />
+        <div className="gamecard-title-overlay">
+          <h3 className="gamecard-title">{game.title}</h3>
+        </div>
+      </div>
 
-      {/* Hover Preview */}
+      {/* Hover YouTube Preview */}
       {hovered && game.youtubePreview && (
         <div className="gamecard-preview">
           <iframe
@@ -28,37 +33,9 @@ const GameCard = ({ game }) => {
           ></iframe>
         </div>
       )}
-
-      {/* Title */}
-      <h3 className="gamecard-title">{game.title}</h3>
     </div>
   );
 };
 
 export default GameCard;
 
-/*Landing Page
-- Home Page
-- - Inc Contrast and Brightness
-- - Add Eclipse
-- - Add Tournament Card
-- - take Pink and Orange from old Website 
-- Category section - make it better
-- Change Contetnt
-
-Gameview Page
-- Card
-- - Add 3D effect on Hover 
-- - Increase the Brightness and Contrast
-- - Dont waste card space on heading andd black shadow at bottom and use that to show game name 
-- More Section
-- - Top 5 like Time Pass
-- - Potrait Long Cards
-- Section Heading  need to be changed 
-
-Category Page 
-- add a back dark div to tackle banner delay 
-
-Game play page
-- Checkout page 
-- Session Handling with test Id and Pass*/

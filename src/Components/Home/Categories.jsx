@@ -4,8 +4,8 @@ import Bc1 from "../../Assets/Categories/Bc1.png";
 import Bc2 from "../../Assets/Categories/Bc2.png";
 import Sc1 from "../../Assets/Categories/Sc1.png";
 import Sc2 from "../../Assets/Categories/Sc2.png";
-import Sc3 from "../../Assets/Categories/Sc3.png";
-import Sc4 from "../../Assets/Categories/Sc4.png";
+import Sc3 from "../../Assets/Categories/Sc3.jpg";
+import Sc4 from "../../Assets/Categories/Sc4.jpg";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -19,9 +19,7 @@ const Categories = () => {
     { id: 6, genre: "Solitaire" },
   ];
 
-  // Function to handle click
   const handleCategoryClick = (categoryName) => {
-    // Navigate to route: /category/<categoryName>
     navigate(`/category/${encodeURIComponent(categoryName)}`);
   };
 

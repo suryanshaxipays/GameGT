@@ -6,7 +6,6 @@
 }
 
 .featured-game-container {
-  background: #0a0f21;
   height: 100%;
   width: 100%;
   padding: 4vh 5vw;
@@ -87,6 +86,8 @@
   flex-direction: column;
   width: 32%;
   height: 65vh; /* default card height */
+    filter: brightness(1.1) contrast(1.1) saturate(1.1);
+
 }
 
 

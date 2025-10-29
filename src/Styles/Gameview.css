@@ -1,9 +1,4 @@
-body {
-  background-color: #0a0f21;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-}
+
 
 /* Layout */
 .main-layout {
@@ -12,7 +7,6 @@ body {
 
 .main2-content {
   flex: 1;
-  background: #0a0f21;
   padding-bottom: 50px;
   transition: all 0.3s ease;
    text-transform: uppercase;
@@ -26,6 +20,8 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.2) contrast(1.1) saturate(1.15);
+
 }
 
 .hero2-bg2 {
@@ -71,6 +67,7 @@ body {
 /* ===== GAME SECTIONS ===== */
 .game2-section {
   padding: 12px 40px;
+  
 }
 
 .section2-header2 {
@@ -80,24 +77,24 @@ body {
   margin-bottom: 18px;
    text-transform: uppercase;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  
 }
 
 .section2-header2 h2 {
   font-size: 1.4rem;
   font-weight: 600;
-  border-left: 4px solid #6919c8;
   padding-left: 10px;
 }
 
 .view-all {
   font-size: 0.9rem;
-  color: #aaa;
+  color: #ffffff;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .view-all:hover {
-  color: #fff;
+  color: #37c5ec;
 }
 
 .game2-grid {
@@ -138,7 +135,6 @@ body {
   font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
-  border-left: 4px solid #6919c8;
   padding-left: 10px;
   margin: 0;
 }
@@ -230,5 +226,144 @@ body {
 
   .arrow-btn {
     display: none !important;
+  }
+}
+/* FEATURED GRID — 2 ROWS x 8 COLUMNS */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 160px;
+  gap: 6px;
+  padding: 8px 0 18px;
+}
+
+.featured-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featured-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease, filter 0.25s ease;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.featured-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.03) contrast(1.08);
+}
+
+.featured-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* RESPONSIVE BEHAVIOR */
+@media (max-width: 1200px) {
+  .featured-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .featured-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+    gap: 8px;
+  }
+}
+
+.e1 {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+/* ===== TRENDING CATEGORIES ===== */
+.trending-categories {
+  padding: 25px 40px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.trending-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.trending-card {
+  position: relative;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+}
+
+.trending-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.trending-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 90%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.trending-overlay span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.trending-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 30px rgba(129, 52, 255, 0.4);
+}
+
+.trending-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1.15);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .trending-card {
+    height: 220px;
+  }
+  .trending-overlay span {
+    font-size: 1rem;
   }
 }

@@ -1,0 +1,63 @@
+/* ====== Homepage Base ====== */
+.home-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: none; /* Hide default cursor globally */
+  
+}
+
+/* ====== Ellipse Background ====== */
+.home-ellipse {
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 600px;
+  height: 600px;
+  opacity: 0.5;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ====== Smooth Cyan Cursor Trail ====== */
+.cursor-bubble {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.7);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: blur(3px) drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
+  animation: bubbleFade 1s ease-in-out forwards;
+  z-index: 9999;
+}
+
+/* Smooth floating + fading motion */
+@keyframes bubbleFade {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.75;
+    transform: translate(-50%, calc(-50% - 4px)) scale(1.3);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, calc(-50% - 6px)) scale(1.6);
+  }
+  75% {
+    opacity: 0.4;
+    transform: translate(-50%, calc(-50% - 8px)) scale(1.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 10px)) scale(2.2);
+  }
+}
+
+/* ====== Scrollbar Hidden ====== */
+.home-container::-webkit-scrollbar {
+  width: 0;
+}

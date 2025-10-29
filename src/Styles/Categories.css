@@ -90,6 +90,8 @@
     position: relative;
     border-radius: 0.75rem;
     overflow: hidden;
+        filter: brightness(1.1) contrast(1.1) saturate(1.1);
+
 
   }
   
@@ -148,14 +150,44 @@
     white-space: nowrap;
 }
   
-  .categories-card {
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .categories-card:hover {
-    transform: translateY(-6px);
-  }
-  
+  /* Card Base */
+.categories-card {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  filter: brightness(1.1) contrast(1.1) saturate(1.1);
+  cursor: pointer;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.3s ease,
+    border 0.3s ease,
+    filter 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* Hover Effect */
+.categories-card:hover {
+  transform: translateY(-6px);
+  border: 1px solid rgba(255, 255, 255, 0.35); /* Slim light border */
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15); /* Light white glow */
+  filter: brightness(1.15) contrast(1.15) saturate(1.2);
+}
+
+/* Optional subtle inner glow (for extra polish) */
+.categories-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  transition: box-shadow 0.3s ease;
+  pointer-events: none;
+}
+
+.categories-card:hover::after {
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.15);
+}
+
   
   
  

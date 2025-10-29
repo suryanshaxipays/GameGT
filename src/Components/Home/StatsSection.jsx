@@ -6,9 +6,10 @@ const StatsSection = () => {
     <section className="stats-section">
       {/* Stats Box */}
       <div className="stats-box">
-        <h2 className="stats-title">Level Up Your Gaming Experience 🎮</h2>
+        <h2 className="stats-title">Level Up Your Gaming Experience </h2>
         <p className="stats-subtitle">
-          Explore our global gaming hub filled with millions of players, thousands of games, and nonstop competition.
+          Explore our global gaming hub filled with millions of players,
+          thousands of games, and nonstop competition.
         </p>
 
         <div className="stats-grid">
@@ -29,18 +30,17 @@ const StatsSection = () => {
           </div>
 
           <div className="stat-item2">
-            <h4>Matches</h4>
+            <h4>Achievements</h4>
             <p>
-              More than <span>100K matches</span> played monthly — nonstop
-              excitement awaits.
+              Unlock <span>milestones & trophies</span> as you level up your
+              gaming journey.
             </p>
           </div>
 
           <div className="stat-item2">
-            <h4>Events</h4>
+            <h4>Category</h4>
             <p>
-              Exclusive <span>weekly tournaments</span> and rewards keep the
-              thrill alive.
+              Exclusive <span>Categories</span> and Games keep the thrill alive.
             </p>
           </div>
         </div>

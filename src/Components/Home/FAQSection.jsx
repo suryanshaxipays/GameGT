@@ -13,17 +13,17 @@ const faqData = [
   {
     question: "Do I need an account to play?",
     answer:
-      "No account is needed to play most games. However, creating a free account lets you save progress, earn rewards, and join tournaments.",
+      "No account is needed to play Few games. However, creating a account lets you splay all games.",
   },
   {
     question: "Are all games free to play?",
     answer:
-      "Yes! All games on our platform are completely free to play. Some titles may offer optional in-game purchases, but they’re never required.",
+      "No! Few games on our platform are completely free to play.",
   },
   {
     question: "Can I play with my friends?",
     answer:
-      "Absolutely! Many multiplayer games allow you to invite friends directly or join public lobbies for co-op and versus matches.",
+      "Absolutely! Many multiplayer games allow you play with Your Friends as well as real world Players",
   },
   {
     question: "Which devices can I play on?",

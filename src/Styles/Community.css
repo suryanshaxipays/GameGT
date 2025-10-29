@@ -1,5 +1,4 @@
 .community-section {
-    background-color: #0a0f21;
     color: white;
     width: 100%;
     min-height: 100%;
@@ -192,7 +191,7 @@
   }
   
   .community-cta-inner {
-    background-color: #0a0f21;
+    background-color: #060a18;
     border-radius: 1.5rem;
     text-align: center;
     padding: 3.5rem 2rem;

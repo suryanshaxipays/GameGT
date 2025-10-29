@@ -21,7 +21,7 @@ const Community = () => {
         <p className="community-description">
           Our community is the heartbeat of everything we do. From casual gamers
           to pro competitors, millions come together here to have Electrifying experiences,
-          build friendships, and push the limits of play. This is where passion
+          build Skills, and push the limits of play. This is where passion
           meets connection and where every gamer belongs.
         </p>
       </div>

@@ -1,5 +1,4 @@
 .gameview-container {
-  background-color: #0a0f21;
   color: white;
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -8,7 +7,6 @@
 
 .main2-content {
   flex: 1;
-  background: #0a0f21;
   padding-bottom: 50px;
 }
 
@@ -18,16 +16,67 @@
   margin: 10px 40px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 25px rgba(105, 25, 200, 0.4);
+  filter: brightness(1.2) contrast(1.1) saturate(1.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: radial-gradient(circle at center, #0d0d0d 40%, #000 100%);
 }
 
+/* Hover scaling and stronger glow */
+.hero2-banner3:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(105, 25, 200, 0.8), 0 0 60px rgba(0, 194, 255, 0.6);
+}
+
+/* Subtle neon glow border around banner */
+.hero2-banner3::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 2px solid rgba(105, 25, 200, 0.7);
+  pointer-events: none;
+  box-shadow:
+    0 0 15px rgba(105, 25, 200, 0.8),
+    0 0 25px rgba(0, 194, 255, 0.6);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.hero2-banner3:hover::before {
+  opacity: 1;
+}
+
+/* Fallback dark background during image load */
+.hero2-bg-fallback {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(145deg, #0a0a0a, #131313);
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Banner image styling */
 .hero2-bg3 {
   width: 100%;
   height: 300px;
   object-fit: cover;
   filter: brightness(0.75);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
+.hero2-bg3.visible {
+  opacity: 1;
+}
+
+.hero2-bg3.hidden {
+  opacity: 0;
+}
+
+/* Overlay text area */
 .hero2-overlay {
   position: absolute;
   top: 50%;
@@ -49,8 +98,7 @@
   font-size: 2.2rem;
   color: #fff;
   margin-bottom: 10px;
-  text-transform: capitalize;
-   text-transform: uppercase;
+  text-transform: uppercase;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
@@ -59,6 +107,7 @@
   font-size: 1.1rem;
   margin-bottom: 15px;
 }
+
 
 /* ===== CATEGORY SCROLL SECTION ===== */
 .category-scroll-container {
@@ -73,8 +122,6 @@
   flex-shrink: 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #fff;
-  border-left: 4px solid #6919c8;
   padding-left: 10px;
   margin-right: 10px;
 }
@@ -175,4 +222,40 @@
   .arrow-btn {
     display: none !important;
   }
+}
+
+/* Smooth banner image transition */
+.hero2-bg3 {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero2-bg3.visible {
+  opacity: 1;
+}
+
+.hero2-bg3.hidden {
+  opacity: 0;
+}
+
+/* Fallback dark background (shown during image load) */
+.hero2-bg-fallback {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background: #0d0d0d; /* solid dark fallback */
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+
+/* Global scrollbar hide (optional) */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }
