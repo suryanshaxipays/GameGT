@@ -1,13 +1,12 @@
 import "../../Styles/Hero.css";
 import HeroImage from "../../Assets/bboy.png";
-import HomeCard from "./HomeCard";
 
 const Hero = () => {
   return (
     <section className="hero-section">
       {/* Left Text Content */}
       <div className="hero-left">
-        <h1>Play. Compete. Conquer. Anytime, Anywhere.</h1>
+        <h1>Play. Compete. Conquer.<br/>Anytime, Anywhere.</h1>
         <p>
           From casual fun to competitive battles, discover games for every
           age, every mood, and every level.

@@ -6,31 +6,33 @@ import { Link } from "react-router-dom";
 
 const faqData = [
   {
-    question: "How do I start playing games?",
-    answer:
-      "Just click on any game you like — it launches instantly in your browser with no downloads required. You can start playing right away!",
-  },
-  {
-    question: "Do I need an account to play?",
-    answer:
-      "No account is needed to play Few games. However, creating a account lets you splay all games.",
-  },
-  {
-    question: "Are all games free to play?",
-    answer:
-      "No! Few games on our platform are completely free to play.",
-  },
-  {
-    question: "Can I play with my friends?",
-    answer:
-      "Absolutely! Many multiplayer games allow you play with Your Friends as well as real world Players",
-  },
-  {
-    question: "Which devices can I play on?",
-    answer:
-      "You can play on any device — desktop, laptop, tablet, or smartphone. Our platform is optimized for smooth gaming everywhere.",
-  },
+  question: "How do I play games here?",
+  answer:
+    "Just click on any game — it will load instantly in your browser. No downloads or installs needed!",
+},
+{
+  question: "Do I need an account to play?",
+  answer:
+    "You can play some games without an account, but to access all games, you'll need to sign in.",
+},
+{
+  question: "Are all games free?",
+  answer:
+    "Not all. A few games are premium and require access, while others are free to play!",
+},
+{
+  question: "What devices are supported?",
+  answer:
+    "You can play on any device — mobile, tablet, laptop, or desktop. Everything runs smoothly right in your browser.",
+},
+{
+  question: "Do I need to download anything?",
+  answer:
+    "Nope! All games run directly in your browser. Just click and play instantly.",
+},
+
 ];
+
 
 const FAQSection = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
@@ -40,7 +42,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="faq-section">
+    <div className="faq-section">
       <div className="faq-left">
         <h2>Frequently Asked Questions</h2>
         <Link to="/gameview">
@@ -75,7 +77,7 @@ const FAQSection = () => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

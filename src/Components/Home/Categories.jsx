@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../../Styles/Categories.css";
 import Bc1 from "../../Assets/Categories/Bc1.png";
 import Bc2 from "../../Assets/Categories/Bc2.png";
-import Sc1 from "../../Assets/Categories/Sc1.png";
+import Sc1 from "../../Assets/Categories/Sc1.jpg";
 import Sc2 from "../../Assets/Categories/Sc2.png";
 import Sc3 from "../../Assets/Categories/Sc3.jpg";
 import Sc4 from "../../Assets/Categories/Sc4.jpg";
@@ -12,7 +12,7 @@ const Categories = () => {
 
   const selectedGames = [
     { id: 99, genre: "Action" },
-    { id: 11, genre: "Match 3" },
+    { id: 11, genre: "Racing" },
     { id: 16, genre: "Mahjong" },
     { id: 21, genre: "Mind" },
     { id: 26, genre: "Classic Games" },
@@ -25,8 +25,13 @@ const Categories = () => {
 
   return (
     <div className="categories-container">
-      <h2 className="categories-title">Choose Your Arena</h2>
-
+      <div className="head2">
+        <h2 className="categories-title">Choose Your Arena</h2>
+        <p className="featured-description">
+          From action to puzzles, strategy to racing — we’ve got it all! Dive
+          into our categories and find your next favorite game.{" "}
+        </p>
+      </div>
       <div className="categories-layout">
         {/* Left Column */}
         <div className="categories-column">

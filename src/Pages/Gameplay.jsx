@@ -4,22 +4,18 @@ import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 import "../Styles/Gameplay.css";
+import Footer2 from "../Components/Footer";
 
 // keep PNG icons for fullscreen/exit fullscreen
 import FullscreenIcon from "../Assets/fullscreen.png";
 import ExitFullscreenIcon from "../Assets/exit-fullscreen.png";
 
 // new animated GIF icons
-import PublisherGif from "../Assets/Publisher.gif";
-import PlatformGif from "../Assets/Platform.gif";
-import PlayersGif from "../Assets/PlayersGif.gif";
-import OnlineGif from "../Assets/OnlineGif.gif";
-import RatingGif from "../Assets/RatingGif.gif";
-import YearGif from "../Assets/YearGif.gif";
-import TrendingGif from "../Assets/TrendingGif.gif";
-import TopPlayerGif from "../Assets/TopPlayerGif.gif";
-import DifficultyGif from "../Assets/DifficultyGif.gif";
-import RecommendedGif from "../Assets/RecommendedGif.gif";
+
+import TrendingGif from "../Assets/TrendingGif.png";
+import TopPlayerGif from "../Assets/TopPlayerGif.png";
+import DifficultyGif from "../Assets/DifficultyGif.png";
+import RecommendedGif from "../Assets/RecommendedGif.png";
 
 const Gameplay = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -36,7 +32,7 @@ const Gameplay = () => {
     [game]
   );
 
-  const featuredGames = useMemo(() => games.slice(0, 6), []);
+  const featuredGames = useMemo(() => games.slice(0, 10), []);
 
   if (!game) return <p className="no-games">Game not found</p>;
 
@@ -94,16 +90,29 @@ const Gameplay = () => {
             </div>
 
             {/* Game Stats - Text Format */}
-<div className="game-stats-list">
-  <p><strong>Publisher:</strong> {game.publisher}</p>
-  <p><strong>Platform:</strong> {game.platform}</p>
-  <p><strong>Players:</strong> {game.players}</p>
-  <p><strong>Online:</strong> {game.isOnline ? "Yes" : "No"}</p>
-  <p><strong>Rating:</strong> {game.rating}</p>
-  <p><strong>Release Year:</strong> {game.year}</p>
-  <p><strong>Genre:</strong> {game.genre}</p>
-</div>
-
+            <div className="game-stats-list">
+              <p>
+                <strong>Publisher:</strong> {game.publisher}
+              </p>
+              <p>
+                <strong>Platform:</strong> {game.platform}
+              </p>
+              <p>
+                <strong>Players:</strong> {game.players}
+              </p>
+              <p>
+                <strong>Online:</strong> {game.isOnline ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>Rating:</strong> {game.rating}
+              </p>
+              <p>
+                <strong>Release Year:</strong> {game.year}
+              </p>
+              <p>
+                <strong>Genre:</strong> {game.genre}
+              </p>
+            </div>
 
             {/* Description */}
             <div className="section-divider"></div>
@@ -111,13 +120,13 @@ const Gameplay = () => {
             <div className="description-container">
               <h3 className="description-heading">Game Overview</h3>
               <p className="game-description-text">
-                {game.title}, published by {game.publisher} in {game.year}, offers
-                an engaging experience in the {game.genre} genre. Available on{" "}
-                {game.platform}, it supports {game.players} players and can be
-                enjoyed {game.isOnline ? "online" : "offline"}. With a rating of{" "}
-                {game.rating}, this game delivers thrilling gameplay, immersive
-                design, and countless hours of entertainment for both casual and
-                dedicated gamers alike.
+                {game.title}, published by {game.publisher} in {game.year},
+                offers an engaging experience in the {game.genre} genre.
+                Available on {game.platform}, it supports {game.players} players
+                and can be enjoyed {game.isOnline ? "online" : "offline"}. With
+                a rating of {game.rating}, this game delivers thrilling
+                gameplay, immersive design, and countless hours of entertainment
+                for both casual and dedicated gamers alike.
               </p>
             </div>
 
@@ -128,22 +137,38 @@ const Gameplay = () => {
               <h3 className="highlights-heading">Game Highlights</h3>
               <div className="mock-section">
                 <div className="mock-card">
-                  <img src={TrendingGif} alt="Trending" className="mock-icon-gif" />
+                  <img
+                    src={TrendingGif}
+                    alt="Trending"
+                    className="mock-icon-gif"
+                  />
                   <h4>Trending Game</h4>
                   <p>{game.title} is trending worldwide!</p>
                 </div>
                 <div className="mock-card">
-                  <img src={TopPlayerGif} alt="Top Player" className="mock-icon-gif" />
+                  <img
+                    src={TopPlayerGif}
+                    alt="Top Player"
+                    className="mock-icon-gif"
+                  />
                   <h4>Top Player Count</h4>
                   <p>{game.id * 101} active players daily</p>
                 </div>
                 <div className="mock-card">
-                  <img src={DifficultyGif} alt="Difficulty" className="mock-icon-gif" />
+                  <img
+                    src={DifficultyGif}
+                    alt="Difficulty"
+                    className="mock-icon-gif"
+                  />
                   <h4>Difficulty</h4>
                   <p>{game.genre === "Action" ? "Hard" : "Medium"}</p>
                 </div>
                 <div className="mock-card">
-                  <img src={RecommendedGif} alt="Recommended" className="mock-icon-gif" />
+                  <img
+                    src={RecommendedGif}
+                    alt="Recommended"
+                    className="mock-icon-gif"
+                  />
                   <h4>Recommended For</h4>
                   <p>{game.platform} enthusiasts & online players</p>
                 </div>
@@ -192,6 +217,7 @@ const Gameplay = () => {
           </section>
         )}
       </main>
+      <Footer2 />
     </div>
   );
 };

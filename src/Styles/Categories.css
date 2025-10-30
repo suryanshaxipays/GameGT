@@ -188,6 +188,14 @@
   box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.15);
 }
 
+.head2{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3vh;
+  gap: 3vw;
+  flex-shrink: 0;
+}
   
   
  

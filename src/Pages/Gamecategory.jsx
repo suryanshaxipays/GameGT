@@ -17,6 +17,9 @@ import Racing from "../Assets/Racing.jpg";
 import Shooting from "../Assets/Shooting.jpg";
 import Golf from "../Assets/Golf.jpg";
 
+import Footer2 from "../Components/Footer"
+
+
 import "../Styles/Gamecategory.css";
 
 const categoryImages = {
@@ -25,9 +28,9 @@ const categoryImages = {
   action: Action,
   "match 3": Match,
   mind: Mind,
-  "classic games": Classic,
+  "classic": Classic,
   "hidden objects": Hidden,
-  "card games": Card,
+  "card": Card,
   retro: Classic,
   board: Board,
   racing: Racing,
@@ -38,38 +41,52 @@ const categoryImages = {
 };
 
 const CategoryBanner = ({ categoryName }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({});
   const imageSrc = categoryImages[categoryName?.toLowerCase()];
 
+  // ✅ Preload all category images once
   useEffect(() => {
-    setImageLoaded(false);
-    if (imageSrc) {
+    const preloaded = {};
+    Object.entries(categoryImages).forEach(([key, src]) => {
       const img = new Image();
-      img.src = imageSrc;
-      img.onload = () => setImageLoaded(true);
-    }
-  }, [imageSrc]);
+      img.src = src;
+      img.onload = () => {
+        preloaded[key] = true;
+        // Once all done, update state only once (less re-render)
+        if (Object.keys(preloaded).length === Object.keys(categoryImages).length) {
+          setLoadedImages(preloaded);
+        }
+      };
+    });
+  }, []);
+
+  const isLoaded = loadedImages[categoryName?.toLowerCase()];
 
   return (
     <div className="hero2-banner3">
-      {/* Default dark background visible while loading */}
-      <div className="hero2-bg-fallback" />
+      {/* Fallback dark background only on first load */}
+      {!isLoaded && <div className="hero2-bg-fallback" />}
 
       {imageSrc && (
         <img
           src={imageSrc}
           alt={categoryName}
-          className={`hero2-bg3 ${imageLoaded ? "visible" : "hidden"}`}
+          className={`hero2-bg3 ${isLoaded ? "visible" : "hidden"}`}
+          loading="eager"
+          decoding="async"
         />
       )}
 
       <div className="hero2-overlay">
         <h1>{categoryName}</h1>
-        <p>Enjoy the best {categoryName} games 🎮</p>
+        <p>Enjoy the best {categoryName} games</p>
       </div>
     </div>
   );
 };
+
+
+
 
 const Gamecategory = () => {
   const { categoryName } = useParams();
@@ -176,7 +193,7 @@ const Gamecategory = () => {
         {/* Game Grid Section */}
         <section className="game2-section">
           <div className="section2-header">
-            <h2>{categoryName} Games</h2>
+            <h2 className="gameheading">{categoryName} Games</h2>
             {categoryGames.length > 5 && (
               <span className="view-all" onClick={() => setIsViewAll(!isViewAll)}>
                 {isViewAll ? "Show Less" : "View All"}
@@ -194,6 +211,7 @@ const Gamecategory = () => {
           </div>
         </section>
       </main>
+      <Footer2/>
     </div>
   );
 };

@@ -587,11 +587,11 @@ export const games = [
     isOnline: true,
   },
 
-  // --- Classic Games ---
+  // --- Classic ---
   {
     id: 26,
     title: "One Line",
-    genre: "Classic Games",
+    genre: "Classic",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/oneline800x450.webp",
     youtubePreview:
@@ -604,7 +604,7 @@ export const games = [
     discount: "20%",
     image: "https://www.htmlgames.com/uploaded/game/thumb800/oneline800450.webp",
     isFree: true,
-    genres: "Classic Games",
+    genres: "Classic",
     platform: "All Platforms",
     publisher: "Playverse",
     players: "Co-op",
@@ -613,7 +613,7 @@ export const games = [
   {
     id: 27,
     title: "Carrom Pool",
-    genre: "Classic Games",
+    genre: "Classic",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/carrompool800450.webp",
     youtubePreview:
@@ -627,7 +627,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/carrompool800450.webp",
     isFree: true,
-    genres: "Classic Games",
+    genres: "Classic",
     platform: "Web Browser",
     publisher: "Skyplay",
     players: "Multiplayer",
@@ -636,7 +636,7 @@ export const games = [
   {
     id: 28,
     title: "Cube Block",
-    genre: "Classic Games",
+    genre: "Classic",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/cubeblock800450.webp",
     youtubePreview:
@@ -649,7 +649,7 @@ export const games = [
     discount: "80%",
     image: "https://www.htmlgames.com/uploaded/game/thumb800/cubeblock800450.webp",
     isFree: true,
-    genres: "Classic Games",
+    genres: "Classic",
     platform: "PC",
     publisher: "FunArcade",
     players: "Single Player",
@@ -658,7 +658,7 @@ export const games = [
   {
     id: 29,
     title: "Upside Down",
-    genre: "Classic Games",
+    genre: "Classic",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/upsidedown800450.webp",
     youtubePreview:
@@ -672,7 +672,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/upsidedown800450.webp",
     isFree: true,
-    genres: "Classic Games",
+    genres: "Classic",
     platform: "PC",
     publisher: "Skyplay",
     players: "Multiplayer",
@@ -681,7 +681,7 @@ export const games = [
   {
     id: 30,
     title: "Ninja Breakout",
-    genre: "Classic Games",
+    genre: "Classic",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/ninjabreakout800450.webp",
     youtubePreview:
@@ -695,7 +695,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/ninjabreakout800450.webp",
     isFree: true,
-    genres: "Classic Games",
+    genres: "Classic",
     platform: "Mobile",
     publisher: "FunArcade",
     players: "Single Player",
@@ -866,11 +866,11 @@ export const games = [
     players: "Multiplayer",
     isOnline: true,
   },
-  // --- Card Games (from JSON) ---
+  // --- Card (from JSON) ---
   {
     id: 38,
     title: "Klaverjassen",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/klaverjassen800450.webp",
     youtubePreview:
@@ -884,7 +884,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/klaverjassen800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -893,7 +893,7 @@ export const games = [
   {
     id: 39,
     title: "Skip Cards",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/skipcards800450.webp",
     youtubePreview:
@@ -907,7 +907,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/skipcards800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -916,7 +916,7 @@ export const games = [
   {
     id: 40,
     title: "Spite and Malice",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/spiteandmalice800450.webp",
     youtubePreview: "",
@@ -929,7 +929,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/spiteandmalice800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -938,7 +938,7 @@ export const games = [
   {
     id: 41,
     title: "Spite and Malice Extreme",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/spiteandmaliceextreme800450.webp",
     youtubePreview:
@@ -952,7 +952,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/spiteandmaliceextreme800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -961,7 +961,7 @@ export const games = [
   {
     id: 42,
     title: "Hartenjagen",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/hartenjagen800450.webp",
     youtubePreview: "",
@@ -974,7 +974,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/hartenjagen800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -983,7 +983,7 @@ export const games = [
   {
     id: 43,
     title: "Crazy Eights",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/crazyeights800450.webp",
     youtubePreview:
@@ -997,7 +997,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/crazyeights800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -1006,7 +1006,7 @@ export const games = [
   {
     id: 44,
     title: "Mau Mau",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/maumau800450.webp",
     youtubePreview:
@@ -1020,7 +1020,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/maumau800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -1029,7 +1029,7 @@ export const games = [
   {
     id: 45,
     title: "Alhambra Solitaire",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/alhambrasolitaire800450.webp",
     youtubePreview:
@@ -1043,7 +1043,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/alhambrasolitaire800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -1052,7 +1052,7 @@ export const games = [
   {
     id: 46,
     title: "Hearts",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/hearts800450.webp",
     youtubePreview: "",
@@ -1065,7 +1065,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/hearts800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",
@@ -1074,7 +1074,7 @@ export const games = [
   {
     id: 47,
     title: "Thirty One",
-    genre: "Card Games",
+    genre: "Card",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/thirtyone800450.webp",
     youtubePreview:
@@ -1088,7 +1088,7 @@ export const games = [
     image:
       "https://www.htmlgames.com/uploaded/game/thumb800/thirtyone800450.webp",
     isFree: true,
-    genres: "Card Games",
+    genres: "Card",
     platform: "All Platforms",
     publisher: "HTML Games Studio",
     players: "Single Player",

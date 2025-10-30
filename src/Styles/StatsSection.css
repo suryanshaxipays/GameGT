@@ -29,10 +29,7 @@
   transition: all 0.3s ease;
 }
 
-.stats-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(60, 80, 255, 0.25);
-}
+
 
 /* -------------------- Headings -------------------- */
 .stats-title {
@@ -55,7 +52,7 @@
 /* -------------------- Grid Layout -------------------- */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
   text-align: center;
 }
@@ -118,11 +115,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-.vr-image:hover {
-  opacity: 1;
-  transform: scale(1.01);
-  box-shadow: 0 10px 35px rgba(100, 120, 255, 0.3);
-}
+
 
 /* -------------------- Responsive -------------------- */
 @media (max-width: 768px) {

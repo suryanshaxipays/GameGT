@@ -12,8 +12,8 @@
 
 /* Hover Glow + Subtle Border */
 .gamecard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(0, 195, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(0, 195, 255, 0.4);
 }
 
@@ -85,3 +85,17 @@
   pointer-events: none;
   filter: brightness(1.1) contrast(1.1);
 }
+/* VIP Badge */
+.vip-badge {
+  position: absolute;
+  top: 9px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.gamecard:hover .vip-badge {
+display: none;}

@@ -5,7 +5,7 @@ import Gameview from "./Pages/Gameview";
 import Gamecategory from "./Pages/Gamecategory";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-
+import Checkout from "./Components/Checkout";
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
         <Route path="/gameview" element={<Gameview />} />
         <Route path="/category/:categoryName" element={<Gamecategory />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
-         <Route path="/login" element={<Login />} />
-  <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

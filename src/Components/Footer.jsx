@@ -12,21 +12,20 @@ const Footer = () => {
     { src: twitterIcon, alt: "Twitter", href: "https://twitter.com", external: true },
     { src: Facebook, alt: "Facebook", href: "https://facebook.com", external: true },
     { src: instagramIcon, alt: "Instagram", href: "https://instagram.com", external: true },
-    { src: githubIcon, alt: "Github", href: "https://github.com", external: true },
   ];
 
   const footerLinks = {
     Company: [
+      { name: "Home", type: "section", target: "home" },
       { name: "About", type: "section", target: "about" },
-      { name: "Apps & Games", type: "route", target: "/gameview" },
+      { name: "Games", type: "route", target: "/gameview" },
       { name: "Featured Games", type: "section", target: "features" },
       { name: "FAQ", type: "section", target: "faq" },
-            { name: "Home", type: "section", target: "home" },
 
     ],
     Categories: [
       { name: "Action", type: "route", target: "/category/Action" },
-      { name: "Classic Games", type: "route", target: "/category/Classic Games" },
+      { name: "Classic", type: "route", target: "/category/Classic" },
       { name: "Hidden Objects", type: "route", target: "/category/Hidden Objects" },
       { name: "Mahjong", type: "route", target: "/category/Mahjong" },
       { name: "Match 3", type: "route", target: "/category/Match 3" },
@@ -124,7 +123,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="footer-bottom">
-          <p>&copy; Copyright 2025. All Rights Reserved by GameGT</p>
+          <p>&copy; Copyright 2025. All Rights Reserved by Game Tourer</p>
         </div>
       </footer>
     </div>

@@ -6,6 +6,8 @@ import { games } from "../data/games";
 import Bg from "../Assets/Gameview/bg.png";
 import "../Styles/Gameview.css";
 import Ellipse from "../Assets/Ellipse.png";
+import VipIcon from "../Assets/vip.png"; // ✅ VIP badge
+import Footer2 from "../Components/Footer";
 
 // import category images
 import Bc1 from "../Assets/Categories/Bc1.png";
@@ -15,6 +17,7 @@ import Sc2 from "../Assets/Categories/Sc2.png";
 import Sc3 from "../Assets/Categories/Sc3.jpg";
 import Sc4 from "../Assets/Categories/Sc4.jpg";
 
+// ✅ Hero Banner
 const HeroBanner = () => (
   <div className="hero2-banner2">
     <img src={Bg} alt="Game Banner" className="hero2-bg2" />
@@ -22,13 +25,13 @@ const HeroBanner = () => (
     <div className="hero2-overlay">
       <h1>Game Tourer!</h1>
       <p>
-        Play & Earn <span>1500</span> points ✨
+        Play & Earn <span>1500</span> points 
       </p>
     </div>
   </div>
 );
 
-// ✅ New Trending Categories Section
+// ✅ Trending Categories
 const TrendingCategories = () => {
   const navigate = useNavigate();
 
@@ -69,7 +72,7 @@ const TrendingCategories = () => {
   );
 };
 
-// ✅ Clean Section with “View All”
+// ✅ Game Section (uses GameCard for consistency)
 const GameSection = ({ title, games = [], defaultLimit = 5 }) => {
   const [expanded, setExpanded] = useState(false);
   const displayed = expanded ? games : games.slice(0, defaultLimit);
@@ -101,7 +104,8 @@ export default function Gameview() {
   const scrollRef = useRef(null);
 
   const filteredGames = useMemo(
-    () => games.filter((g) => g.title.toLowerCase().includes(search.toLowerCase())),
+    () =>
+      games.filter((g) => g.title.toLowerCase().includes(search.toLowerCase())),
     [search]
   );
 
@@ -126,6 +130,7 @@ export default function Gameview() {
     });
   };
 
+  // Mouse drag for category scroll
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
@@ -141,7 +146,8 @@ export default function Gameview() {
     e.preventDefault();
     const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
     const walk = (x - startX.current) * 1.5;
-    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    if (scrollRef.current)
+      scrollRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
   return (
@@ -151,7 +157,11 @@ export default function Gameview() {
 
       <main className="main2-content">
         {/* CATEGORY SCROLL */}
-        <div className={`category-scroll-container ${isMobile ? "mobile-view" : ""}`}>
+        <div
+          className={`category-scroll-container ${
+            isMobile ? "mobile-view" : ""
+          }`}
+        >
           <h2 className="category-scroll-heading">Game Categories:</h2>
 
           {!isMobile && (
@@ -186,58 +196,67 @@ export default function Gameview() {
           )}
         </div>
 
-        {/* HERO BANNER */}
+        {/* HERO */}
         <HeroBanner />
 
-
-        {/* REST SECTIONS */}
-        <GameSection title="Recently Played" games={filteredGames.slice(20, 32)} />
-
+        {/* FEATURED GAMES */}
         <section className="game2-section">
           <div className="section2-header2">
             <h2>Featured Games</h2>
           </div>
           <div className="featured-grid">
-            {filteredGames.slice(40, 56).map((g) => (
-              <div
-                key={g.id}
-                className="featured-item"
-                onClick={() => navigate(`/gameplay/${g.id}`)}
-              >
-                <img src={g.image} alt={g.title} />
-              </div>
-            ))}
+            {filteredGames.slice(40, 56).map((g) => {
+              const isFree = g.id % 3 === 0;
+              return (
+                <div
+                  key={g.id}
+                  className="featured-item"
+                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                >
+                  <img src={g.image} alt={g.title}  className="gameimage"/>
+                  {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        <GameSection title="Action Games" games={filteredGames.slice(32, 48)} />
-        <GameSection title="War Games" games={filteredGames.slice(96, 112)} />
-                <TrendingCategories />
+        {/* TRENDING CATEGORIES */}
+        <TrendingCategories />
 
-
-        
-
-        <GameSection title="Board Games" games={filteredGames.slice(64, 80)} />
-        <GameSection title="Racing Games" games={filteredGames.slice(80, 96)} />
+        {/* TRENDING GAMES */}
         <section className="game2-section">
           <div className="section2-header2">
             <h2>Trending Games</h2>
           </div>
           <div className="featured-grid">
-            {filteredGames.slice(80, 96).map((g) => (
-              <div
-                key={g.id}
-                className="featured-item"
-                onClick={() => navigate(`/gameplay/${g.id}`)}
-              >
-                <img src={g.image} alt={g.title} />
-              </div>
-            ))}
+            {filteredGames.slice(80, 96).map((g) => {
+              const isFree = g.id % 3 === 0;
+              return (
+                <div
+                  key={g.id}
+                  className="featured-item"
+                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                >
+                  <img src={g.image} alt={g.title} className="gameimage"/>
+                  {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
+                </div>
+              );
+            })}
           </div>
         </section>
-          <GameSection title="Golf Games" games={filteredGames.slice(88, 98)} />
+
+        {/* GAME SECTIONS */}
+        <GameSection title="Recently Played" games={filteredGames.slice(20, 32)} />
+        <GameSection title="Action Games" games={filteredGames.slice(32, 48)} />
+        <GameSection title="War Games" games={filteredGames.slice(96, 112)} />
+        <GameSection title="Board Games" games={filteredGames.slice(64, 80)} />
+        <GameSection title="Racing Games" games={filteredGames.slice(80, 96)} />
+        <GameSection title="Golf Games" games={filteredGames.slice(88, 98)} />
         <GameSection title="Sports Games" games={filteredGames.slice(99, 107)} />
       </main>
+
+      <Footer2 />
     </div>
   );
 }

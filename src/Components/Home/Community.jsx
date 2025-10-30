@@ -19,10 +19,10 @@ const Community = () => {
       <div className="community-header">
         <h2 className="community-title">Our Community</h2>
         <p className="community-description">
-          Our community is the heartbeat of everything we do. From casual gamers
-          to pro competitors, millions come together here to have Electrifying experiences,
-          build Skills, and push the limits of play. This is where passion
-          meets connection and where every gamer belongs.
+          Our community is the heartbeat of everything we do. From casual gamers 
+to pro competitors, players come together to enjoy electrifying gaming experiences, 
+build skills, and push the limits of play. This is where every gamer belongs.
+
         </p>
       </div>
 

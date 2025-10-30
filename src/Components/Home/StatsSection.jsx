@@ -8,8 +8,8 @@ const StatsSection = () => {
       <div className="stats-box">
         <h2 className="stats-title">Level Up Your Gaming Experience </h2>
         <p className="stats-subtitle">
-          Explore our global gaming hub filled with millions of players,
-          thousands of games, and nonstop competition.
+          Explore our global gaming hub filled with players, games from multiple
+          categories, and nonstop action.
         </p>
 
         <div className="stats-grid">
@@ -17,15 +17,15 @@ const StatsSection = () => {
             <h4>Players</h4>
             <p>
               Over <span>1.2k gamers online daily</span> — join the action and
-              never play alone.
+              nev.
             </p>
           </div>
 
           <div className="stat-item2">
             <h4>Games</h4>
             <p>
-              Discover <span>150+ titles</span> across every genre, from casual
-              fun to hardcore battles.
+              Discover <span>100+ titles</span> across platform, from casual fun
+              to hardcore battles.
             </p>
           </div>
 

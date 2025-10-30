@@ -138,7 +138,7 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
           {/* Left: Logo only */}
           <div className="nav-left">
             <img
-              onClick={() => navigate("/gameview")}
+              onClick={() => navigate("/")}
               src={logo}
               alt="Logo"
               className="nav-logo"
