@@ -56,7 +56,7 @@ const Feature = () => {
         </div>
 
         <div className="game-card"
-                  onClick={() => navigate(`/gameplay/37`)}
+                  onClick={() => navigate(`/gameplay/333`)}
 >
           <div className="game-image-wrapper">
             <img 

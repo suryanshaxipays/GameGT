@@ -32,8 +32,8 @@ const StatsSection = () => {
           <div className="stat-item2">
             <h4>Achievements</h4>
             <p>
-              Unlock <span>milestones & trophies</span> as you level up your
-              gaming journey.
+              Unlock <span>milestones & trophies</span> in game as you level up your
+              journey.
             </p>
           </div>
 

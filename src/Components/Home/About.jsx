@@ -39,7 +39,7 @@ const About = () => {
             <p className="image-side-text">
               Exclusive Games. <br />
               Escort mission. <br />
-              Special events.
+              Special categories.
             </p>
             <div className="image-divider"></div>
             <img src={shooter} alt="Shooter" className="image-box" />

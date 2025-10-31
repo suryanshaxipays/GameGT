@@ -843,7 +843,7 @@ export const games = [
     isOnline: true,
   },
   {
-    id: 37,
+    id: 333,
     title: "Wild West Mysteries",
     genre: "Action",
     thumbnail:

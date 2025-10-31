@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../Styles/Checkout.css";
-import SideImage from "../Assets/login-side.jpg"; // 🔹 replace with your actual image
+import SideImage from "../Assets/login-side.jpg"; 
 
 const Checkout = () => {
   const [processing, setProcessing] = useState(false);
@@ -17,6 +17,11 @@ const Checkout = () => {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
+  const paramId = params?.id ? parseInt(params.id, 10) : null;
+  const stateId = location?.state?.game?.id ? parseInt(location.state.game.id, 10) : null;
+  const gameId = paramId || stateId || null;
 
   useEffect(() => {
     const isLoggedIn =
@@ -30,8 +35,11 @@ const Checkout = () => {
     }
 
     const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
-    if (hasPaid) navigate("/");
-  }, [navigate]);
+    if (hasPaid) {
+      if (gameId) navigate(`/gameplay/${gameId}`);
+      else navigate("/");
+    }
+  }, [navigate, gameId]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -47,7 +55,8 @@ const Checkout = () => {
       setShowSuccess(true);
       localStorage.setItem("hasPaidAccess", "true");
       setTimeout(() => {
-        navigate("/");
+        if (gameId) navigate(`/gameplay/${gameId}`);
+        else navigate("/");
       }, 1500);
     }, 2000);
   };
