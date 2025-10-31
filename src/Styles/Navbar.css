@@ -252,3 +252,137 @@
 .hamburger2 {
   display: none !important;
 }
+
+/* -------------------- USER INFO STYLES -------------------- */
+.nav-user {
+  color: #b9c9ff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  user-select: none;
+}
+
+/* Adjust user email on mobile */
+@media (max-width: 768px) {
+  .nav-user {
+    font-size: 0.85rem;
+    margin-bottom: -10px;
+  }
+}
+
+/* Add subtle hover glow for better visibility */
+.nav-user:hover {
+  color: #00c2ff;
+  text-shadow: 0 0 6px rgba(0, 194, 255, 0.4);
+}
+
+/* -------------------- USER DROPDOWN MENU -------------------- */
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #1f2437;
+  border-radius: 10px;
+  min-width: 180px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 9200;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  background: #1f2437;
+  transform: rotate(45deg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-email {
+  color: #ffffff;
+  font-size: 14px;
+  word-break: break-all;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.user-dropdown hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+}
+
+.logout-btn {
+  background: linear-gradient(90deg, #00c2ff, #3c00ff);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  z-index: 9999;
+
+}
+
+.logout-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* keep dropdown inside window */
+@media (max-width: 600px) {
+  .user-dropdown {
+    right: 10px;
+    min-width: 160px;
+  }
+}
+
+/* Fix user dropdown click issue in nav-links */
+.nav-links {
+  position: relative;
+  z-index: 5;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #1f2437;
+  border-radius: 10px;
+  min-width: 180px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 9999; /* ensure always above nav */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: auto; /* allow clicking inside */
+}
+
+/* Make sure dropdown sits above all */
+.navbar,
+.navbar * {
+  z-index: auto;
+}
+
+.navbar {
+  position: relative;
+  z-index: 1000;
+}
+
+/* prevent text behind getting selected */
+.user-dropdown * {
+  user-select: none;
+}

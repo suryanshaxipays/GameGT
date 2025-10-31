@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
@@ -23,6 +23,52 @@ const Gameplay = () => {
   const navigate = useNavigate();
 
   const game = games.find((g) => g.id === parseInt(id));
+  // Guard access for paid games
+  useEffect(() => {
+    if (!game) return;
+    const isFree = game.id % 3 === 0;
+    if (isFree) return;
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true" ||
+      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
+
+    if (!isLoggedIn) {
+      localStorage.setItem(
+        "postAuthRedirect",
+        JSON.stringify({ action: "checkout", gameId: game.id, path: window.location.pathname + window.location.search })
+      );
+      window.dispatchEvent(new Event("openLogin"));
+      return;
+    }
+    if (!hasPaid) {
+      navigate("/checkout", { state: { game } });
+    }
+  }, [game, navigate]);
+
+  const handleGameClick = (g) => {
+    const isFree = g.id % 3 === 0;
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true" ||
+      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
+
+    if (!isFree) {
+      if (!isLoggedIn) {
+        localStorage.setItem(
+          "postAuthRedirect",
+          JSON.stringify({ action: "checkout", gameId: g.id, path: window.location.pathname + window.location.search })
+        );
+        window.dispatchEvent(new Event("openLogin"));
+        return;
+      }
+      if (!hasPaid) {
+        navigate("/checkout", { state: { game: g } });
+        return;
+      }
+    }
+    navigate(`/gameplay/${g.id}`);
+  };
 
   const genreGames = useMemo(
     () =>
@@ -188,7 +234,7 @@ const Gameplay = () => {
                 <div
                   key={g.id}
                   className="category-card-wrapper neon-hover"
-                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                  onClick={() => handleGameClick(g)}
                 >
                   <GameCard game={g} />
                 </div>
@@ -208,7 +254,7 @@ const Gameplay = () => {
                 <div
                   key={g.id}
                   className="category-card-wrapper neon-hover"
-                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                  onClick={() => handleGameClick(g)}
                 >
                   <GameCard game={g} />
                 </div>

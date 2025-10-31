@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
 
+
 import Action from "../Assets/Action.jpg";
 import Match from "../Assets/Match.jpg";
 import Mahjong from "../Assets/Mahjong.jpg";
@@ -41,35 +42,39 @@ const categoryImages = {
 };
 
 const CategoryBanner = ({ categoryName }) => {
-  const [loadedImages, setLoadedImages] = useState({});
-  const imageSrc = categoryImages[categoryName?.toLowerCase()];
+  const [loadedKeys, setLoadedKeys] = useState({});
+  const key = categoryName?.toLowerCase();
+  const src = categoryImages[key];
+  const [visibleKey, setVisibleKey] = useState(key);
 
-  // ✅ Preload all category images once
+  // preload each image individually once
   useEffect(() => {
-    const preloaded = {};
-    Object.entries(categoryImages).forEach(([key, src]) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        preloaded[key] = true;
-        // Once all done, update state only once (less re-render)
-        if (Object.keys(preloaded).length === Object.keys(categoryImages).length) {
-          setLoadedImages(preloaded);
-        }
-      };
-    });
-  }, []);
+    if (!src) return;
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      setLoadedKeys((prev) => ({ ...prev, [key]: true }));
+    };
+  }, [key, src]);
 
-  const isLoaded = loadedImages[categoryName?.toLowerCase()];
+  // instantly update visible banner when category changes
+  useEffect(() => {
+    if (src) {
+      setVisibleKey(key); // immediate swap, no delay
+    }
+  }, [key, src]);
+
+  const isLoaded = loadedKeys[visibleKey];
 
   return (
     <div className="hero2-banner3">
-      {/* Fallback dark background only on first load */}
+      {/* fallback bg only if image hasn't loaded yet */}
       {!isLoaded && <div className="hero2-bg-fallback" />}
 
-      {imageSrc && (
+      {src && (
         <img
-          src={imageSrc}
+          key={visibleKey} // forces instant re-render on category switch
+          src={src}
           alt={categoryName}
           className={`hero2-bg3 ${isLoaded ? "visible" : "hidden"}`}
           loading="eager"
@@ -77,6 +82,7 @@ const CategoryBanner = ({ categoryName }) => {
         />
       )}
 
+      {/* keep your overlay text and layout as before */}
       <div className="hero2-overlay">
         <h1>{categoryName}</h1>
         <p>Enjoy the best {categoryName} games</p>
@@ -84,6 +90,7 @@ const CategoryBanner = ({ categoryName }) => {
     </div>
   );
 };
+
 
 
 

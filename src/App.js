@@ -18,7 +18,7 @@ function App() {
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

@@ -42,8 +42,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(52px);
   padding: 45px 60px;
   border-radius: 16px;
   text-align: center;
@@ -52,7 +52,7 @@
 }
 
 .hero2-overlay:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0);
 }
 
 .hero2-overlay h1 {

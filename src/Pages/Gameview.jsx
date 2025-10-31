@@ -108,6 +108,29 @@ export default function Gameview() {
       games.filter((g) => g.title.toLowerCase().includes(search.toLowerCase())),
     [search]
   );
+  const handleGameClick = (g) => {
+    const isFree = g.id % 3 === 0;
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true" ||
+      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
+
+    if (!isFree) {
+      if (!isLoggedIn) {
+        localStorage.setItem(
+          "postAuthRedirect",
+          JSON.stringify({ action: "checkout", gameId: g.id, path: window.location.pathname + window.location.search })
+        );
+        window.dispatchEvent(new Event("openLogin"));
+        return;
+      }
+      if (!hasPaid) {
+        navigate("/checkout", { state: { game: g } });
+        return;
+      }
+    }
+    navigate(`/gameplay/${g.id}`);
+  };
 
   const categories = useMemo(() => {
     const uniqueGenres = [...new Set(games.map((g) => g.genre))];
@@ -211,7 +234,7 @@ export default function Gameview() {
                 <div
                   key={g.id}
                   className="featured-item"
-                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                  onClick={() => handleGameClick(g)}
                 >
                   <img src={g.image} alt={g.title}  className="gameimage"/>
                   {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
@@ -236,7 +259,7 @@ export default function Gameview() {
                 <div
                   key={g.id}
                   className="featured-item"
-                  onClick={() => navigate(`/gameplay/${g.id}`)}
+                  onClick={() => handleGameClick(g)}
                 >
                   <img src={g.image} alt={g.title} className="gameimage"/>
                   {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
