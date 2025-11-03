@@ -13,21 +13,17 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/" || location.pathname === "/home";
 
-  // States
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [user, setUser] = useState(null);
-  const [showUserMenu, setShowUserMenu] = useState(false);
 
-  // Check login state on mount
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("userAuth"));
     if (storedUser?.loggedIn) setUser(storedUser);
 
-    // Open login if requested by other components
     const prompt = localStorage.getItem("loginPrompt");
     if (prompt === "true") {
       setShowLogin(true);
@@ -50,7 +46,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
 
   const handleLoginClick = () => {
     setIsOpen(false);
-    // Save where we are to return here after auth
     localStorage.setItem(
       "postAuthRedirect",
       JSON.stringify({ path: location.pathname + location.search })
@@ -77,7 +72,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     localStorage.removeItem("userEmail");
     localStorage.removeItem("hasPaidAccess");
     setUser(null);
-    setShowUserMenu(false);
   };
 
   const handleSearch = (e) => {
@@ -99,14 +93,20 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     const game = games.find((g) => g.id === id);
     if (!game) return;
     const isFree = game.id % 3 === 0;
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true" || JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true" ||
+      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
     const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
 
     if (!isFree) {
       if (!isLoggedIn) {
         localStorage.setItem(
           "postAuthRedirect",
-          JSON.stringify({ action: "checkout", gameId: id, path: location.pathname + location.search })
+          JSON.stringify({
+            action: "checkout",
+            gameId: id,
+            path: location.pathname + location.search,
+          })
         );
         setShowLogin(true);
         return;
@@ -119,7 +119,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     navigate(`/gameplay/${id}`);
   };
 
-  // -------------------- HOME PAGE NAVBAR --------------------
   if (isHomePage) {
     return (
       <>
@@ -168,23 +167,16 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
                 </a>
               </li>
 
-              {/* ✅ If user logged in, show email + logout */}
               {user ? (
-                <li style={{ position: "relative" }}>
+                <li className="avatar-wrapper">
                   <img
                     src={AvatarIcon}
                     alt="User"
-                    style={{ width: 32, height: 32, borderRadius: "50%", cursor: "pointer" }}
-                    onClick={() => setShowUserMenu((s) => !s)}
+                    className="user-avatar"
+                    title="Click to logout"
+                    onClick={handleLogout}
                   />
-                 {showUserMenu && (
-  <div className="user-dropdown">
-    <p className="user-email">{user.email}</p>
-    <hr />
-    <button className="logout-btn" onClick={handleLogout}>LOGOUT</button>
-  </div>
-)}
-
+                  <span className="hover-tooltip">Click to logout</span>
                 </li>
               ) : (
                 <li>
@@ -198,32 +190,34 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
         </nav>
 
         {showLogin && (
-          <LoginPopup onClose={handleCloseLogin} onLoginSuccess={handleCloseLogin} />
+          <LoginPopup
+            onClose={handleCloseLogin}
+            onLoginSuccess={handleCloseLogin}
+          />
         )}
         {showSignup && (
-          <Signup onClose={handleCloseSignup} onSwitchToLogin={handleLoginClick} />
+          <Signup
+            onClose={handleCloseSignup}
+            onSwitchToLogin={handleLoginClick}
+          />
         )}
       </>
     );
   }
 
-  // -------------------- OTHER PAGES NAVBAR2 --------------------
   return (
     <>
       <nav className="navbar2">
         <div className="nav2-container">
-          {/* Left: Logo only */}
           <div className="nav-left">
             <img
               onClick={() => navigate("/")}
               src={logo}
               alt="Logo"
               className="nav-logo"
-              style={{ cursor: "pointer" }}
             />
           </div>
 
-          {/* Search Bar */}
           <div className="nav-search small-search">
             <img src={SearchIcon} alt="Search" />
             <input
@@ -247,23 +241,16 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
             )}
           </div>
 
-          {/* ✅ Right Side: Show Login/Logout */}
           {user ? (
-            <div className="nav-right" style={{ position: "relative" }}>
+            <div className="avatar-wrapper">
               <img
                 src={AvatarIcon}
                 alt="User"
-                style={{ width: 32, height: 32, borderRadius: "50%", cursor: "pointer" }}
-                onClick={() => setShowUserMenu((s) => !s)}
+                className="user-avatar"
+                title="Click to logout"
+                onClick={handleLogout}
               />
-              {showUserMenu && (
-  <div className="user-dropdown">
-    <p className="user-email">{user.email}</p>
-    <hr />
-    <button className="logout-btn" onClick={handleLogout}>LOGOUT</button>
-  </div>
-)}
-
+              <span className="hover-tooltip">Click to logout</span>
             </div>
           ) : (
             <button className="login2-btn" onClick={handleLoginClick}>
@@ -274,10 +261,16 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
       </nav>
 
       {showLogin && (
-        <LoginPopup onClose={handleCloseLogin} onLoginSuccess={handleCloseLogin} />
+        <LoginPopup
+          onClose={handleCloseLogin}
+          onLoginSuccess={handleCloseLogin}
+        />
       )}
       {showSignup && (
-        <Signup onClose={handleCloseSignup} onSwitchToLogin={handleLoginClick} />
+        <Signup
+          onClose={handleCloseSignup}
+          onSwitchToLogin={handleLoginClick}
+        />
       )}
     </>
   );

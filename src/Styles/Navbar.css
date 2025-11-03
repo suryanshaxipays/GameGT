@@ -8,8 +8,8 @@
 /* -------------------- HOME PAGE NAVBAR -------------------- */
 .navbar {
   width: 100%;
-  height: 72px;
-  position: static;
+  height: 70px;
+  position: static; /* changed from fixed to static */
   top: 0;
   left: 0;
   padding: 0 2rem;
@@ -113,8 +113,12 @@
     display: flex;
   }
 
-  .nav-links {
+  .navbar{
     position: fixed;
+  }
+
+  .nav-links {
+    position: absolute; /* changed from fixed for static navbar */
     top: 70px; /* starts right below navbar */
     right: 0;
     width: 230px;
@@ -164,8 +168,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: sticky;
-  top: 0;
+  position: static; /* changed from sticky/fixed to static */
   z-index: 1000;
 }
 
@@ -297,7 +300,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  z-index: 9200;
+  z-index: 9999;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -312,6 +315,9 @@
   transform: rotate(45deg);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-left: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 9999;
+  position: absolute;
+
 }
 
 .user-email {
@@ -327,6 +333,8 @@
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
   margin: 6px 0;
+    z-index: 9999;
+
 }
 
 .logout-btn {
@@ -338,11 +346,14 @@
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease;
+  z-index: 9999;
 }
 
 .logout-btn:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+    z-index: 9999;
+
 }
 
 /* Dropdown mobile adjustment */
@@ -350,5 +361,47 @@
   .user-dropdown {
     right: 10px;
     min-width: 160px;
+
   }
+}
+
+/* Avatar + Tooltip */
+.avatar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Tooltip on hover */
+.hover-tooltip {
+  position: absolute;
+  bottom: -28px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(5px);
+  transition: all 0.2s ease;
+}
+
+.avatar-wrapper:hover .hover-tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }
