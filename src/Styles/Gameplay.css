@@ -140,6 +140,7 @@
   text-transform: capitalize;
   backdrop-filter: blur(8px);
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .genre-badge-modern:hover {

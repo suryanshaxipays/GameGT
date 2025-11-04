@@ -54,7 +54,7 @@
   .categories-layout {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
     width: 100%;
   }
   
@@ -68,7 +68,7 @@
   .categories-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.8rem;
     flex: 1;
   }
   
@@ -76,7 +76,7 @@
   .categories-row {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.8rem;
   }
   
   @media (min-width: 640px) {
@@ -107,7 +107,7 @@
   }
   
   .categories-card.small {
-    height: 150px;
+    height: 150px
   }
   
   @media (min-width: 640px) {
@@ -165,9 +165,8 @@
 
 /* Hover Effect */
 .categories-card:hover {
-  transform: translateY(-6px);
   border: 1px solid rgba(255, 255, 255, 0.35); /* Slim light border */
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15); /* Light white glow */
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.35);
   filter: brightness(1.15) contrast(1.15) saturate(1.2);
 }
 

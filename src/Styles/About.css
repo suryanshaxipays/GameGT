@@ -118,15 +118,17 @@
   
   .image-side-text {
     font-style: italic;
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1.5rem;
+    line-height: 2;
+    margin-bottom: 2vh;
   }
   
   .image-divider {
-    width: 4rem;
+    width: 10rem;
     height: 2px;
     background-color: white;
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    
   }
   
   /* Image Grid */

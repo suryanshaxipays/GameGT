@@ -82,6 +82,10 @@ const Gameplay = () => {
 
   if (!game) return <p className="no-games">Game not found</p>;
 
+  const handleCategoryClick = (categoryName) => {
+    navigate(`/category/${encodeURIComponent(categoryName)}`);
+  };
+
   return (
     <div
       className={`gameplay-container ${isFullScreen ? "fullscreen-mode" : ""}`}
@@ -130,7 +134,8 @@ const Gameplay = () => {
           <section className="game-description glass-card">
             <div className="game-info-header">
               <h2 className="about-title">About {game.title}</h2>
-              <div className="genre-badge-modern">
+              <div className="genre-badge-modern"
+              onClick={() => handleCategoryClick(game.genre)}>
                 <span>{game.genre}</span>
               </div>
             </div>

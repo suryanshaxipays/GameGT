@@ -15,7 +15,7 @@ const Categories = () => {
     { id: 11, genre: "Racing" },
     { id: 16, genre: "Mahjong" },
     { id: 21, genre: "Mind" },
-    { id: 26, genre: "Classic Games" },
+    { id: 26, genre: "Classic" },
     { id: 6, genre: "Solitaire" },
   ];
 

@@ -3,7 +3,6 @@ import "../../Styles/Community.css";
 import avatar1 from "../../Assets/About/avatar1.png";
 import avatar2 from "../../Assets/About/avatar2.png";
 import avatar3 from "../../Assets/About/avatar3.png";
-import avatar4 from "../../Assets/About/avatar4.png";
 import avatar5 from "../../Assets/About/avatar5.png";
 import avatar6 from "../../Assets/About/avatar6.png";
 import Lock from "../../Assets/About/Lock.png";
@@ -42,7 +41,6 @@ build skills, and push the limits of play. This is where every gamer belongs.
         <img src={avatar1} alt="Avatar 1" className="avatar avatar1" />
         <img src={avatar2} alt="Avatar 2" className="avatar avatar2" />
         <img src={avatar3} alt="Avatar 3" className="avatar avatar3" />
-        <img src={avatar4} alt="Avatar 4" className="avatar avatar4" />
         <img src={avatar5} alt="Avatar 5" className="avatar avatar5" />
         <img src={avatar6} alt="Avatar 6" className="avatar avatar6" />
 
