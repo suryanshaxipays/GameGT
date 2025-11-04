@@ -94,7 +94,7 @@
 
 /* Middle card (featured) slightly taller */
 .game-card-featured {
-  height: 79vh;
+  height: 78vh;
   border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -133,9 +133,11 @@
 
 /* Info section */
 .game-info {
+  display: flex;
+  align-items: center;
   padding: 20px 20px;
   background: rgba(255, 255, 255, 0.03);
-  height: 15%;
+  height: 10vh
 }
 
 .game-name {

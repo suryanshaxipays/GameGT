@@ -147,34 +147,45 @@
   transform: translateY(-2px);
 }
 
-/* ===== GAME STATS LIST ===== */
-.game-stats-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* ===== GAME STATS GRID (2x3 layout) ===== */
+.game-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 20px 30px;
   margin-bottom: 35px;
-  padding: 25px 30px;
+  padding: 25px 30px 25px 100px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   transition: all 0.3s ease;
-}
-
-
-
-.game-stats-list p {
-  font-size: 1rem;
-  color: #d8d8d8;
-  margin: 0;
-  line-height: 1.5;
   text-transform: none;
 }
 
-.game-stats-list strong {
+.stat-item {
+  font-size: 1rem;
+  color: #d8d8d8;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.stat-item strong {
   color: #00c2ff;
   font-weight: 600;
   margin-right: 6px;
-  text-shadow: 0 0 8px rgba(0, 194, 255, 0.4);
+  text-shadow: 0 0 2px rgba(0, 194, 255, 0.4);
+}
+
+/* Responsive grid for mobile */
+@media (max-width: 768px) {
+  .game-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 20px;
+    padding: 20px;
+  }
+  .stat-item {
+    font-size: 0.9rem;
+  }
 }
 
 /* ===== DIVIDER ===== */
@@ -217,7 +228,7 @@
   color: #fff;
   margin-bottom: 22px;
   padding-left: 15px;
-  border-left: 4px solid #00c2ff;
+  border-left: 2px solid #00c2ff;
 }
 
 .mock-section {
@@ -231,7 +242,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 25px 26px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(2px);
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -240,7 +251,7 @@
   transform: translateY(-4px);
   background: rgba(0, 194, 255, 0.05);
   border-color: rgba(0, 194, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.15);
+  box-shadow: 0 0 2px rgba(0, 194, 255, 0.15);
 }
 
 .mock-icon-gif {
@@ -251,7 +262,7 @@
   border-radius: 50%;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.6), transparent 60%);
   mix-blend-mode: lighten;
-  filter: drop-shadow(0 0 12px rgba(0, 194, 255, 0.5)) brightness(1.2);
+  filter: drop-shadow(0 0 1px rgba(0, 194, 255, 0.5)) brightness(1.2);
 }
 
 .mock-card h4 {
@@ -281,7 +292,7 @@
 .section2-header h2 {
   font-size: 1.5rem;
   color: #ffffff;
-  text-shadow: 0 0 15px rgba(0, 194, 255, 0.3);
+  text-shadow: 0 0 5px rgba(0, 194, 255, 0.3);
 }
 
 /* ===== GAME GRID ===== */

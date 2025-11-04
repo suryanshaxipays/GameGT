@@ -179,7 +179,7 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
                   <span className="hover-tooltip">Click to logout</span>
                 </li>
               ) : (
-                <li>
+                <li className="lb"> 
                   <button className="login-btn" onClick={handleLoginClick}>
                     LOGIN
                   </button>

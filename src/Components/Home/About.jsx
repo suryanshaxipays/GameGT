@@ -36,10 +36,10 @@ const About = () => {
         <div className="image-content">
           {/* Left Text Section */}
           <div className="image-side left">
-            <p className="image-side-text">
+            <p className="image-side-text1">
               Exclusive Games. <br />
-              Escort mission. <br />
-              Special categories.
+              Escort Mission. <br />
+              Special Categories.
             </p>
             <div className="image-divider"></div>
             <img src={shooter} alt="Shooter" className="image-box" />
@@ -57,10 +57,10 @@ const About = () => {
           {/* Right Text Section */}
           <div className="image-side right">
             <img src={pubg} alt="PubG" className="image-box" />
-            <p className="image-side-text">
-              Rage <br />
-              Aggression <br />
-              Culture
+            <p className="image-side-text2">
+              Infinite Adventures <br />
+              Play Anywhere <br />
+              Conquer Challenges
             </p>
             <div className="image-divider"></div>
           </div>

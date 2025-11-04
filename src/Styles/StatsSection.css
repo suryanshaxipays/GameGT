@@ -91,13 +91,14 @@
 /* Paragraphs */
 .stat-item2 p {
   font-size: 0.95rem;
-  color: #ffffff;
+  color: #ffffffc5;
   line-height: 1.6;
 }
 
 .stat-item2 p span {
-  color: #6b7cff; /* bluish highlight */
-  font-weight: 600;
+  color: #ffffff; /* bluish highlight */
+  font-weight: 700;
+  font-size: ;
 }
 
 /* -------------------- Bottom Image -------------------- */

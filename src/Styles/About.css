@@ -107,25 +107,38 @@
   }
   
   .image-side.left {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
+    width: 14vw;
+    margin-top: -13vh;
+    margin-right: -1.5vw;
   }
   
   .image-side.right {
-    align-items: flex-end;
-    text-align: right;
+    align-items: center;
+    text-align: center;
+    width: 14vw;
+    margin-bottom: -5vh;
+        margin-left: -1.5vw;
+
   }
   
-  .image-side-text {
+  .image-side-text1 {
     font-style: italic;
-    font-size: 1.5rem;
-    line-height: 2;
-    margin-bottom: 2vh;
+    font-size: 1.4rem;
+    line-height: 2.3;
+
+  }
+
+  .image-side-text2 {
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 2.3;
   }
   
   .image-divider {
-    width: 10rem;
-    height: 2px;
+    width: 12rem;
+    height: 5px;
     background-color: white;
     margin-bottom: 0.5rem;
     
@@ -149,6 +162,7 @@
   .image-box.tall {
     height: 18rem;
     grid-row: span 3;
+  transform: translateY(0.5rem); /* extend above and below grid */
   }
 
   .image-box:hover {

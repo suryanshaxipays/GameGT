@@ -1,0 +1,172 @@
+.tournament-card-container {
+  position: relative;
+  width: fit-content;
+}
+
+/* Diamond with glow */
+.tournament-diamond {
+  position: absolute;
+  top: -8rem;
+  left: 37%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 6rem;
+  z-index: 0;
+  filter: drop-shadow(0 0 2px #ffffff);
+}
+
+/* Main Card */
+.tournament-main {
+  position: relative;
+  width: 480px;
+  height: 200px;
+}
+
+/* Glassmorphism background */
+.tournament-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.tournament-bg-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(17.5px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -16px 16px 34px rgba(0, 0, 0, 0.25);
+  clip-path: polygon(0 7%, 66% 7%, 66% 62%, 27% 62%, 27% 93%, 0 93%);
+}
+
+/* Content container */
+.tournament-content {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+/* Left: Date and time */
+.tournament-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 9rem;
+  padding-right: 1rem;
+}
+
+.tournament-date {
+  text-align: center;
+}
+
+.tournament-date .month {
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.tournament-date .day {
+  color: white;
+  font-size: 55px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.tournament-date .time {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* Center: Thumbnail */
+.tournament-center {
+  position: absolute;
+  top: 1.75rem;
+  left: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail {
+  position: relative;
+  width: 158px;
+  height: 85px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  background-color: #1e293b;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-button {
+  width: 2rem;
+  height: 2rem;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.play-button:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Right: Join button */
+.tournament-right {
+  position: absolute;
+  top: 8.5rem;
+  left: 8.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.join-btn {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  clip-path: polygon(0 0, 88% 0, 100% 50%, 100% 100%, 0 100%);
+}
+
+.join-btn:hover {
+  transform: scale(1.02);
+}
+
+.join-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 216px;
+  height: 40px;
+  background: white;
+  padding: 0 20px;
+}
+
+.join-content span {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.join-content .arrow {
+  z-index: 10;
+}

@@ -1,5 +1,6 @@
 import "../../Styles/Hero.css";
 import HeroImage from "../../Assets/bboy.png";
+import TC from "../TournamentCard"
 
 const Hero = () => {
   return (
@@ -11,6 +12,9 @@ const Hero = () => {
           From casual fun to competitive battles, discover games for every
           age, every mood, and every level.
         </p>
+        <div className="Card">
+          <TC/>
+        </div>
       </div>
 
       {/* Right Image */}

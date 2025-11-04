@@ -238,6 +238,7 @@ export const games = [
   },
 
   // --- Action Games ---
+  
   {
     id: 11,
     title: "Red and Green 2",
@@ -2262,7 +2263,7 @@ export const games = [
   {
     id: 99,
     title: "Maya Golf 2",
-    genre: "Golf",
+    genre: "Sports",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/mayagolf2800450.webp",
     youtubePreview:
@@ -2423,7 +2424,7 @@ export const games = [
   {
     id: 106,
     title: "Maya Golf",
-    genre: "Golf",
+    genre: "Sports",
     thumbnail:
       "https://www.htmlgames.com/uploaded/game/thumb800/mayagolf800450.webp",
     youtubePreview:

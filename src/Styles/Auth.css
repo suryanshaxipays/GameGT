@@ -6,6 +6,16 @@
   justify-content: center;
   font-family: "Poppins", "Segoe UI", sans-serif;
   padding: 20px;
+
+  /* Reset any global cursor styling */
+  cursor: default !important;
+}
+
+.auth-container *,
+.auth-container *::before,
+.auth-container *::after {
+  /* Ensure all elements inside use normal cursor */
+  cursor: default !important;
 }
 
 /* Overlay styles for full-screen modal behavior */
@@ -25,7 +35,7 @@
   border-radius: 20px;
   padding: 40px 30px;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   text-align: center;
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
   animation: fadeIn 0.5s ease-in-out;
@@ -38,10 +48,10 @@
   margin-bottom: 8px;
 }
 
-.subtitle {
+.subtitle2 {
   color: #aaa;
   font-size: 0.95rem;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .input-group {
@@ -109,31 +119,6 @@
 
 .auth-divider::after {
   right: 0;
-}
-
-.google-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.google-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.google-btn img {
-  width: 20px;
-  height: 20px;
 }
 
 .auth-switch {
@@ -216,3 +201,4 @@
     transform: translateY(-15px);
   }
 }
+ 

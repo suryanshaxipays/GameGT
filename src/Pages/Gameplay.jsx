@@ -140,30 +140,28 @@ const Gameplay = () => {
               </div>
             </div>
 
-            {/* Game Stats - Text Format */}
-            <div className="game-stats-list">
-              <p>
-                <strong>Publisher:</strong> {game.publisher}
-              </p>
-              <p>
-                <strong>Platform:</strong> {game.platform}
-              </p>
-              <p>
-                <strong>Players:</strong> {game.players}
-              </p>
-              <p>
-                <strong>Online:</strong> {game.isOnline ? "Yes" : "No"}
-              </p>
-              <p>
-                <strong>Rating:</strong> {game.rating}
-              </p>
-              <p>
-                <strong>Release Year:</strong> {game.year}
-              </p>
-              <p>
-                <strong>Genre:</strong> {game.genre}
-              </p>
-            </div>
+            {/* Game Stats - 2x3 Grid Format */}
+<div className="game-stats-grid">
+  <div className="stat-item">
+    <strong>Platform:</strong> {game.platform}
+  </div>
+  <div className="stat-item">
+    <strong>Players:</strong> {game.players}
+  </div>
+  <div className="stat-item">
+    <strong>Online:</strong> {game.isOnline ? "Yes" : "No"}
+  </div>
+  <div className="stat-item">
+    <strong>Rating:</strong> {game.rating}
+  </div>
+  <div className="stat-item">
+    <strong>Release Year:</strong> {game.year}
+  </div>
+  <div className="stat-item">
+    <strong>Genre:</strong> {game.genre}
+  </div>
+</div>
+
 
             {/* Description */}
             <div className="section-divider"></div>

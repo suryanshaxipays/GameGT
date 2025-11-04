@@ -14,8 +14,6 @@
   cursor: none; /* Hide default cursor */
 }
 
-
-
 /* Left Text */
 .hero-left {
   max-width: 700px;
@@ -32,7 +30,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   line-height: 1.2;
-  background: linear-gradient(98deg, #FFF 0.2%, #6375F1 50.7%, #FFF 93.98%);
+  background: linear-gradient(98deg, #fff 0.2%, #6375f1 50.7%, #fff 93.98%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
@@ -41,7 +39,7 @@
 }
 
 .hero-left p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #e0ffff;
   line-height: 1.6;
   filter: brightness(1.15);
@@ -98,8 +96,8 @@
 
   .hero-left {
     text-align: left;
-    margin-bottom: 0;
-    width: 50%;
+    margin-top: 15vh;
+    width: 46%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,18 +105,18 @@
   }
 
   .hero-left h1 {
-    font-size: 3.75rem;
+    font-size: 3.55rem;
   }
 
   .hero-left p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #e0ffff;
   }
 
   .hero-right {
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: -2vw;
     width: 50%;
     justify-content: flex-end;
   }
@@ -126,5 +124,15 @@
   .hero-image {
     max-width: 76%;
     margin-bottom: 0;
+  }
+}
+
+.Card {
+  margin-top: 17vh;
+}
+
+@media (max-width: 1024px) {
+  .Card {
+    display: none;
   }
 }
