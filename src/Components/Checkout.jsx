@@ -57,8 +57,8 @@ const Checkout = () => {
       setTimeout(() => {
         if (gameId) navigate(`/gameplay/${gameId}`);
         else navigate("/");
-      }, 1500);
-    }, 2000);
+      }, 2500);
+    }, 3000);
   };
 
   return (
@@ -156,8 +156,8 @@ const Checkout = () => {
             </button>
           </form>
 
-          <div className="back-link" onClick={() => navigate(-2)}>
-            ← Back to Home
+          <div className="back-link" onClick={() => navigate(-1)}>
+            ← Go Back
           </div>
         </div>
 

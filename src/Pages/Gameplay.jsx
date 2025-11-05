@@ -105,9 +105,11 @@ const Gameplay = () => {
             frameBorder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowFullScreen
+            className="game-frame3"
           ></iframe>
 
-          {isFullScreen && (
+          <div className="extbtn">
+            {isFullScreen && (
             <img
               src={ExitFullscreenIcon}
               alt="Exit Fullscreen"
@@ -115,6 +117,7 @@ const Gameplay = () => {
               onClick={() => setIsFullScreen(false)}
             />
           )}
+          </div>
         </div>
 
         {/* FULLSCREEN BUTTON BELOW FRAME */}
@@ -226,7 +229,8 @@ const Gameplay = () => {
           </section>
         )}
 
-        {/* RELATED GAMES */}
+        <div className="more-game1">
+          {/* RELATED GAMES */}
         {!isFullScreen && genreGames.length > 0 && (
           <section className="related-section">
             <div className="section2-header">
@@ -246,6 +250,8 @@ const Gameplay = () => {
           </section>
         )}
 
+        </div>
+        <div className="more-game1">
         {/* FEATURED GAMES */}
         {!isFullScreen && (
           <section className="related-section">
@@ -265,6 +271,7 @@ const Gameplay = () => {
             </div>
           </section>
         )}
+        </div>
       </main>
       <Footer2 />
     </div>

@@ -15,8 +15,6 @@
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-
-
 /* ===== TITLE ===== */
 .gameplay-title {
   font-size: 2.6rem;
@@ -95,7 +93,11 @@
 
 /* ===== GLASS CARD ===== */
 .glass-card {
-  background: linear-gradient(145deg, rgba(15, 15, 25, 0.8), rgba(10, 10, 20, 0.7));
+  background: linear-gradient(
+    145deg,
+    rgba(15, 15, 25, 0.8),
+    rgba(10, 10, 20, 0.7)
+  );
   border: 1px solid rgba(0, 194, 255, 0.1);
   border-radius: 20px;
   padding: 40px 45px;
@@ -104,8 +106,6 @@
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
   transition: box-shadow 0.3s ease;
 }
-
-
 
 /* ===== GAME INFO HEADER ===== */
 .game-info-header {
@@ -132,7 +132,11 @@
   margin-top: 3vh;
   padding: 10px 22px;
   border-radius: 25px;
-  background: linear-gradient(135deg, rgba(105, 25, 200, 0.25), rgba(0, 194, 255, 0.25));
+  background: linear-gradient(
+    135deg,
+    rgba(105, 25, 200, 0.25),
+    rgba(0, 194, 255, 0.25)
+  );
   border: 1px solid rgba(0, 194, 255, 0.3);
   color: #00c2ff;
   font-weight: 600;
@@ -186,12 +190,20 @@
   .stat-item {
     font-size: 0.9rem;
   }
+  .about-title {
+    font-size: 1.5rem;
+  }
 }
 
 /* ===== DIVIDER ===== */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.3), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 194, 255, 0.3),
+    transparent
+  );
   margin: 40px 0;
 }
 
@@ -284,7 +296,7 @@
 
 .section2-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 25px;
 }
@@ -310,20 +322,19 @@
   transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .main2-content {
     padding: 20px 25px;
   }
-  
+
   .gameplay-title {
     font-size: 1.8rem;
   }
   .gameplay-frame {
     height: 320px;
   }
+
   .glass-card {
     padding: 25px;
   }
@@ -333,4 +344,32 @@
   .game-description-text {
     font-size: 0.9rem;
   }
+  .more-game1 {
+    display: flex;
+    justify-content: center;
+  }
 }
+
+/* Hide Navbar & Footer in fullscreen mode */
+.fullscreen-mode .navbar,
+.fullscreen-mode footer,
+.fullscreen-mode .footer,
+.fullscreen-mode .Footer2 {
+  display: none !important;
+}
+
+.fullscreen-mode .gameplay-frame iframe{
+  padding-top: 40px;
+}
+
+.fullscreen-mode .gameplay-frame{
+  height: 100vh;
+}
+
+/* Ensure main content covers entire viewport */
+.fullscreen-mode {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+

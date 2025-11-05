@@ -50,7 +50,7 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
       localStorage.removeItem("postAuthRedirect");
       onLoginSuccess && onLoginSuccess();
       onClose();
-    }, 800);
+    },3000);
   };
 
   // ---------------- LOGIN ----------------
