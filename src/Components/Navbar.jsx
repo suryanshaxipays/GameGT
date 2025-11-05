@@ -5,7 +5,6 @@ import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
 import { games } from "../data/games";
 import LoginPopup from "./LoginPopup";
-import Signup from "../Pages/Signup";
 import AvatarIcon from "../Assets/About/avatar1.png";
 
 const Navbar = ({ onToggleSidebar = () => {} }) => {
@@ -17,7 +16,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -53,10 +51,7 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     setShowLogin(true);
   };
 
-  const handleSignupClick = () => {
-    setIsOpen(false);
-    setShowSignup(true);
-  };
+  
 
   const handleCloseLogin = () => {
     setShowLogin(false);
@@ -64,7 +59,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     if (storedUser?.loggedIn) setUser(storedUser);
   };
 
-  const handleCloseSignup = () => setShowSignup(false);
 
   const handleLogout = () => {
     localStorage.removeItem("userAuth");
@@ -195,12 +189,7 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
             onLoginSuccess={handleCloseLogin}
           />
         )}
-        {showSignup && (
-          <Signup
-            onClose={handleCloseSignup}
-            onSwitchToLogin={handleLoginClick}
-          />
-        )}
+        
       </>
     );
   }
@@ -264,12 +253,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
         <LoginPopup
           onClose={handleCloseLogin}
           onLoginSuccess={handleCloseLogin}
-        />
-      )}
-      {showSignup && (
-        <Signup
-          onClose={handleCloseSignup}
-          onSwitchToLogin={handleLoginClick}
         />
       )}
     </>
