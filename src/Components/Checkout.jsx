@@ -25,7 +25,9 @@ const Checkout = () => {
   const location = useLocation();
   const params = useParams();
   const paramId = params?.id ? parseInt(params.id, 10) : null;
-  const stateId = location?.state?.game?.id ? parseInt(location.state.game.id, 10) : null;
+  const stateId = location?.state?.game?.id
+    ? parseInt(location.state.game.id, 10)
+    : null;
   const gameId = paramId || stateId || null;
 
   useEffect(() => {
@@ -48,45 +50,45 @@ const Checkout = () => {
 
   // ===== Input Change Handler with auto-format for expiry =====
   const handleChange = (e) => {
-  const { name, value } = e.target;
+    const { name, value } = e.target;
 
-  if (name === "expiry") {
-    // Keep only digits
-    let digits = value.replace(/\D/g, "");
+    if (name === "expiry") {
+      // Keep only digits
+      let digits = value.replace(/\D/g, "");
 
-    // Limit to 4 digits total (MMYY)
-    if (digits.length > 4) digits = digits.slice(0, 4);
+      // Limit to 4 digits total (MMYY)
+      if (digits.length > 4) digits = digits.slice(0, 4);
 
-    // Auto-insert slash after 2 digits
-    let formatted = digits;
-    if (digits.length >= 3) formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
-    else if (digits.length > 2) formatted = digits.slice(0, 2);
+      // Auto-insert slash after 2 digits
+      let formatted = digits;
+      if (digits.length >= 3)
+        formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+      else if (digits.length > 2) formatted = digits.slice(0, 2);
 
-    // Ensure slash always stays after MM
-    if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
+      // Ensure slash always stays after MM
+      if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
 
-    setFormData((prev) => ({ ...prev, expiry: formatted }));
-    return;
-  }
+      setFormData((prev) => ({ ...prev, expiry: formatted }));
+      return;
+    }
 
-  if (name === "cardNumber") {
-    const cleaned = value.replace(/\D/g, "").slice(0, 16);
-    setFormData((prev) => ({ ...prev, cardNumber: cleaned }));
-    return;
-  }
+    if (name === "cardNumber") {
+      const cleaned = value.replace(/\D/g, "").slice(0, 16);
+      setFormData((prev) => ({ ...prev, cardNumber: cleaned }));
+      return;
+    }
 
-  if (name === "cvv") {
-    const cleaned = value.replace(/\D/g, "").slice(0, 4);
-    setFormData((prev) => ({ ...prev, cvv: cleaned }));
-    return;
-  }
+    if (name === "cvv") {
+      const cleaned = value.replace(/\D/g, "").slice(0, 4);
+      setFormData((prev) => ({ ...prev, cvv: cleaned }));
+      return;
+    }
 
-  setFormData((prev) => ({
-    ...prev,
-    [name]: value,
-  }));
-};
-
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   // ===== Validation before payment =====
   const validateForm = () => {
@@ -154,7 +156,11 @@ const Checkout = () => {
   return (
     <div className="checkout-wrapper">
       <div className="checkout-image-section">
-        <img src={SideImage} alt="Checkout Visual" className="checkout-side-image" />
+        <img
+          src={SideImage}
+          alt="Checkout Visual"
+          className="checkout-side-image"
+        />
       </div>
 
       <div className="checkout-content">
@@ -165,26 +171,27 @@ const Checkout = () => {
           <div className="subscription-box">
             <h3>One-Time Subscription</h3>
             <p
-  className="subscription-price"
-  contentEditable={!processing}
-  suppressContentEditableWarning={true}
-  onInput={(e) => {
-    let val = e.target.innerText.replace(/[^0-9.]/g, "");
-    if (val === "") val = "0"; // prevent blank value from breaking
-    setPrice(val);
-  }}
-  onBlur={(e) => {
-    // Reformat neatly when user stops editing
-    const num = parseFloat(price);
-    e.target.innerText = `$${isNaN(num) ? 0 : num.toFixed(2)} USD`;
-  }}
-  onFocus={(e) => {
-    // Show only raw number while editing
-    e.target.innerText = price;
-  }}
->
-  ${price}.00 USD
-</p>
+              className="subscription-price"
+              contentEditable={!processing}
+              suppressContentEditableWarning={true}
+              onInput={(e) => {
+                let val = e.target.innerText.replace(/[^0-9.]/g, "");
+                if (val === "") val = "0";
+                if (val >100000) val = "100000"; // prevent blank value from breaking
+                setPrice(val);
+              }}
+              onBlur={(e) => {
+                // Reformat neatly when user stops editing
+                const num = parseFloat(price);
+                e.target.innerText = `$${isNaN(num) ? 0 : num.toFixed(2)} USD`;
+              }}
+              onFocus={(e) => {
+                // Show only raw number while editing
+                e.target.innerText = price;
+              }}
+            >
+              ${price}.00 USD
+            </p>
 
             <p className="subscription-note">
               Lifetime access to all premium content.
@@ -231,46 +238,54 @@ const Checkout = () => {
               />
             </div>
 
-            <div className="checkout-row" style={{ display: "flex", gap: "0.6rem" }}>
-  <input
-    type="text"
-    name="expiry"
-    placeholder="MM/YY"
-    value={formData.expiry}
-    onChange={handleChange}
-    disabled={processing}
-    style={{ flex: "0 0 40%" }} // expiry narrower
-  />
+            <div
+              className="checkout-row"
+              style={{ display: "flex", gap: "0.6rem" }}
+            >
+              <input
+                type="text"
+                name="expiry"
+                placeholder="MM/YY"
+                value={formData.expiry}
+                onChange={handleChange}
+                disabled={processing}
+                style={{ flex: "0 0 40%" }} // expiry narrower
+              />
 
-  <div style={{ position: "relative", flex: "0 0 60%" }}> {/* cvv wider */}
-    <input
-      type={showCVV ? "text" : "password"}
-      name="cvv"
-      placeholder="CVV"
-      value={formData.cvv}
-      onChange={handleChange}
-      disabled={processing}
-      style={{ width: "100%", paddingRight: "35px" }}
-    />
-    <img
-      src={showCVV ? hideIcon : viewIcon}
-      alt="toggle"
-      style={{
-        position: "absolute",
-        right: "10px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        width: "20px",
-        height: "20px",
-        cursor: "pointer",
-      }}
-      onClick={() => setShowCVV(!showCVV)}
-    />
-  </div>
-</div>
+              <div style={{ position: "relative", flex: "0 0 57%" }}>
+                {" "}
+                {/* cvv wider */}
+                <input
+                  type={showCVV ? "text" : "password"}
+                  name="cvv"
+                  placeholder="CVV"
+                  value={formData.cvv}
+                  onChange={handleChange}
+                  disabled={processing}
+                  style={{ width: "100%", paddingRight: "35px" }}
+                />
+                <img
+                  src={showCVV ? hideIcon : viewIcon}
+                  alt="toggle"
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "20px",
+                    height: "20px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setShowCVV(!showCVV)}
+                />
+              </div>
+            </div>
 
-
-            <button type="submit" className="checkout-btn" disabled={processing}>
+            <button
+              type="submit"
+              className="checkout-btn"
+              disabled={processing}
+            >
               {processing ? "Processing..." : `Pay $${price}.00`}
             </button>
           </form>
@@ -281,7 +296,9 @@ const Checkout = () => {
         </div>
 
         {showSuccess && (
-          <div className="success-box">✅ Payment Successful! Redirecting...</div>
+          <div className="success-box">
+            Payment Successful! Redirecting...
+          </div>
         )}
       </div>
     </div>

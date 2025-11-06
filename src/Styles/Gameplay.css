@@ -128,28 +128,7 @@
   margin-top: 3vh;
 }
 
-.genre-badge-modern {
-  margin-top: 3vh;
-  padding: 10px 22px;
-  border-radius: 25px;
-  background: linear-gradient(
-    135deg,
-    rgba(105, 25, 200, 0.25),
-    rgba(0, 194, 255, 0.25)
-  );
-  border: 1px solid rgba(0, 194, 255, 0.3);
-  color: #00c2ff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-transform: capitalize;
-  backdrop-filter: blur(8px);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
 
-.genre-badge-modern:hover {
-  transform: translateY(-2px);
-}
 
 /* ===== GAME STATS GRID (2x3 layout) ===== */
 .game-stats-grid {

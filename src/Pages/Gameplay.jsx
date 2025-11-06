@@ -82,9 +82,7 @@ const Gameplay = () => {
 
   if (!game) return <p className="no-games">Game not found</p>;
 
-  const handleCategoryClick = (categoryName) => {
-    navigate(`/category/${encodeURIComponent(categoryName)}`);
-  };
+ 
 
   return (
     <div
@@ -137,10 +135,6 @@ const Gameplay = () => {
           <section className="game-description glass-card">
             <div className="game-info-header">
               <h2 className="about-title">About {game.title}</h2>
-              <div className="genre-badge-modern"
-              onClick={() => handleCategoryClick(game.genre)}>
-                <span>{game.genre}</span>
-              </div>
             </div>
 
             {/* Game Stats - 2x3 Grid Format */}

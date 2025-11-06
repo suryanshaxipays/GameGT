@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Footer.css";
 
 // --- Images ---
@@ -8,10 +8,13 @@ import instagramIcon from "../Assets/instagram.png";
 import githubIcon from "../Assets/github.png";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const socialLinks = [
-    { src: twitterIcon, alt: "Twitter", href: "https://twitter.com", external: true },
-    { src: Facebook, alt: "Facebook", href: "https://facebook.com", external: true },
-    { src: instagramIcon, alt: "Instagram", href: "https://instagram.com", external: true },
+    { src: twitterIcon, alt: "Twitter", href: "https://twitter.com" },
+    { src: Facebook, alt: "Facebook", href: "https://facebook.com" },
+    { src: instagramIcon, alt: "Instagram", href: "https://instagram.com" },
   ];
 
   const footerLinks = {
@@ -21,22 +24,37 @@ const Footer = () => {
       { name: "Games", type: "route", target: "/gameview" },
       { name: "Featured Games", type: "section", target: "features" },
       { name: "FAQ", type: "section", target: "faq" },
-
     ],
     Categories: [
       { name: "Action", type: "route", target: "/category/Action" },
       { name: "Classic", type: "route", target: "/category/Classic" },
-      { name: "Hidden Objects", type: "route", target: "/category/Hidden Objects" },
+      { name: "Hidden", type: "route", target: "/category/Hidden Objects" },
       { name: "Mahjong", type: "route", target: "/category/Mahjong" },
       { name: "Match 3", type: "route", target: "/category/Match 3" },
       { name: "Mind", type: "route", target: "/category/Mind" },
       { name: "Solitaire", type: "route", target: "/category/Solitaire" },
+      { name: "Skill", type: "route", target: "/category/Skill" },
+      { name: "Sports", type: "route", target: "/category/Sports" },
+      { name: "Golf", type: "route", target: "/category/Golf" },
     ],
   };
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+  // Handle navigation & scroll
+  const handleLinkClick = (link) => {
+    if (link.type === "route") {
+      navigate(link.target);
+    } else if (link.type === "section") {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const section = document.getElementById(link.target);
+          if (section) section.scrollIntoView({ behavior: "smooth" });
+        }, 400);
+      } else {
+        const section = document.getElementById(link.target);
+        if (section) section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -44,19 +62,18 @@ const Footer = () => {
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-grid">
-            
             {/* Left Section */}
             <div className="footer-left">
-              {/* --- Company Info --- */}
               <div className="footer-company">
                 <h2 className="company-name">Game Tourer</h2>
                 <p className="company-description">
-                  Game Tourer is your go-to hub for exciting online games — from action to
-                  puzzle, classic to mind-bending challenges. Play instantly, no downloads required!
+                  Game Tourer is your go-to hub for exciting online games — from
+                  action to puzzle, classic to mind-bending challenges. Play
+                  instantly, no downloads required!
                 </p>
+                <br></br>
               </div>
 
-              {/* --- Social Icons --- */}
               <div className="footer-social">
                 {socialLinks.map((social, index) => (
                   <a
@@ -76,42 +93,26 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Spacer */}
             <div className="footer-spacer"></div>
 
-            {/* Right Section - Links */}
+            {/* Right Section */}
             <div className="footer-links">
-              {Object.entries(footerLinks).map(([title, links]) => (
+              {Object.entries(footerLinks).map(([title, links], colIndex) => (
                 <div key={title} className="footer-column">
                   <h3 className="footer-heading">{title}</h3>
-                  <ul className="footer-list">
+                  <ul
+                    className={`footer-list ${
+                      title === "Categories" ? "categories-grid" : ""
+                    }`}
+                  >
                     {links.map((link) => (
                       <li key={link.name}>
-                        {link.type === "route" ? (
-                          <Link to={link.target} className="footer-link">
-                            {link.name}
-                          </Link>
-                        ) : link.type === "section" ? (
-                          <a
-                            href={`#${link.target}`}
-                            className="footer-link"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              scrollToSection(link.target);
-                            }}
-                          >
-                            {link.name}
-                          </a>
-                        ) : (
-                          <a
-                            href={link.target}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="footer-link"
-                          >
-                            {link.name}
-                          </a>
-                        )}
+                        <button
+                          className="footer-link"
+                          onClick={() => handleLinkClick(link)}
+                        >
+                          {link.name}
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -121,7 +122,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="footer-bottom">
           <p>&copy; Copyright 2025. All Rights Reserved by Game Tourer</p>
         </div>

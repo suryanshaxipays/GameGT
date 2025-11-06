@@ -1,7 +1,7 @@
 /* -------------------- Footer Wrapper -------------------- */
 .footer-wrapper {
   position: relative;
-    background: linear-gradient(to right, #24105c, #084e64);
+  background: linear-gradient(to right, #24105c, #084e64);
   color: white;
   overflow: hidden;
   margin-top: 10vh;
@@ -17,7 +17,7 @@
 .footer-container {
   max-width: 90rem;
   margin: 0 auto;
-  padding: 5rem 1.5rem 3rem;
+  padding: 3rem 1.5rem 3rem;
 }
 
 /* -------------------- Grid Layout -------------------- */
@@ -35,7 +35,7 @@
 
 /* -------------------- Left Section -------------------- */
 .footer-left {
-  grid-column: span 5;
+  grid-column: span 6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -44,7 +44,7 @@
 
 /* -------------------- Company Info -------------------- */
 .footer-company {
-  max-width: 28rem;
+  max-width: 42rem;
 }
 
 .company-name {
@@ -56,6 +56,7 @@
 }
 
 .company-description {
+  padding-top: 5vh;
   font-size: 1rem;
   color: #eaf6ff;
   line-height: 1.6;
@@ -67,6 +68,7 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  padding-top: 5vh;
 }
 
 .footer-social-link {
@@ -97,7 +99,7 @@
 @media (min-width: 1024px) {
   .footer-spacer {
     display: block;
-    grid-column: span 2;
+    grid-column: span 1;
   }
 }
 
@@ -107,8 +109,11 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
 }
 
+/* Each column (Company / Categories) */
 .footer-column {
   display: flex;
   flex-direction: column;
@@ -123,6 +128,7 @@
   font-size: 1.1rem;
 }
 
+/* -------------------- Link Styles -------------------- */
 .footer-list {
   list-style: none;
   padding: 0;
@@ -134,30 +140,27 @@
 }
 
 .footer-link {
+  background: transparent;
+  border: none;
   color: #eaf6ff;
   text-decoration: none;
+  cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.95rem;
   position: relative;
 }
 
-.footer-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 1px;
-  background: white;
-  transition: width 0.3s ease;
-}
-
 .footer-link:hover {
   color: #ffffff;
+  transform: translateX(3px);
 }
 
-.footer-link:hover::after {
-  width: 100%;
+/* -------------------- Categories Grid (2 cols × 5 rows) -------------------- */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  margin-bottom: 0.75rem;
 }
 
 /* -------------------- Bottom Copyright -------------------- */
@@ -191,8 +194,13 @@
   }
 
   .footer-links {
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
   }
 
   .footer-heading {
