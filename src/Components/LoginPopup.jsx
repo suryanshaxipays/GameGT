@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { games } from "../data/games";
 import "../Styles/Auth.css";
+import viewIcon from "../Assets/view.png";
+import hideIcon from "../Assets/hide.png";
 
 const LoginPopup = ({ onClose, onLoginSuccess }) => {
   const navigate = useNavigate();
@@ -16,6 +18,10 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
   const [lastName, setLastName] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [activeTab, setActiveTab] = useState("login"); // 'login' | 'signup'
+const [showPassword, setShowPassword] = useState(false);
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+
 
   // Save current location for post-login redirect
   useEffect(() => {
@@ -138,16 +144,29 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
                 />
               </div>
 
-              <div className="input-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="1234"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
+              <div className="input-group password-field">
+  <label>Password</label>
+  <div className="password-wrapper">
+    <input
+      type={showPassword ? "text" : "password"}
+      placeholder="1234"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+    <button
+      type="button"
+      className="eye-btn"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      <img
+        src={showPassword ? hideIcon : viewIcon}
+        alt="toggle password visibility"
+      />
+    </button>
+  </div>
+</div>
+
 
               <button type="submit" className="auth-btn">Login</button>
             </form>
@@ -187,27 +206,53 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
                 />
               </div>
 
-              <div className="input-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="Create a password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
+              <div className="input-group password-field">
+  <label>Password</label>
+  <div className="password-wrapper">
+    <input
+      type={showPassword ? "text" : "password"}
+      placeholder="Create a password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+    <button
+      type="button"
+      className="eye-btn"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      <img
+        src={showPassword ? hideIcon : viewIcon}
+        alt="toggle password visibility"
+      />
+    </button>
+  </div>
+</div>
 
-              <div className="input-group">
-                <label>Confirm Password</label>
-                <input
-                  type="password"
-                  placeholder="Re-enter your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
+
+              <div className="input-group password-field">
+  <label>Confirm Password</label>
+  <div className="password-wrapper">
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      placeholder="Re-enter your password"
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+      required
+    />
+    <button
+      type="button"
+      className="eye-btn"
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    >
+      <img
+        src={showConfirmPassword ? hideIcon : viewIcon}
+        alt="toggle confirm password visibility"
+      />
+    </button>
+  </div>
+</div>
+
 
               <button type="submit" className="auth-btn">Sign Up</button>
             </form>
