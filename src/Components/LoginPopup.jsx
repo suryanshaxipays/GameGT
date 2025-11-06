@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { games } from "../data/games";
-import "../Styles/Auth.css";
+import "../Styles/LoginPopup.css";
 import viewIcon from "../Assets/view.png";
 import hideIcon from "../Assets/hide.png";
 

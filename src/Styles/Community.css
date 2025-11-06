@@ -8,7 +8,7 @@
     justify-content: center;
     padding: 0rem 1.5rem;
     overflow: hidden;
-            margin-top: 110px;
+            margin-top: 150px;
   margin-bottom: 0;
 
   }
@@ -16,6 +16,7 @@
   @media (min-width: 768px) {
     .community-section {
       padding: 2rem 4rem;
+                  margin-top: 110px;
 
     }
   }
@@ -75,17 +76,17 @@
   
   .ring-1 {
     width: 90%;
-    height: 90%;
+    height: 80%;
   }
   
   .ring-2 {
     width: 70%;
-    height: 70%;
+    height: 60%;
   }
   
   .ring-3 {
     width: 50%;
-    height: 50%;
+    height: 40%;
   }
   
   /* ---------- Center Button ---------- */
@@ -176,7 +177,7 @@
   
   /* ---------- CTA Section ---------- */
   .community-cta {
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 100%;
     max-width: 80rem;
     border-radius: 1.5rem;

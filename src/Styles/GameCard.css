@@ -90,12 +90,19 @@
   position: absolute;
   top: 9px;
   right: 8px;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   object-fit: contain;
-  z-index: 3;
+  z-index: 4;
   transition: transform 0.3s ease;
+
+  /* Added visibility enhancements */
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.65) 40%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
 }
+
 
 .gamecard:hover .vip-badge {
 display: none;}
