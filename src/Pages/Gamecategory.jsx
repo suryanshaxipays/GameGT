@@ -42,47 +42,33 @@ const categoryImages = {
 };
 
 const CategoryBanner = ({ categoryName }) => {
-  const [loadedKeys, setLoadedKeys] = useState({});
   const key = categoryName?.toLowerCase();
   const src = categoryImages[key];
-  const [visibleKey, setVisibleKey] = useState(key);
 
-  // preload each image individually once
+  // 🔥 Preload all images once at startup
   useEffect(() => {
-    if (!src) return;
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setLoadedKeys((prev) => ({ ...prev, [key]: true }));
-    };
-  }, [key, src]);
+    Object.values(categoryImages).forEach((img) => {
+      const image = new Image();
+      image.src = img;
+    });
+  }, []);
 
-  // instantly update visible banner when category changes
-  useEffect(() => {
-    if (src) {
-      setVisibleKey(key); // immediate swap, no delay
-    }
-  }, [key, src]);
-
-  const isLoaded = loadedKeys[visibleKey];
-
+  // 🟢 Instantly show correct image without waiting for onload
   return (
     <div className="hero2-banner3">
-      {/* fallback bg only if image hasn't loaded yet */}
-      {!isLoaded && <div className="hero2-bg-fallback" />}
-
-      {src && (
+      {src ? (
         <img
-          key={visibleKey} // forces instant re-render on category switch
+          key={key}
           src={src}
           alt={categoryName}
-          className={`hero2-bg3 ${isLoaded ? "visible" : "hidden"}`}
+          className="hero2-bg3 visible"
           loading="eager"
-          decoding="async"
+          decoding="sync"
         />
+      ) : (
+        <div className="hero2-fallback-fast">{categoryName}</div>
       )}
 
-      {/* keep your overlay text and layout as before */}
       <div className="hero2-overlay">
         <h1>{categoryName}</h1>
         <p>Enjoy the best {categoryName} games</p>
@@ -90,6 +76,7 @@ const CategoryBanner = ({ categoryName }) => {
     </div>
   );
 };
+
 
 
 

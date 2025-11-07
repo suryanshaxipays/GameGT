@@ -5,7 +5,7 @@ import logo from "../Assets/logo.ico";
 import SearchIcon from "../Assets/Gameview/search.png";
 import { games } from "../data/games";
 import LoginPopup from "./LoginPopup";
-import AvatarIcon from "../Assets/About/avatar1.png";
+import AvatarIcon from "../Assets/user.png";
 
 const Navbar = ({ onToggleSidebar = () => {} }) => {
   const location = useLocation();
@@ -17,6 +17,7 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [user, setUser] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false); // 👈 added for dropdown toggle
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("userAuth"));
@@ -51,14 +52,11 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     setShowLogin(true);
   };
 
-  
-
   const handleCloseLogin = () => {
     setShowLogin(false);
     const storedUser = JSON.parse(localStorage.getItem("userAuth"));
     if (storedUser?.loggedIn) setUser(storedUser);
   };
-
 
   const handleLogout = () => {
     localStorage.removeItem("userAuth");
@@ -66,6 +64,11 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     localStorage.removeItem("userEmail");
     localStorage.removeItem("hasPaidAccess");
     setUser(null);
+    setShowDropdown(false);
+  };
+
+  const handleAvatarClick = () => {
+    setShowDropdown(!showDropdown); // 👈 toggles dropdown
   };
 
   const handleSearch = (e) => {
@@ -112,6 +115,20 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     }
     navigate(`/gameplay/${id}`);
   };
+
+  // Dummy credits (replace with actual logic if stored elsewhere)
+  const credits = user?.credits || 120;
+
+  const renderAvatarDropdown = () => (
+    <div className="user-dropdown">
+      <div className="user-email">{user?.email || "user@example.com"}</div>
+      <div className="user-email">Credits: {credits}</div>
+      <hr />
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+    </div>
+  );
 
   if (isHomePage) {
     return (
@@ -167,13 +184,33 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
                     src={AvatarIcon}
                     alt="User"
                     className="user-avatar"
-                    title="Click to logout"
-                    onClick={handleLogout}
+                    onClick={handleAvatarClick}
                   />
-                  <span className="hover-tooltip">Click to logout</span>
+                  {showDropdown && (
+  <div className="user-dropdown">
+    <div className="dropdown-item">
+      <img src={AvatarIcon} alt="profile" className="dropdown-icon" />
+      <div className="dropdown-text">
+        <span className="detail-value">{user?.email || "Guest"}</span>
+      </div>
+    </div>
+
+    <div className="dropdown-item">
+      <img src={require("../Assets/bag.png")} alt="bag" className="dropdown-icon" />
+      <div className="dropdown-text">
+        <span className="detail-value">{credits}</span>
+      </div>
+    </div>
+
+    <button className="logout-btn" onClick={handleLogout}>
+      Logout
+    </button>
+  </div>
+)}
+
                 </li>
               ) : (
-                <li className="lb"> 
+                <li className="lb">
                   <button className="login-btn" onClick={handleLoginClick}>
                     LOGIN
                   </button>
@@ -189,7 +226,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
             onLoginSuccess={handleCloseLogin}
           />
         )}
-        
       </>
     );
   }
@@ -236,10 +272,32 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
                 src={AvatarIcon}
                 alt="User"
                 className="user-avatar"
-                title="Click to logout"
-                onClick={handleLogout}
+                onClick={handleAvatarClick}
               />
-              <span className="hover-tooltip">Click to logout</span>
+              {showDropdown && (
+  <div className="user-dropdown">
+    <div className="dropdown-item">
+      <img src={AvatarIcon} alt="profile" className="dropdown-icon" />
+      <div className="dropdown-text">
+        <span className="detail-label">Name:</span>
+        <span className="detail-value">{user?.name || "Guest"}</span>
+      </div>
+    </div>
+
+    <div className="dropdown-item">
+      <img src={require("../Assets/bag.png")} alt="bag" className="dropdown-icon" />
+      <div className="dropdown-text">
+        <span className="detail-label">Coins:</span>
+        <span className="detail-value">{user?.coins || "0"}</span>
+      </div>
+    </div>
+
+    <button className="logout-btn" onClick={handleLogout}>
+      Logout
+    </button>
+  </div>
+)}
+
             </div>
           ) : (
             <button className="login2-btn" onClick={handleLoginClick}>

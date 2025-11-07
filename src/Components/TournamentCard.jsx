@@ -53,8 +53,22 @@ const TournamentCard = () => {
 
       {/* Main Card */}
       <div className="tournament-main">
-        {/* Background Shape */}
+         {/* Background Shape */}
         <div className="tournament-bg">
+          <svg width="100%" height="100%" viewBox="0 0 520 260">
+            <defs>
+              <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="17.5" />
+              </filter>
+            </defs>
+            <path
+              d="M0 18 L400 18 L400 160 L180 160 L180 242 L0 242 Z"
+              fill="rgba(255,255,255,0.05)"
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="2"
+              filter="url(#blur)"
+            />
+          </svg>
           <div className="tournament-bg-overlay"></div>
         </div>
 
@@ -78,6 +92,16 @@ const TournamentCard = () => {
                 }
                 alt="Tournament Preview"
               />
+               <div className="play-overlay" onClick={handleStartPlaying}>
+                <div className="play-button">
+                  <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+                    <path
+                      d="M9.02985 5.46067L0 0V10.9213L9.02985 5.46067Z"
+                      fill="#D2E041"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 

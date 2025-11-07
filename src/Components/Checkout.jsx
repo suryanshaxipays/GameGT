@@ -53,24 +53,32 @@ const Checkout = () => {
     const { name, value } = e.target;
 
     if (name === "expiry") {
-      // Keep only digits
-      let digits = value.replace(/\D/g, "");
+  // Keep only digits
+  let digits = value.replace(/\D/g, "");
 
-      // Limit to 4 digits total (MMYY)
-      if (digits.length > 4) digits = digits.slice(0, 4);
+  // Limit to 4 digits total (MMYY)
+  if (digits.length > 4) digits = digits.slice(0, 4);
 
-      // Auto-insert slash after 2 digits
-      let formatted = digits;
-      if (digits.length >= 3)
-        formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
-      else if (digits.length > 2) formatted = digits.slice(0, 2);
+  // Check month validity (MM should not exceed 12)
+  if (digits.length >= 2) {
+    const mm = parseInt(digits.slice(0, 2), 10);
+    if (mm > 12) digits = "12" + digits.slice(2); 
+    if (mm > 12) alert("Please enter valid Month."); // clamp to 12
+    else if (mm === 0) digits = "01" + digits.slice(2); // clamp to 01
+  }
 
-      // Ensure slash always stays after MM
-      if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
+  // Auto-insert slash after 2 digits
+  let formatted = digits;
+  if (digits.length >= 3) formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+  else if (digits.length > 2) formatted = digits.slice(0, 2);
 
-      setFormData((prev) => ({ ...prev, expiry: formatted }));
-      return;
-    }
+  // Ensure slash always stays after MM
+  if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
+
+  setFormData((prev) => ({ ...prev, expiry: formatted }));
+  return;
+}
+
 
     if (name === "cardNumber") {
       const cleaned = value.replace(/\D/g, "").slice(0, 16);
@@ -139,19 +147,29 @@ const Checkout = () => {
 
   // ===== Payment Handler =====
   const handlePayment = (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+  e.preventDefault();
+  if (!validateForm()) return;
 
-    setProcessing(true);
+  setProcessing(true);
+
+  setTimeout(() => {
+    // show success text
+    setShowSuccess(true);
+
+    // 🔹 Change button text to "Successful"
+    const btn = document.querySelector(".checkout-btn");
+    if (btn) btn.textContent = "Successful";
+
+    localStorage.setItem("hasPaidAccess", "true");
+
+    // redirect after short delay
     setTimeout(() => {
-      setShowSuccess(true);
-      localStorage.setItem("hasPaidAccess", "true");
-      setTimeout(() => {
-        if (gameId) navigate(`/gameplay/${gameId}`);
-        else navigate("/");
-      }, 2500);
-    }, 3000);
-  };
+      if (gameId) navigate(`/gameplay/${gameId}`);
+      else navigate("/");
+    }, 2500);
+  }, 3000);
+};
+
 
   return (
     <div className="checkout-wrapper">

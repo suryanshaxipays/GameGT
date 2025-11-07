@@ -5,7 +5,7 @@ import "../Styles/Footer.css";
 import twitterIcon from "../Assets/twitter.png";
 import Facebook from "../Assets/Facebook.png";
 import instagramIcon from "../Assets/instagram.png";
-import githubIcon from "../Assets/github.png";
+import logo from "../Assets/logo.ico";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -59,20 +59,31 @@ const Footer = () => {
 
   return (
     <div className="footer-wrapper">
+      {/* Subtle background waves */}
+      <div className="footer-waves">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-grid">
             {/* Left Section */}
             <div className="footer-left">
-              <div className="footer-company">
-                <h2 className="company-name">Game Tourer</h2>
-                <p className="company-description">
-                  Game Tourer is your go-to hub for exciting online games — from
-                  action to puzzle, classic to mind-bending challenges. Play
-                  instantly, no downloads required!
-                </p>
-                <br></br>
+              <div className="footer-brand">
+                <img src={logo} alt="Game Tourer Logo" className="footer-logo" />
+                <div className="footer-brand-text">
+                  <h2 className="company-name">Game Tourer</h2>
+                  <p className="footer-tagline">Play. Compete. Conquer.</p>
+                </div>
               </div>
+
+              <p className="company-description">
+                Game Tourer is your go-to hub for exciting online games — from
+                action to puzzle, classic to mind-bending challenges. Play
+                instantly, no downloads required!
+              </p>
 
               <div className="footer-social">
                 {socialLinks.map((social, index) => (
@@ -97,7 +108,7 @@ const Footer = () => {
 
             {/* Right Section */}
             <div className="footer-links">
-              {Object.entries(footerLinks).map(([title, links], colIndex) => (
+              {Object.entries(footerLinks).map(([title, links]) => (
                 <div key={title} className="footer-column">
                   <h3 className="footer-heading">{title}</h3>
                   <ul
