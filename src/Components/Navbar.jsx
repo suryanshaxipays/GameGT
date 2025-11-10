@@ -279,7 +279,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     <div className="dropdown-item">
       <img src={AvatarIcon} alt="profile" className="dropdown-icon" />
       <div className="dropdown-text">
-        <span className="detail-label">Name:</span>
         <span className="detail-value">{user?.name || "Guest"}</span>
       </div>
     </div>
@@ -287,7 +286,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
     <div className="dropdown-item">
       <img src={require("../Assets/bag.png")} alt="bag" className="dropdown-icon" />
       <div className="dropdown-text">
-        <span className="detail-label">Coins:</span>
         <span className="detail-value">{user?.coins || "0"}</span>
       </div>
     </div>
