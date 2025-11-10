@@ -30,23 +30,28 @@ const Checkout = () => {
     : null;
   const gameId = paramId || stateId || null;
 
-  useEffect(() => {
-    const isLoggedIn =
-      localStorage.getItem("isLoggedIn") === "true" ||
-      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
 
-    if (!isLoggedIn) {
-      localStorage.setItem("loginPrompt", "true");
-      navigate("/");
-      return;
-    }
+useEffect(() => {
+  // Skip redirect if user is coming back from gameplay or any other page
+  if (location.state?.fromBack) return;
 
-    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
-    if (hasPaid) {
-      if (gameId) navigate(`/gameplay/${gameId}`);
-      else navigate("/");
-    }
-  }, [navigate, gameId]);
+  const isLoggedIn =
+    localStorage.getItem("isLoggedIn") === "true" ||
+    JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+
+  if (!isLoggedIn) {
+    localStorage.setItem("loginPrompt", "true");
+    navigate("/");
+    return;
+  }
+
+  const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
+  if (hasPaid) {
+    if (gameId) navigate(`/gameplay/${gameId}`);
+    else navigate("/");
+  }
+}, [navigate, gameId, location.state]);
+
 
   // ===== Input Change Handler with auto-format for expiry =====
   const handleChange = (e) => {

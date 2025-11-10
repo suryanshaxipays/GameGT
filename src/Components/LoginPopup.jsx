@@ -17,11 +17,18 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
-  const [activeTab, setActiveTab] = useState("login"); // 'login' | 'signup'
-const [showPassword, setShowPassword] = useState(false);
-const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [activeTab, setActiveTab] = useState("login");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // ✅ NEW STATES
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [buttonText, setButtonText] = useState("Login");
 
+  // Update button text based on active tab
+  useEffect(() => {
+    setButtonText(activeTab === "login" ? "Login" : "Sign Up");
+  }, [activeTab]);
 
   // Save current location for post-login redirect
   useEffect(() => {
@@ -43,8 +50,13 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     localStorage.removeItem("loginPrompt");
 
     setShowSuccess(true);
+    setButtonText(activeTab === "login" ? "Login Successful!" : "Signup Successful!");
+
     setTimeout(() => {
       setShowSuccess(false);
+      setIsProcessing(false);
+      setButtonText(activeTab === "login" ? "Login" : "Sign Up");
+
       if (redirect?.action === "checkout" && redirect?.gameId) {
         const game = games.find((g) => g.id === Number(redirect.gameId));
         if (game) navigate("/checkout", { state: { game } });
@@ -56,12 +68,15 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
       localStorage.removeItem("postAuthRedirect");
       onLoginSuccess && onLoginSuccess();
       onClose();
-    },3000);
+    }, 3000);
   };
 
   // ---------------- LOGIN ----------------
   const handleLogin = (e) => {
     e.preventDefault();
+    if (isProcessing) return;
+    setIsProcessing(true);
+    setButtonText("Logging in...");
 
     const normalizedEmail = email?.trim().toLowerCase();
     const users = JSON.parse(localStorage.getItem("users") || "{}");
@@ -75,28 +90,39 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const isRegistered =
       users[normalizedEmail] && users[normalizedEmail].password === password;
 
-    if (isStatic || isRegistered) {
-      const userEmail = normalizedEmail.includes("@")
-        ? normalizedEmail
-        : `${validUser}@games.com`;
-      completeAuthAndRedirect(userEmail);
-    } else {
-      alert("Invalid credentials! Use demo/1234 or your signed-up account.");
-    }
+    setTimeout(() => {
+      if (isStatic || isRegistered) {
+        const userEmail = normalizedEmail.includes("@")
+          ? normalizedEmail
+          : `${validUser}@games.com`;
+        completeAuthAndRedirect(userEmail);
+      } else {
+        alert("Invalid credentials! Use demo/1234 or your signed-up account.");
+        setIsProcessing(false);
+        setButtonText("Login");
+      }
+    }, 1000); // slight delay for UI smoothness
   };
 
   // ---------------- SIGNUP ----------------
   const handleSignup = (e) => {
     e.preventDefault();
+    if (isProcessing) return;
+    setIsProcessing(true);
+    setButtonText("Signing up...");
 
     const normalizedEmail = email?.trim().toLowerCase();
     if (!firstName || !lastName || !normalizedEmail || !password || !confirmPassword) {
       alert("Please fill all fields.");
+      setIsProcessing(false);
+      setButtonText("Sign Up");
       return;
     }
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
+      setIsProcessing(false);
+      setButtonText("Sign Up");
       return;
     }
 
@@ -104,6 +130,8 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     if (users[normalizedEmail]) {
       alert("Account already exists with this email!");
+      setIsProcessing(false);
+      setButtonText("Sign Up");
       return;
     }
 
@@ -115,7 +143,10 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     };
 
     localStorage.setItem("users", JSON.stringify(users));
-    completeAuthAndRedirect(normalizedEmail);
+
+    setTimeout(() => {
+      completeAuthAndRedirect(normalizedEmail);
+    }, 1000);
   };
 
   return (
@@ -145,30 +176,31 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
               </div>
 
               <div className="input-group password-field">
-  <label>Password</label>
-  <div className="password-wrapper">
-    <input
-      type={showPassword ? "text" : "password"}
-      placeholder="1234"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-    />
-    <button
-      type="button"
-      className="eye-btn"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      <img
-        src={showPassword ? hideIcon : viewIcon}
-        alt="toggle password visibility"
-      />
-    </button>
-  </div>
-</div>
+                <label>Password</label>
+                <div className="password-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="1234"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="eye-btn"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <img
+                      src={showPassword ? hideIcon : viewIcon}
+                      alt="toggle password visibility"
+                    />
+                  </button>
+                </div>
+              </div>
 
-
-              <button type="submit" className="auth-btn">Login</button>
+              <button type="submit" className="auth-btn" disabled={isProcessing}>
+                {buttonText}
+              </button>
             </form>
           ) : (
             /* ---------------- SIGNUP FORM ---------------- */
@@ -207,54 +239,54 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
               </div>
 
               <div className="input-group password-field">
-  <label>Password</label>
-  <div className="password-wrapper">
-    <input
-      type={showPassword ? "text" : "password"}
-      placeholder="Create a password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-    />
-    <button
-      type="button"
-      className="eye-btn"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      <img
-        src={showPassword ? hideIcon : viewIcon}
-        alt="toggle password visibility"
-      />
-    </button>
-  </div>
-</div>
-
+                <label>Password</label>
+                <div className="password-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Create a password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="eye-btn"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <img
+                      src={showPassword ? hideIcon : viewIcon}
+                      alt="toggle password visibility"
+                    />
+                  </button>
+                </div>
+              </div>
 
               <div className="input-group password-field">
-  <label>Confirm Password</label>
-  <div className="password-wrapper">
-    <input
-      type={showConfirmPassword ? "text" : "password"}
-      placeholder="Re-enter your password"
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
-      required
-    />
-    <button
-      type="button"
-      className="eye-btn"
-      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-    >
-      <img
-        src={showConfirmPassword ? hideIcon : viewIcon}
-        alt="toggle confirm password visibility"
-      />
-    </button>
-  </div>
-</div>
+                <label>Confirm Password</label>
+                <div className="password-wrapper">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Re-enter your password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="eye-btn"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    <img
+                      src={showConfirmPassword ? hideIcon : viewIcon}
+                      alt="toggle confirm password visibility"
+                    />
+                  </button>
+                </div>
+              </div>
 
-
-              <button type="submit" className="auth-btn">Sign Up</button>
+              <button type="submit" className="auth-btn" disabled={isProcessing}>
+                {buttonText}
+              </button>
             </form>
           )}
 
@@ -288,7 +320,11 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
         </div>
       </div>
 
-      {showSuccess && <div className="success-box">✅ Login Successful!</div>}
+      {showSuccess && (
+        <div className="success-box">
+          ✅ {activeTab === "login" ? "Login Successful!" : "Signup Successful!"}
+        </div>
+      )}
     </>
   );
 };
