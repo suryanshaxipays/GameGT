@@ -11,12 +11,10 @@ const TournamentCard = () => {
   };
 
   useEffect(() => {
-    // Check if a stored start time exists
+    const baseOffset = 14 * 3600 + 20 * 60; // 14 hours 20 minutes in seconds
     let startTime = localStorage.getItem("tournamentStartTime");
-    const baseOffset = (14 * 3600) + (20 * 60); // 14 hours 20 minutes in seconds
 
     if (!startTime) {
-      // Save start time when first opened
       startTime = Date.now();
       localStorage.setItem("tournamentStartTime", startTime);
     }
@@ -24,13 +22,23 @@ const TournamentCard = () => {
     const interval = setInterval(() => {
       const now = Date.now();
       const elapsedSeconds = Math.floor((now - startTime) / 1000);
-      setElapsedTime(baseOffset + elapsedSeconds);
+      let totalSeconds = baseOffset + elapsedSeconds;
+
+      // If more than 24 hours (86400 seconds) have passed, reset
+      if (totalSeconds >= 86400) {
+        // Reset both localStorage and state
+        startTime = Date.now();
+        localStorage.setItem("tournamentStartTime", startTime);
+        totalSeconds = baseOffset;
+      }
+
+      setElapsedTime(totalSeconds);
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Format elapsed time -> HH:MM:SS
+  // Format elapsed time as HH:MM:SS
   const formatTime = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600)
       .toString()
@@ -44,7 +52,7 @@ const TournamentCard = () => {
 
   return (
     <div className="tournament-card-container">
-      {/* Decorative Diamond with Glow */}
+      {/* Decorative Diamond */}
       <div className="tournament-diamond">
         <svg width="180" height="180" viewBox="0 -27 96 96">
           <path d="M48 12L84 48L48 84L12 48L48 12Z" fill="white" />
@@ -53,7 +61,7 @@ const TournamentCard = () => {
 
       {/* Main Card */}
       <div className="tournament-main">
-         {/* Background Shape */}
+        {/* Background Shape */}
         <div className="tournament-bg">
           <svg width="100%" height="100%" viewBox="0 0 520 260">
             <defs>
@@ -74,7 +82,7 @@ const TournamentCard = () => {
 
         {/* Content */}
         <div className="tournament-content">
-          {/* Left: Date & Time */}
+          {/* Left: Timer */}
           <div className="tournament-left">
             <div className="tournament-date">
               <div className="month">RANK</div>
@@ -83,16 +91,14 @@ const TournamentCard = () => {
             </div>
           </div>
 
-          {/* Middle: Video Thumbnail */}
+          {/* Middle: Thumbnail */}
           <div className="tournament-center">
             <div className="thumbnail">
               <img
-                src={
-                  "https://www.htmlgames.com/uploaded/game/thumb800/mahjonggpyramids800450.webp"
-                }
+                src="https://www.htmlgames.com/uploaded/game/thumb800/mahjonggpyramids800450.webp"
                 alt="Tournament Preview"
               />
-               <div className="play-overlay" onClick={handleStartPlaying}>
+              <div className="play-overlay" onClick={handleStartPlaying}>
                 <div className="play-button">
                   <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
                     <path
@@ -105,7 +111,7 @@ const TournamentCard = () => {
             </div>
           </div>
 
-          {/* Right: Join Button */}
+          {/* Right: Start Button */}
           <div className="tournament-right">
             <button className="join-btn" onClick={handleStartPlaying}>
               <div className="join-content">
