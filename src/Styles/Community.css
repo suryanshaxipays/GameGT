@@ -196,6 +196,20 @@
     .community-cta-inner {
       padding: 3.5rem 4rem;
     }
+      .ring-1 {
+    width: 90%;
+    height: 90%;
+  }
+  
+  .ring-2 {
+    width: 70%;
+    height: 70%;
+  }
+  
+  .ring-3 {
+    width: 50%;
+    height: 50%;
+  }
   }
   
   .community-cta-title {

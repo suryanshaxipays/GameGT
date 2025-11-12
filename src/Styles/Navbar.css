@@ -319,6 +319,7 @@
   width: 28px;
   height: 28px;
   object-fit: contain;
+  border-radius: 20px;
 }
 
 .dropdown-text {

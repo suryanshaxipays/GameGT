@@ -15,6 +15,7 @@ const GameCard = ({ game, isLoggedIn, onLoginRequest }) => {
   const hasPaidAccess = localStorage.getItem("hasPaidAccess") === "true";
   const hasAccess = isFree || hasPaidAccess;
 
+
   const handleCardClick = () => {
     if (!isFree) {
       if (!computedIsLoggedIn) {

@@ -7,6 +7,7 @@
   width: 90%;
   margin: 6rem auto 0 auto;
   padding-bottom: 4rem;
+  padding-left: 0px;
   color: #ffffff;
   margin-top: 140px;
   margin-bottom: 0;
@@ -77,7 +78,7 @@
   color: #fff;
   border-radius: 0.75rem;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -97,7 +98,8 @@
 
 .accordion-answer {
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  max-height: 0;
+  transition: max-height 0.5s ease, padding 0.3s ease;
 }
 
 .accordion-answer p {
@@ -105,7 +107,13 @@
   color: #d1d5db;
   font-size: 0.95rem;
   line-height: 1.6;
+  margin: 0;
 }
+
+.accordion-item.active .accordion-answer p {
+  padding-top: 0.5rem;
+}
+
 
 /* + / - Icons */
 .accordion-item.active .accordion-question::after {

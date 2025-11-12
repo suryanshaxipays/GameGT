@@ -31,58 +31,64 @@ const Checkout = () => {
   const gameId = paramId || stateId || null;
 
 
-useEffect(() => {
-  // Skip redirect if user is coming back from gameplay or any other page
-  if (location.state?.fromBack) return;
+  useEffect(() => {
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn") === "true" ||
+      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
 
-  const isLoggedIn =
-    localStorage.getItem("isLoggedIn") === "true" ||
-    JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+    // 🔸 Redirect to home if not logged in
+    if (!isLoggedIn) {
+      localStorage.setItem("loginPrompt", "true");
+      navigate("/");
+      return;
+    }
 
-  if (!isLoggedIn) {
-    localStorage.setItem("loginPrompt", "true");
-    navigate("/");
-    return;
-  }
+    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
 
-  const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
-  if (hasPaid) {
-    if (gameId) navigate(`/gameplay/${gameId}`);
-    else navigate("/");
-  }
-}, [navigate, gameId, location.state]);
+    // 🔸 If user already paid, redirect them to /gameview instead of gameplay/checkout
+    if (hasPaid) {
+      navigate("/gameview");
+      return;
+    }
 
+    // 🔸 Optional: Handle if user came back manually
+    if (location.state?.fromBack) {
+      navigate("/gameview");
+      return;
+    }
+  }, [navigate, location.state]);
+  
 
   // ===== Input Change Handler with auto-format for expiry =====
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     if (name === "expiry") {
-  // Keep only digits
-  let digits = value.replace(/\D/g, "");
+      // Keep only digits
+      let digits = value.replace(/\D/g, "");
 
-  // Limit to 4 digits total (MMYY)
-  if (digits.length > 4) digits = digits.slice(0, 4);
+      // Limit to 4 digits total (MMYY)
+      if (digits.length > 4) digits = digits.slice(0, 4);
 
-  // Check month validity (MM should not exceed 12)
-  if (digits.length >= 2) {
-    const mm = parseInt(digits.slice(0, 2), 10);
-    if (mm > 12) digits = "12" + digits.slice(2); 
-    if (mm > 12) alert("Please enter valid Month."); // clamp to 12
-    else if (mm === 0) digits = "01" + digits.slice(2); // clamp to 01
-  }
+      // Check month validity (MM should not exceed 12)
+      if (digits.length >= 2) {
+        const mm = parseInt(digits.slice(0, 2), 10);
+        if (mm > 12) digits = "12" + digits.slice(2); 
+        if (mm > 12) alert("Please enter valid Month."); // clamp to 12
+        else if (mm === 0) digits = "01" + digits.slice(2); // clamp to 01
+      }
 
-  // Auto-insert slash after 2 digits
-  let formatted = digits;
-  if (digits.length >= 3) formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
-  else if (digits.length > 2) formatted = digits.slice(0, 2);
+      // Auto-insert slash after 2 digits
+      let formatted = digits;
+      if (digits.length >= 3) formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+      else if (digits.length > 2) formatted = digits.slice(0, 2);
 
-  // Ensure slash always stays after MM
-  if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
+      // Ensure slash always stays after MM
+      if (formatted.length === 2 && !formatted.includes("/")) formatted += "/";
 
-  setFormData((prev) => ({ ...prev, expiry: formatted }));
-  return;
-}
+      setFormData((prev) => ({ ...prev, expiry: formatted }));
+      return;
+    }
 
 
     if (name === "cardNumber") {
@@ -131,7 +137,7 @@ useEffect(() => {
     // Expiry check (not before 09/25)
     const [mm, yy] = expiry.split("/").map((n) => parseInt(n, 10));
     const expiryDate = new Date(2000 + yy, mm);
-    const minDate = new Date(2025, 8); // September 2025
+    const minDate = new Date(2025, 10); // September 2025
     if (expiryDate < minDate) {
       alert("Your card is expired.");
       return false;
@@ -152,28 +158,43 @@ useEffect(() => {
 
   // ===== Payment Handler =====
   const handlePayment = (e) => {
-  e.preventDefault();
-  if (!validateForm()) return;
+    e.preventDefault();
+    if (!validateForm()) return;
 
-  setProcessing(true);
+    setProcessing(true);
 
-  setTimeout(() => {
-    // show success text
-    setShowSuccess(true);
-
-    // 🔹 Change button text to "Successful"
-    const btn = document.querySelector(".checkout-btn");
-    if (btn) btn.textContent = "Successful";
-
-    localStorage.setItem("hasPaidAccess", "true");
-
-    // redirect after short delay
     setTimeout(() => {
-      if (gameId) navigate(`/gameplay/${gameId}`);
-      else navigate("/");
-    }, 2500);
-  }, 3000);
-};
+      // show success text
+      setShowSuccess(true);
+
+      // 🔹 Change button text to "Successful"
+      const btn = document.querySelector(".checkout-btn");
+      if (btn) btn.textContent = "Successful";
+
+      // ===== Update user coins = paid amount (persisted in localStorage) =====
+      try {
+        const storedUser = JSON.parse(localStorage.getItem("userAuth")) || {};
+        // price might be string or number — ensure numeric value
+        storedUser.coins = parseFloat(price) ? parseFloat(price) : 0;
+        localStorage.setItem("userAuth", JSON.stringify(storedUser));
+
+        // notify same-tab listeners (Navbar listens for this custom event)
+        window.dispatchEvent(new Event("userUpdated"));
+      } catch (err) {
+        // if anything goes wrong, keep going but log for debugging
+        // console.error("Failed to update user coins:", err);
+      }
+
+      // also mark paid
+      localStorage.setItem("hasPaidAccess", "true");
+
+      // redirect after short delay
+      setTimeout(() => {
+        if (gameId) navigate(`/gameplay/${gameId}`);
+        else navigate("/");
+      }, 2500);
+    }, 3000);
+  };
 
 
   return (
@@ -216,9 +237,7 @@ useEffect(() => {
               ${price}.00 USD
             </p>
 
-            <p className="subscription-note">
-              Lifetime access to all premium content.
-            </p>
+
           </div>
 
           <form onSubmit={handlePayment} className="checkout-form">

@@ -57,20 +57,27 @@
 
 .tournament-date {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .tournament-date .month {
   color: white;
   font-family: "Orbitron", sans-serif;
-  font-size: 15px;
+  font-size: 22px;
   letter-spacing: 2px;
+  font-weight: 720;
 }
 
 .tournament-date .day {
   color: white;
   font-size: 55px;
-  font-weight: 900;
+  font-weight: 650;
   line-height: 1.35;
+   display: inline-block;
+        transform: scaleY(1.2); /* Stretches the text to twice its original height */
+        transform-origin: center center; /* Optional: Sets the origin of the transformation */
 }
 
 .tournament-date .time {
@@ -154,7 +161,7 @@
   align-items: center;
   justify-content: space-between;
   width: 216px;
-  height: 40px;
+  height: 49px;
   background: white;
   padding: 0 20px;
 }

@@ -3,57 +3,15 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import GameCard from "../Components/GameCard";
 import { games } from "../data/games";
+import Footer2 from "../Components/Footer";
 
-
-import Action from "../Assets/Action.jpg";
-import Match from "../Assets/Match.jpg";
-import Mahjong from "../Assets/Mahjong.jpg";
-import Mind from "../Assets/Mind.png";
-import Classic from "../Assets/Classic.jpg";
-import Solitaire from "../Assets/Solitaire.jpg";
-import Hidden from "../Assets/Hidden.jpg";
-import Card from "../Assets/Card.jpg";
-import Board from "../Assets/Board.jpg";
-import Racing from "../Assets/Racing.jpg";
-import Shooting from "../Assets/Shooting.jpg";
-import Golf from "../Assets/Golf.jpg";
-
-import Footer2 from "../Components/Footer"
-
-
+import { categoryImages } from "../utils/preloadImages";
 import "../Styles/Gamecategory.css";
-
-const categoryImages = {
-  mahjong: Mahjong,
-  solitaire: Solitaire,
-  action: Action,
-  "match 3": Match,
-  mind: Mind,
-  "classic": Classic,
-  "hidden objects": Hidden,
-  "card": Card,
-  retro: Classic,
-  board: Board,
-  racing: Racing,
-  "shooting & war": Shooting,
-  golf: Golf,
-  sports: Golf,
-  skill: Action,
-};
 
 const CategoryBanner = ({ categoryName }) => {
   const key = categoryName?.toLowerCase();
   const src = categoryImages[key];
 
-  // 🔥 Preload all images once at startup
-  useEffect(() => {
-    Object.values(categoryImages).forEach((img) => {
-      const image = new Image();
-      image.src = img;
-    });
-  }, []);
-
-  // 🟢 Instantly show correct image without waiting for onload
   return (
     <div className="hero2-banner3">
       {src ? (
@@ -77,16 +35,11 @@ const CategoryBanner = ({ categoryName }) => {
   );
 };
 
-
-
-
-
-
 const Gamecategory = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const [isViewAll, setIsViewAll] = useState(true); // Default unclicked
+  const [isViewAll, setIsViewAll] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   const categoryGames = useMemo(
@@ -99,7 +52,7 @@ const Gamecategory = () => {
     return uniqueGenres.sort();
   }, []);
 
-  // Detect mobile screen
+  // Detect mobile
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
@@ -107,7 +60,7 @@ const Gamecategory = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Scroll behavior
+  // Scroll control
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = 300;
@@ -143,7 +96,7 @@ const Gamecategory = () => {
       <Navbar />
 
       <main className="main2-content">
-        {/* Category Heading + Inline Category List */}
+        {/* Category scroll bar */}
         <div className={`category-scroll-container ${isMobile ? "mobile-view" : ""}`}>
           <h2 className="category-scroll-heading">Game Categories:</h2>
 
@@ -181,10 +134,10 @@ const Gamecategory = () => {
           )}
         </div>
 
-        {/* Category Banner */}
+        {/* Banner */}
         <CategoryBanner categoryName={categoryName} />
 
-        {/* Game Grid Section */}
+        {/* Game Grid */}
         <section className="game2-section">
           <div className="section2-header">
             <h2 className="gameheading">{categoryName} Games</h2>
@@ -205,7 +158,8 @@ const Gamecategory = () => {
           </div>
         </section>
       </main>
-      <Footer2/>
+
+      <Footer2 />
     </div>
   );
 };
