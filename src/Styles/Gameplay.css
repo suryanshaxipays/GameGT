@@ -327,6 +327,10 @@
     display: flex;
     justify-content: center;
   }
+  .highlights-section{
+    display: none;
+  }
+  
 }
 
 /* Hide Navbar & Footer in fullscreen mode */

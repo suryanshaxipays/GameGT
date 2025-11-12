@@ -352,7 +352,10 @@ padding-left: 2vw;
     gap: 0.8rem;
   }
   .footer-legal-links {
-    justify-content: center;
+    justify-content: start;
+    padding-left: 6vw;
+    gap: 2rem;
+    row-gap: 0.7rem;
   }
 }
 

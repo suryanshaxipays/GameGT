@@ -63,45 +63,65 @@ const Footer = () => {
       "Terms And Conditions": {
         title: "Terms and Conditions",
         text: `By accessing and playing on Game Tourer, you agree to follow all our platform rules and community standards. 
-
- 1. Use of Platform
-• Game Tourer provides both free and premium games. Free games are open to all users, while premium titles require secure payments.
-• You must create an account to access certain features. Keep your account credentials safe.
-
- 2. Fair Play Policy
-• Cheating, hacking, exploiting bugs, or using bots/scripts is strictly prohibited.
-• Sharing accounts or impersonating others can result in permanent bans.
-• Game Tourer may monitor gameplay and take corrective actions as needed.
-
- 3. Payments and Access
-• All payments are processed securely.
-• Game availability and pricing may change without notice.
-• Refunds apply only for duplicate or failed payments.
-
-By using Game Tourer, you acknowledge that you have read and accepted these Terms and Conditions.`,
+    
+     1. Use of Platform
+    • Game Tourer provides both free and premium games. Free games are open to all users, while premium titles require secure payments.
+    • You must create an account to access certain features. Keep your account credentials safe.
+    
+     2. Fair Play Policy
+    • Cheating, hacking, exploiting bugs, or using bots/scripts is strictly prohibited.
+    • Sharing accounts or impersonating others can result in permanent bans.
+    • Game Tourer may monitor gameplay and take corrective actions as needed.
+    
+     3. Payments and Access
+    • All payments are processed securely.
+    • Game availability and pricing may change without notice.
+    • Refunds apply only for duplicate or failed payments.
+    
+    By using Game Tourer, you acknowledge that you have read and accepted these Terms and Conditions.`,
       },
       "Privacy Policy": {
         title: "Privacy Policy",
         text: `Game Tourer values your privacy and ensures all personal data is handled securely.
-
- 1. Information We Collect
-• Username, email, and gameplay activity.
-• Securely processed payment and transaction data.
-• Technical details (like browser/device) for performance optimization.
-
- 2. How We Use Your Data
-• To personalize your experience and improve services.
-• To verify payments and manage accounts.
-• To enhance performance and security.
-
- 3. Data Protection
-• All sensitive data is encrypted and stored safely.
-• Payment details are handled by secure gateways only.
-• Our systems are routinely updated for top-tier security.
-
-By using Game Tourer, you agree to the collection and use of data as outlined here.`,
+    
+     1. Information We Collect
+    • Username, email, and gameplay activity.
+    • Securely processed payment and transaction data.
+    • Technical details (like browser/device) for performance optimization.
+    
+     2. How We Use Your Data
+    • To personalize your experience and improve services.
+    • To verify payments and manage accounts.
+    • To enhance performance and security.
+    
+     3. Data Protection
+    • All sensitive data is encrypted and stored safely.
+    • Payment details are handled by secure gateways only.
+    • Our systems are routinely updated for top-tier security.
+    
+    By using Game Tourer, you agree to the collection and use of data as outlined here.`,
+      },
+      "Cookies Policy": {
+        title: "Cookies Policy",
+        text: `Game Tourer uses cookies to improve user experience, track performance, and ensure smooth platform functionality.
+    
+     1. What Are Cookies
+    • Cookies are small text files stored on your device to remember your preferences and session details.
+    • They help us provide personalized content and enhance your browsing experience.
+    
+     2. How We Use Cookies
+    • To maintain your login session and save preferences (like language or theme).
+    • To analyze site traffic, gameplay patterns, and optimize performance.
+    • To display relevant promotions or recommendations.
+    
+     3. Managing Cookies
+    • You can control or delete cookies through your browser settings.
+    • Disabling cookies may limit some features or cause certain areas of the platform to function improperly.
+    
+    By continuing to use Game Tourer, you consent to our use of cookies as described in this policy.`,
       },
     };
+    
     setModalContent(content[type]);
   };
 
@@ -180,7 +200,7 @@ By using Game Tourer, you agree to the collection and use of data as outlined he
           </p>
 
           <div className="footer-legal-links">
-            {["Terms And Conditions", "Privacy Policy"].map((item) => (
+            {["Terms And Conditions", "Privacy Policy","Cookies Policy"].map((item) => (
               <button
                 key={item}
                 className="footer-legal-link"
