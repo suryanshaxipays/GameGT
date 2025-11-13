@@ -1,17 +1,29 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../Styles/Footer.css";
 
 // --- Images ---
 import twitterIcon from "../Assets/twitter.png";
 import Facebook from "../Assets/Facebook.png";
 import instagramIcon from "../Assets/instagram.png";
-import logo from "../Assets/logo.ico";
+import logo from "../Assets/logo.png";
 
 const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [modalContent, setModalContent] = useState(null);
+
+  // ✅ Prevent background scroll when modal is open
+  useEffect(() => {
+    if (modalContent) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalContent]);
 
   const socialLinks = [
     { src: twitterIcon, alt: "Twitter", href: "https://twitter.com" },
@@ -62,27 +74,27 @@ const Footer = () => {
     const content = {
       "Terms And Conditions": {
         title: "Terms and Conditions",
-        text: `By accessing and playing on Game Tourer, you agree to follow all our platform rules and community standards. 
+        text: `By accessing and playing on Elgamingo, you agree to follow all our platform rules and community standards. 
     
      1. Use of Platform
-    • Game Tourer provides both free and premium games. Free games are open to all users, while premium titles require secure payments.
+    • Elgamingo provides both free and premium games. Free games are open to all users, while premium titles require secure payments.
     • You must create an account to access certain features. Keep your account credentials safe.
     
      2. Fair Play Policy
     • Cheating, hacking, exploiting bugs, or using bots/scripts is strictly prohibited.
     • Sharing accounts or impersonating others can result in permanent bans.
-    • Game Tourer may monitor gameplay and take corrective actions as needed.
+    • Elgamingo may monitor gameplay and take corrective actions as needed.
     
      3. Payments and Access
     • All payments are processed securely.
     • Game availability and pricing may change without notice.
     • Refunds apply only for duplicate or failed payments.
     
-    By using Game Tourer, you acknowledge that you have read and accepted these Terms and Conditions.`,
+    By using Elgamingo, you acknowledge that you have read and accepted these Terms and Conditions.`,
       },
       "Privacy Policy": {
         title: "Privacy Policy",
-        text: `Game Tourer values your privacy and ensures all personal data is handled securely.
+        text: `Elgamingo values your privacy and ensures all personal data is handled securely.
     
      1. Information We Collect
     • Username, email, and gameplay activity.
@@ -99,11 +111,11 @@ const Footer = () => {
     • Payment details are handled by secure gateways only.
     • Our systems are routinely updated for top-tier security.
     
-    By using Game Tourer, you agree to the collection and use of data as outlined here.`,
+    By using Elgamingo, you agree to the collection and use of data as outlined here.`,
       },
       "Cookies Policy": {
         title: "Cookies Policy",
-        text: `Game Tourer uses cookies to improve user experience, track performance, and ensure smooth platform functionality.
+        text: `Elgamingo uses cookies to improve user experience, track performance, and ensure smooth platform functionality.
     
      1. What Are Cookies
     • Cookies are small text files stored on your device to remember your preferences and session details.
@@ -118,10 +130,10 @@ const Footer = () => {
     • You can control or delete cookies through your browser settings.
     • Disabling cookies may limit some features or cause certain areas of the platform to function improperly.
     
-    By continuing to use Game Tourer, you consent to our use of cookies as described in this policy.`,
+    By continuing to use Elgamingo, you consent to our use of cookies as described in this policy.`,
       },
     };
-    
+
     setModalContent(content[type]);
   };
 
@@ -134,15 +146,15 @@ const Footer = () => {
           <div className="footer-grid">
             <div className="footer-left">
               <div className="footer-brand">
-                <img src={logo} alt="Game Tourer Logo" className="footer-logo" />
+                <img src={logo} alt="Elgamingo Logo" className="footer-logo" />
                 <div className="footer-brand-text">
-                  <h2 className="company-name">Game Tourer</h2>
+                  <h2 className="company-name">Elgamingo</h2>
                   <p className="footer-tagline">Play. Compete. Conquer.</p>
                 </div>
               </div>
 
               <p className="company-description">
-                Game Tourer is your go-to hub for exciting online games — from
+                Elgamingo is your go-to hub for exciting online games — from
                 action to puzzle, classic to mind-bending challenges. Play
                 instantly, no downloads required!
               </p>
@@ -196,19 +208,21 @@ const Footer = () => {
 
         <div className="footer-bottom-row">
           <p className="footer-copy">
-            &copy; 2025 Game Tourer. All Rights Reserved.
+            &copy; 2025 Elgamingo. All Rights Reserved.
           </p>
 
           <div className="footer-legal-links">
-            {["Terms And Conditions", "Privacy Policy","Cookies Policy"].map((item) => (
-              <button
-                key={item}
-                className="footer-legal-link"
-                onClick={() => openModal(item)}
-              >
-                {item}
-              </button>
-            ))}
+            {["Terms And Conditions", "Privacy Policy", "Cookies Policy"].map(
+              (item) => (
+                <button
+                  key={item}
+                  className="footer-legal-link"
+                  onClick={() => openModal(item)}
+                >
+                  {item}
+                </button>
+              )
+            )}
           </div>
         </div>
       </footer>

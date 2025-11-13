@@ -125,7 +125,7 @@
   .hero-right {
     position: absolute;
     bottom: 0;
-    right: -2vw;
+    right: -0.5vw;
     width: 50%;
     justify-content: flex-end;
   }

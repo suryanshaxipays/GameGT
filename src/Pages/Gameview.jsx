@@ -23,7 +23,7 @@ const HeroBanner = () => (
     <img src={Bg} alt="Game Banner" className="hero2-bg2" />
     <div className="hero2-backdrop" />
     <div className="hero2-overlay">
-      <h1>Game Tourer!</h1>
+      <h1>Elgamingo!</h1>
       <p>
         Play & Earn <span>1500</span> points 
       </p>

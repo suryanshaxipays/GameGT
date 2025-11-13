@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Styles/Navbar.css";
-import logo from "../Assets/logo.ico";
+import logo from "../Assets/logo.png";
 import SearchIcon from "../Assets/Gameview/search.png";
 import { games } from "../data/games";
 import LoginPopup from "./LoginPopup";
