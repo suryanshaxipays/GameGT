@@ -1,13 +1,26 @@
+import { useEffect } from "react";
 import "../Styles/PolicyModal.css";
 
 const PolicyModal = ({ content, onClose }) => {
+
+  // 🔒 Lock background scroll when modal opens
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto"; // unlock when modal closes
+    };
+  }, []);
+
   return (
     <div className="policy-modal-overlay" onClick={onClose}>
       <div className="policy-modal" onClick={(e) => e.stopPropagation()}>
         <button className="policy-modal-close" onClick={onClose}>
           &times;
         </button>
+
         <h2 className="policy-modal-title">{content.title}</h2>
+
         <div
           className="policy-modal-text"
           dangerouslySetInnerHTML={{
