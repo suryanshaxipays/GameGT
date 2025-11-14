@@ -66,8 +66,11 @@ const LoginPopup = ({ onClose, onLoginSuccess }) => {
         }
       }
       localStorage.removeItem("postAuthRedirect");
-      onLoginSuccess && onLoginSuccess();
-      onClose();
+      // inside completeAuthAndRedirect() before onClose():
+window.dispatchEvent(new Event("loginSuccess"));
+onLoginSuccess && onLoginSuccess();
+onClose();
+
     }, 3000);
   };
 

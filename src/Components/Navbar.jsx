@@ -152,8 +152,6 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
   // Use coins as credits (fallback to 0 if missing)
   const credits = user?.coins ?? 0;
 
-
-
   if (isHomePage) {
     return (
       <>
@@ -161,6 +159,9 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
           <div className="nav-container">
             <div className="logo">
               <img src={logo} alt="Logo" />
+              <h1 className="logo-text">
+                Elgamingo
+              </h1>
             </div>
 
             <div
@@ -213,14 +214,24 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
                   {showDropdown && (
                     <div className="user-dropdown">
                       <div className="dropdown-item">
-                        <img src={AvatarIcon2} alt="profile" className="dropdown-icon" />
+                        <img
+                          src={AvatarIcon2}
+                          alt="profile"
+                          className="dropdown-icon"
+                        />
                         <div className="dropdown-text">
-                          <span className="detail-value">{user?.email || "Guest"}</span>
+                          <span className="detail-value">
+                            {user?.email || "Guest"}
+                          </span>
                         </div>
                       </div>
 
                       <div className="dropdown-item">
-                        <img src={require("../Assets/bag.png")} alt="bag" className="dropdown-icon" />
+                        <img
+                          src={require("../Assets/bag.png")}
+                          alt="bag"
+                          className="dropdown-icon"
+                        />
                         <div className="dropdown-text">
                           <span className="detail-value">{credits}</span>
                         </div>
@@ -264,6 +275,9 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
               alt="Logo"
               className="nav-logo"
             />
+            <h1 onClick={() => navigate("/")} className="logo-text">
+              Elgamingo
+            </h1>
           </div>
 
           <div className="nav-search small-search">
@@ -300,14 +314,24 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
               {showDropdown && (
                 <div className="user-dropdown">
                   <div className="dropdown-item">
-                    <img src={AvatarIcon2} alt="profile" className="dropdown-icon" />
+                    <img
+                      src={AvatarIcon2}
+                      alt="profile"
+                      className="dropdown-icon"
+                    />
                     <div className="dropdown-text">
-                      <span className="detail-value">{user?.email || "Guest"}</span>
+                      <span className="detail-value">
+                        {user?.email || "Guest"}
+                      </span>
                     </div>
                   </div>
 
                   <div className="dropdown-item">
-                    <img src={require("../Assets/bag.png")} alt="bag" className="dropdown-icon" />
+                    <img
+                      src={require("../Assets/bag.png")}
+                      alt="bag"
+                      className="dropdown-icon"
+                    />
                     <div className="dropdown-text">
                       <span className="detail-value">{user?.coins ?? 0}</span>
                     </div>
