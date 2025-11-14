@@ -6,11 +6,8 @@ import { games } from "../data/games";
 import "../Styles/Gameplay.css";
 import Footer2 from "../Components/Footer";
 
-// keep PNG icons for fullscreen/exit fullscreen
 import FullscreenIcon from "../Assets/fullscreen.png";
 import ExitFullscreenIcon from "../Assets/exit-fullscreen.png";
-
-// new animated GIF icons
 
 import TrendingGif from "../Assets/TrendingGif.png";
 import TopPlayerGif from "../Assets/TopPlayerGif.png";
@@ -23,53 +20,41 @@ const Gameplay = () => {
   const navigate = useNavigate();
 
   const game = games.find((g) => g.id === parseInt(id));
-  // Guard access for paid games
+
+  // Guard: User must have access to open this gameplay page
   useEffect(() => {
     if (!game) return;
+
     const isFree = game.id % 3 === 0;
     if (isFree) return;
+
     const isLoggedIn =
       localStorage.getItem("isLoggedIn") === "true" ||
       JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
+
     const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
 
+    // Step 1 → If not logged in → open login modal
     if (!isLoggedIn) {
       localStorage.setItem(
         "postAuthRedirect",
-        JSON.stringify({ action: "checkout", gameId: game.id, path: window.location.pathname + window.location.search })
+        JSON.stringify({
+          action: "checkout",
+          gameId: game.id,
+          path: window.location.pathname + window.location.search,
+        })
       );
       window.dispatchEvent(new Event("openLogin"));
       return;
     }
+
+    // Step 2 → If logged in but not paid → send to checkout
     if (!hasPaid) {
       navigate("/checkout", { state: { game } });
     }
   }, [game, navigate]);
 
-  const handleGameClick = (g) => {
-    const isFree = g.id % 3 === 0;
-    const isLoggedIn =
-      localStorage.getItem("isLoggedIn") === "true" ||
-      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
-    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
-
-    if (!isFree) {
-      if (!isLoggedIn) {
-        localStorage.setItem(
-          "postAuthRedirect",
-          JSON.stringify({ action: "checkout", gameId: g.id, path: window.location.pathname + window.location.search })
-        );
-        window.dispatchEvent(new Event("openLogin"));
-        return;
-      }
-      if (!hasPaid) {
-        navigate("/checkout", { state: { game: g } });
-        return;
-      }
-    }
-    navigate(`/gameplay/${g.id}`);
-  };
-
+  // OTHER GAME LISTS
   const genreGames = useMemo(
     () =>
       game
@@ -81,8 +66,6 @@ const Gameplay = () => {
   const featuredGames = useMemo(() => games.slice(0, 10), []);
 
   if (!game) return <p className="no-games">Game not found</p>;
-
- 
 
   return (
     <div
@@ -108,17 +91,17 @@ const Gameplay = () => {
 
           <div className="extbtn">
             {isFullScreen && (
-            <img
-              src={ExitFullscreenIcon}
-              alt="Exit Fullscreen"
-              className="exit-fullscreen-btn"
-              onClick={() => setIsFullScreen(false)}
-            />
-          )}
+              <img
+                src={ExitFullscreenIcon}
+                alt="Exit Fullscreen"
+                className="exit-fullscreen-btn"
+                onClick={() => setIsFullScreen(false)}
+              />
+            )}
           </div>
         </div>
 
-        {/* FULLSCREEN BUTTON BELOW FRAME */}
+        {/* FULLSCREEN BUTTON */}
         {!isFullScreen && (
           <div className="fullscreen-container">
             <img
@@ -130,39 +113,38 @@ const Gameplay = () => {
           </div>
         )}
 
-        {/* GAME INFO SECTION */}
+        {/* GAME DESCRIPTION */}
         {!isFullScreen && (
           <section className="game-description glass-card">
             <div className="game-info-header">
               <h2 className="about-title">About {game.title}</h2>
             </div>
 
-            {/* Game Stats - 2x3 Grid Format */}
-<div className="game-stats-grid">
-  <div className="stat-item">
-    <strong>Platform:</strong> {game.platform}
-  </div>
-  <div className="stat-item">
-    <strong>Players:</strong> {game.players}
-  </div>
-  <div className="stat-item">
-    <strong>Online:</strong> {game.isOnline ? "Yes" : "No"}
-  </div>
-  <div className="stat-item">
-    <strong>Rating:</strong> {game.rating}
-  </div>
-  <div className="stat-item">
-    <strong>Release Year:</strong> {game.year}
-  </div>
-  <div className="stat-item">
-    <strong>Genre:</strong> {game.genre}
-  </div>
-</div>
+            {/* STATS */}
+            <div className="game-stats-grid">
+              <div className="stat-item">
+                <strong>Platform:</strong> {game.platform}
+              </div>
+              <div className="stat-item">
+                <strong>Players:</strong> {game.players}
+              </div>
+              <div className="stat-item">
+                <strong>Online:</strong> {game.isOnline ? "Yes" : "No"}
+              </div>
+              <div className="stat-item">
+                <strong>Rating:</strong> {game.rating}
+              </div>
+              <div className="stat-item">
+                <strong>Release Year:</strong> {game.year}
+              </div>
+              <div className="stat-item">
+                <strong>Genre:</strong> {game.genre}
+              </div>
+            </div>
 
-
-            {/* Description */}
             <div className="section-divider"></div>
 
+            {/* OVERVIEW */}
             <div className="description-container">
               <h3 className="description-heading">Game Overview</h3>
               <p className="game-description-text">
@@ -171,102 +153,72 @@ const Gameplay = () => {
                 Available on {game.platform}, it supports {game.players} players
                 and can be enjoyed {game.isOnline ? "online" : "offline"}. With
                 a rating of {game.rating}, this game delivers thrilling
-                gameplay, immersive design, and countless hours of entertainment
-                for both casual and dedicated gamers alike.
+                gameplay, immersive design, and countless hours of entertainment.
               </p>
             </div>
 
-            {/* Highlights */}
             <div className="section-divider"></div>
 
+            {/* MOCK HIGHLIGHTS */}
             <div className="highlights-section">
               <h3 className="highlights-heading">Game Highlights</h3>
               <div className="mock-section">
                 <div className="mock-card">
-                  <img
-                    src={TrendingGif}
-                    alt="Trending"
-                    className="mock-icon-gif"
-                  />
+                  <img src={TrendingGif} alt="" className="mock-icon-gif" />
                   <h4>Trending Game</h4>
                   <p>{game.title} is trending worldwide!</p>
                 </div>
                 <div className="mock-card">
-                  <img
-                    src={TopPlayerGif}
-                    alt="Top Player"
-                    className="mock-icon-gif"
-                  />
+                  <img src={TopPlayerGif} alt="" className="mock-icon-gif" />
                   <h4>Top Player Count</h4>
                   <p>{game.id * 101} active players daily</p>
                 </div>
                 <div className="mock-card">
-                  <img
-                    src={DifficultyGif}
-                    alt="Difficulty"
-                    className="mock-icon-gif"
-                  />
+                  <img src={DifficultyGif} alt="" className="mock-icon-gif" />
                   <h4>Difficulty</h4>
                   <p>{game.genre === "Action" ? "Hard" : "Medium"}</p>
                 </div>
                 <div className="mock-card">
-                  <img
-                    src={RecommendedGif}
-                    alt="Recommended"
-                    className="mock-icon-gif"
-                  />
+                  <img src={RecommendedGif} alt="" className="mock-icon-gif" />
                   <h4>Recommended For</h4>
-                  <p>{game.platform} enthusiasts & online players</p>
+                  <p>{game.platform} enthusiasts</p>
                 </div>
               </div>
             </div>
           </section>
         )}
 
-        <div className="more-game1">
-          {/* RELATED GAMES */}
+        {/* RELATED GAMES */}
         {!isFullScreen && genreGames.length > 0 && (
-          <section className="related-section">
+          <section className="related-section more-game1">
             <div className="section2-header">
               <h2>More {game.genre} Games</h2>
             </div>
+
             <div className="game2-grid">
               {genreGames.map((g) => (
-                <div
-                  key={g.id}
-                  className="category-card-wrapper neon-hover"
-                  onClick={() => handleGameClick(g)}
-                >
-                  <GameCard game={g} />
-                </div>
+                <GameCard key={g.id} game={g} />
               ))}
             </div>
           </section>
         )}
 
-        </div>
-        <div className="more-game1">
         {/* FEATURED GAMES */}
         {!isFullScreen && (
-          <section className="related-section">
+          <section className="related-section more-game1">
             <div className="section2-header">
               <h2>Featured Games</h2>
             </div>
+
             <div className="game2-grid">
               {featuredGames.map((g) => (
-                <div
-                  key={g.id}
-                  className="category-card-wrapper neon-hover"
-                  onClick={() => handleGameClick(g)}
-                >
-                  <GameCard game={g} />
-                </div>
+                <GameCard key={g.id} game={g} />
               ))}
             </div>
           </section>
         )}
-        </div>
       </main>
+
       <Footer2 />
     </div>
   );

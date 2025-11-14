@@ -106,3 +106,103 @@
 
 .gamecard:hover .vip-badge {
 display: none;}
+
+/* ===== GLASS BLUR OVERLAY ===== */
+.glass-login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 8, 20, 0.55);
+  backdrop-filter: blur(12px) brightness(1.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  animation: fadeIn 0.25s ease;
+}
+
+/* ===== GLASS MODAL (NO SHADOWS) ===== */
+.glass-login-modal {
+  width: 340px;
+  padding: 28px 26px;
+  border-radius: 20px;
+
+  /* soft clean glass */
+  background: rgba(20, 40, 70, 0.45);
+  border: 1px solid rgba(135, 215, 255, 0.2);
+  backdrop-filter: blur(18px) saturate(1.35);
+
+  text-align: center;
+  animation: scaleIn 0.25s ease;
+}
+
+/* ===== TITLE: Pure White ===== */
+.glass-title {
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+/* ===== DESCRIPTION ===== */
+.glass-text {
+  color: #d8f8ff;
+  font-size: 15px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+  filter: brightness(1.1);
+  text-transform: none;
+}
+
+/* ===== BUTTON ROW ===== */
+.glass-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* ===== BUTTON BASE ===== */
+.glass-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.22s ease;
+}
+
+/* ===== LOGIN BUTTON (Subtle Gradient, No Shadow) ===== */
+.glass-btn.login {
+  background: linear-gradient(135deg, #4e8cff, #00d2ff);
+  color: white;
+}
+
+.glass-btn.login:hover {
+  background: linear-gradient(135deg, #2972ff, #00b5ff);
+}
+
+/* ===== CLOSE BUTTON (Soft Glass) ===== */
+.glass-btn.close {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.glass-btn.close:hover {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.88); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

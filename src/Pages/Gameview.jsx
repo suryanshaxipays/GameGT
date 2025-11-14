@@ -6,10 +6,10 @@ import { games } from "../data/games";
 import Bg from "../Assets/Gameview/bg.png";
 import "../Styles/Gameview.css";
 import Ellipse from "../Assets/Ellipse.png";
-import VipIcon from "../Assets/vip.png"; // ✅ VIP badge
+import VipIcon from "../Assets/vip.png";
 import Footer2 from "../Components/Footer";
 
-// import category images
+// Category images
 import Bc1 from "../Assets/Categories/Bc1.png";
 import Bc2 from "../Assets/Categories/Bc2.png";
 import Sc1 from "../Assets/Categories/Sc11.jpg";
@@ -17,7 +17,10 @@ import Sc2 from "../Assets/Categories/Sc2.png";
 import Sc3 from "../Assets/Categories/Sc3.jpg";
 import Sc4 from "../Assets/Categories/Sc4.jpg";
 
-// ✅ Hero Banner
+
+// ========================
+// HERO BANNER
+// ========================
 const HeroBanner = () => (
   <div className="hero2-banner2">
     <img src={Bg} alt="Game Banner" className="hero2-bg2" />
@@ -25,13 +28,16 @@ const HeroBanner = () => (
     <div className="hero2-overlay">
       <h1>Elgamingo!</h1>
       <p>
-        Play & Earn <span>1500</span> points 
+        Play & Earn <span>1500</span> points
       </p>
     </div>
   </div>
 );
 
-// ✅ Trending Categories
+
+// ========================
+// TRENDING CATEGORIES
+// ========================
 const TrendingCategories = () => {
   const navigate = useNavigate();
 
@@ -40,13 +46,9 @@ const TrendingCategories = () => {
     { img: Sc1, genre: "Racing" },
     { img: Sc2, genre: "Mahjong" },
     { img: Sc3, genre: "Mind" },
-    { img: Sc4, genre: "Classic Games" },
+    { img: Sc4, genre: "Classic" },
     { img: Bc2, genre: "Solitaire" },
   ];
-
-  const handleClick = (genre) => {
-    navigate(`/category/${encodeURIComponent(genre)}`);
-  };
 
   return (
     <section className="game2-section trending-categories">
@@ -59,7 +61,7 @@ const TrendingCategories = () => {
           <div
             key={i}
             className="trending-card"
-            onClick={() => handleClick(cat.genre)}
+            onClick={() => navigate(`/category/${encodeURIComponent(cat.genre)}`)}
           >
             <img src={cat.img} alt={cat.genre} />
             <div className="trending-overlay">
@@ -72,7 +74,10 @@ const TrendingCategories = () => {
   );
 };
 
-// ✅ Game Section (uses GameCard for consistency)
+
+// ========================
+// REUSABLE GAME SECTION
+// ========================
 const GameSection = ({ title, games = [], defaultLimit = 5 }) => {
   const [expanded, setExpanded] = useState(false);
   const displayed = expanded ? games : games.slice(0, defaultLimit);
@@ -81,8 +86,12 @@ const GameSection = ({ title, games = [], defaultLimit = 5 }) => {
     <section className="game2-section">
       <div className="section2-header2">
         <h2>{title}</h2>
+
         {games.length > defaultLimit && (
-          <span className="view-all" onClick={() => setExpanded(!expanded)}>
+          <span
+            className="view-all"
+            onClick={() => setExpanded(!expanded)}
+          >
             {expanded ? "Show Less" : "View All"}
           </span>
         )}
@@ -97,6 +106,10 @@ const GameSection = ({ title, games = [], defaultLimit = 5 }) => {
   );
 };
 
+
+// ========================
+// MAIN COMPONENT
+// ========================
 export default function Gameview() {
   const [search, setSearch] = useState("");
   const [isMobile, setIsMobile] = useState(false);
@@ -105,80 +118,66 @@ export default function Gameview() {
 
   const filteredGames = useMemo(
     () =>
-      games.filter((g) => g.title.toLowerCase().includes(search.toLowerCase())),
+      games.filter((g) =>
+        g.title.toLowerCase().includes(search.toLowerCase())
+      ),
     [search]
   );
-  const handleGameClick = (g) => {
-    const isFree = g.id % 3 === 0;
-    const isLoggedIn =
-      localStorage.getItem("isLoggedIn") === "true" ||
-      JSON.parse(localStorage.getItem("userAuth") || "{}")?.loggedIn;
-    const hasPaid = localStorage.getItem("hasPaidAccess") === "true";
 
-    if (!isFree) {
-      if (!isLoggedIn) {
-        localStorage.setItem(
-          "postAuthRedirect",
-          JSON.stringify({ action: "checkout", gameId: g.id, path: window.location.pathname + window.location.search })
-        );
-        window.dispatchEvent(new Event("openLogin"));
-        return;
-      }
-      if (!hasPaid) {
-        navigate("/checkout", { state: { game: g } });
-        return;
-      }
-    }
-    navigate(`/gameplay/${g.id}`);
-  };
-
+  // Unique category list
   const categories = useMemo(() => {
     const uniqueGenres = [...new Set(games.map((g) => g.genre))];
     return uniqueGenres.sort();
   }, []);
 
+  // Handle resize for category scroll
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const handle = () => setIsMobile(window.innerWidth <= 768);
+    handle();
+    window.addEventListener("resize", handle);
+    return () => window.removeEventListener("resize", handle);
   }, []);
 
+  // Scroll arrows
   const scroll = (dir) => {
     if (!scrollRef.current) return;
-    const amt = 300;
     scrollRef.current.scrollBy({
-      left: dir === "left" ? -amt : amt,
+      left: dir === "left" ? -300 : 300,
       behavior: "smooth",
     });
   };
 
-  // Mouse drag for category scroll
+  // Drag-to-scroll desktop
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+
   const onMouseDown = (e) => {
     if (isMobile) return;
     isDragging.current = true;
-    startX.current = e.pageX - (scrollRef.current?.offsetLeft || 0);
-    scrollLeft.current = scrollRef.current?.scrollLeft || 0;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
   };
+
   const stopDragging = () => (isDragging.current = false);
+
   const onMouseMove = (e) => {
     if (!isDragging.current || isMobile) return;
     e.preventDefault();
-    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX.current) * 1.5;
-    if (scrollRef.current)
-      scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
   };
+
 
   return (
     <div className="gameview-container fullwidth">
       <Navbar />
+
       <img src={Ellipse} alt="background" className="e1" />
 
       <main className="main2-content">
+
         {/* CATEGORY SCROLL */}
         <div
           className={`category-scroll-container ${
@@ -222,52 +221,38 @@ export default function Gameview() {
         {/* HERO */}
         <HeroBanner />
 
-        {/* FEATURED GAMES */}
+
+        {/* FEATURED GAMES — now using GameCard */}
         <section className="game2-section">
           <div className="section2-header2">
             <h2>Featured Games</h2>
           </div>
+
           <div className="featured-grid">
-            {filteredGames.slice(40, 56).map((g) => {
-              const isFree = g.id % 3 === 0;
-              return (
-                <div
-                  key={g.id}
-                  className="featured-item"
-                  onClick={() => handleGameClick(g)}
-                >
-                  <img src={g.image} alt={g.title}  className="gameimage"/>
-                  {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
-                </div>
-              );
-            })}
+            {filteredGames.slice(40, 56).map((g) => (
+              <GameCard key={g.id} game={g} />
+            ))}
           </div>
         </section>
+
 
         {/* TRENDING CATEGORIES */}
         <TrendingCategories />
 
-        {/* TRENDING GAMES */}
+
+        {/* TRENDING GAMES — now using GameCard */}
         <section className="game2-section">
           <div className="section2-header2">
             <h2>Trending Games</h2>
           </div>
+
           <div className="featured-grid">
-            {filteredGames.slice(80, 96).map((g) => {
-              const isFree = g.id % 3 === 0;
-              return (
-                <div
-                  key={g.id}
-                  className="featured-item"
-                  onClick={() => handleGameClick(g)}
-                >
-                  <img src={g.image} alt={g.title} className="gameimage"/>
-                  {!isFree && <img src={VipIcon} alt="VIP" className="vip-badge" />}
-                </div>
-              );
-            })}
+            {filteredGames.slice(80, 96).map((g) => (
+              <GameCard key={g.id} game={g} />
+            ))}
           </div>
         </section>
+
 
         {/* GAME SECTIONS */}
         <GameSection title="Recently Played" games={filteredGames.slice(20, 32)} />
@@ -277,6 +262,7 @@ export default function Gameview() {
         <GameSection title="Racing Games" games={filteredGames.slice(80, 96)} />
         <GameSection title="Golf Games" games={filteredGames.slice(88, 98)} />
         <GameSection title="Sports Games" games={filteredGames.slice(99, 107)} />
+
       </main>
 
       <Footer2 />

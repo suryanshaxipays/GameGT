@@ -434,7 +434,7 @@
   letter-spacing: 1px;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(90deg, #00c2ff, #3c00ff);
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
